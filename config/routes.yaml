@@ -1,6 +1,7 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+<<<<<<< HEAD
 route_accueil:
     path: /accueil
     controller: App\Controller\AccueilController::index
@@ -13,3 +14,48 @@ consulterResponsable:
     path: /responsable/consulter/{id}
     controller: App\Controller\ResponsableController::consulterResponsable
 
+=======
+# ACCUEIL
+route_accueil:
+    path: /accueil
+    controller: App\Controller\GoatController::index
+# ELEVE  
+eleveLister:
+    path: /eleve/lister/
+    controller: App\Controller\EleveController::listerEleve
+eleveConsulter:
+    path: /eleve/consulter/{id}
+    controller: App\Controller\EleveController::consulterEleve
+eleveAjouter:
+    path: /eleve/ajouter/
+    controller: App\Controller\EleveController::ajouter
+etudiantModifier:
+    path: /eleve/modifier/{id}
+    controller: App\Controller\EleveController::modifierEleve
+# COUR
+courLister:
+    path: /cour/lister/
+    controller: App\Controller\CourController::listerCour
+courConsulter:
+    path: /cour/consulter/{id}
+    controller: App\Controller\CourController::consulterCour
+courAjouter:
+    path: /cour/ajouter/
+    controller: App\Controller\CourController::ajouter
+courModifier:
+    path: /cour/modifier/{id}
+    controller: App\Controller\CourController::modifierCour
+#INSTRUMENT
+instrumentConsulter:
+    path: /instrument/consulter/{id}
+    controller: App\Controller\InstrumentController::consulterInstrument
+instrumentAjouter:
+    path: /instrument/ajouter
+    controller: App\Controller\InstrumentController::ajouter
+instrumentLister:
+    path: /instrument/lister
+    controller: App\Controller\InstrumentController::lister
+instrumentModifier:
+    path: /instrument/modifier/{id}
+    controller: App\Controller\InstrumentController::modifierinstrument
+>>>>>>> db0ac309fc2aef7c14532a41ed1c08018701cff4
