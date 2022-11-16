@@ -13,11 +13,11 @@ class InstrumentType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class)
-            ->add('date achat', TextType::class[
+            ->add('date achat', DateType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
-                ])
-            ->add('Prix achat', DateType::class) 
+                 ])
+            ->add('Prix achat', TextType::class) 
             ->add('Marque', TextType::class)
             ->add('Modèle', TextType::class)
             ->add('Numéro de série', TextType::class)

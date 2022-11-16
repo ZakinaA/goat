@@ -1,17 +1,20 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+route_accueil:
+    path: /accueil
+    controller: App\Controller\InstrumentController::index
 
 #instrument
 instrumentConsulter:
     path: /instrument/consulter/{id}
-    controller: App\Controller\instrumentController::index
+    controller: App\Controller\InstrumentController::consulterInstrument
 instrumentAjouter:
     path: /instrument/ajouter
-    controller: App\Controller\instrumentController::ajouter
+    controller: App\Controller\InstrumentController::ajouter
 instrumentLister:
     path: /instrument/lister
-    controller: App\Controller\instrumentController::lister
+    controller: App\Controller\InstrumentController::lister
 instrumentModifier:
     path: /instrument/modifier/{id}
-    controller: App\Controller\instrumentController::modifierinstrument
+    controller: App\Controller\InstrumentController::modifierinstrument
