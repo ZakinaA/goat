@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Responsable>
+ * @extends ServiceEntityRepository<Etudiant>
  *
- * @method Responsable|null find($id, $lockMode = null, $lockVersion = null)
- * @method Responsable|null findOneBy(array $criteria, array $orderBy = null)
- * @method Responsable[]    findAll()
- * @method Responsable[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Etudiant|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Etudiant|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Etudiant[]    findAll()
+ * @method Etudiant[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ResponsableRepository extends ServiceEntityRepository
 {
@@ -21,7 +21,7 @@ class ResponsableRepository extends ServiceEntityRepository
         parent::__construct($registry, Responsable::class);
     }
 
-    public function save(Responsable $entity, bool $flush = false): void
+    public function save(Etudiant $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ResponsableRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Responsable $entity, bool $flush = false): void
+    public function remove(Etudiant $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,24 +40,24 @@ class ResponsableRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Responsable[] Returns an array of Responsable objects
+//     * @return Etudiant[] Returns an array of Etudiant objects
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
+//            ->orderBy('e.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Responsable
+//    public function findOneBySomeField($value): ?Etudiant
 //    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
+//        return $this->createQueryBuilder('e')
+//            ->andWhere('e.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()
