@@ -64,30 +64,30 @@ class EleveController extends AbstractController
             return $this->render('eleve/ajouter.html.twig', array('form' => $form->createView(),));
 	}
 }
-public function modifierEleve(ManagerRegistry $doctrine, $id, Request $request){
+    public function modifierEleve(ManagerRegistry $doctrine, $id, Request $request){
  
-    //récupération de l'élève dont l'id est passé en paramètre
-    $eleve = $doctrine->getRepository(Eleve::class)->find($id);
- 
-    if (!$eleve) {
-        throw $this->createNotFoundException('Aucun eleve trouvé avec le numéro '.$id);
-    }
-    else
-    {
-            $form = $this->createForm(EleveModifierType::class, $eleve);
-            $form->handleRequest($request);
- 
-            if ($form->isSubmitted() && $form->isValid()) {
- 
-                 $eleve = $form->getData();
-                 $entityManager = $doctrine->getManager();
-                 $entityManager->persist($eleve);
-                 $entityManager->flush();
-                 return $this->render('eleve/consulter.html.twig', ['eleve' => $eleve,]);
-           }
-           else{
-                return $this->render('eleve/ajouter.html.twig', array('form' => $form->createView(),));
-           }
+        //récupération de l'élève dont l'id est passé en paramètre
+        $eleve = $doctrine->getRepository(Eleve::class)->find($id);
+    
+        if (!$eleve) {
+            throw $this->createNotFoundException('Aucun eleve trouvé avec le numéro '.$id);
         }
- }
+        else
+        {
+                $form = $this->createForm(EleveModifierType::class, $eleve);
+                $form->handleRequest($request);
+    
+                if ($form->isSubmitted() && $form->isValid()) {
+    
+                    $eleve = $form->getData();
+                    $entityManager = $doctrine->getManager();
+                    $entityManager->persist($eleve);
+                    $entityManager->flush();
+                    return $this->render('eleve/consulter.html.twig', ['eleve' => $eleve,]);
+            }
+            else{
+                    return $this->render('eleve/ajouter.html.twig', array('form' => $form->createView(),));
+            }
+        }
+        }
 }

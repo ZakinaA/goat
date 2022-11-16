@@ -12,22 +12,25 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
-class EleveType extends AbstractType
+class CourType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('date_naiss')
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel élève'))
+            ->add('libelle')
+            ->add('agemini')
+            ->add('agemaxi')
+            ->add('nbplaces')
+            ->add('id_instrument')
+            ->add('id_type_cour')
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau cour'))
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Eleve::class,
+            'data_class' => Cour::class,
         ]);
     }
 }
