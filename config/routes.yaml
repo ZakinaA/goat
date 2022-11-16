@@ -14,3 +14,6 @@ eleveConsulter:
 eleveAjouter:
     path: /eleve/ajouter/
     controller: App\Controller\EleveController::ajouter
+etudiantModifier:
+    path: /eleve/modifier/{id}
+    controller: App\Controller\EleveController::modifierEleve
