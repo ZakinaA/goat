@@ -1,3 +1,33 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+# ACCUEIL
+route_accueil:
+    path: /accueil
+    controller: App\Controller\GoatController::index
+# ELEVE  
+eleveLister:
+    path: /eleve/lister/
+    controller: App\Controller\EleveController::listerEleve
+eleveConsulter:
+    path: /eleve/consulter/{id}
+    controller: App\Controller\EleveController::consulterEleve
+eleveAjouter:
+    path: /eleve/ajouter/
+    controller: App\Controller\EleveController::ajouter
+etudiantModifier:
+    path: /eleve/modifier/{id}
+    controller: App\Controller\EleveController::modifierEleve
+# COUR
+courLister:
+    path: /cour/lister/
+    controller: App\Controller\CourController::listerCour
+courConsulter:
+    path: /cour/consulter/{id}
+    controller: App\Controller\CourController::consulterCour
+courAjouter:
+    path: /cour/ajouter/
+    controller: App\Controller\CourController::ajouter
+courModifier:
+    path: /cour/modifier/{id}
+    controller: App\Controller\CourController::modifierCour
