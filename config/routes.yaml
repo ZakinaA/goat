@@ -1,6 +1,20 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+<<<<<<< HEAD
+route_accueil:
+    path: /accueil
+    controller: App\Controller\AccueilController::index
+#RESPONSABLE
+ResponsableLister:
+    path: /responsable/lister/
+    controller: App\Controller\ResponsableController::listerResponsable
+
+consulterResponsable:
+    path: /responsable/consulter/{id}
+    controller: App\Controller\ResponsableController::consulterResponsable
+
+=======
 # ACCUEIL
 route_accueil:
     path: /accueil
@@ -44,3 +58,4 @@ instrumentLister:
 instrumentModifier:
     path: /instrument/modifier/{id}
     controller: App\Controller\InstrumentController::modifierinstrument
+>>>>>>> db0ac309fc2aef7c14532a41ed1c08018701cff4

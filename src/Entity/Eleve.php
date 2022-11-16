@@ -63,4 +63,44 @@ class Eleve
 
         return $this;
     }
+<<<<<<< HEAD
+
+    public function getResponsable(): ?Responsable
+    {
+        return $this->responsable;
+    }
+
+    public function setResponsable(?Responsable $responsable): self
+    {
+        $this->responsable = $responsable;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cours>
+     */
+    public function getInscription(): Collection
+    {
+        return $this->inscription;
+    }
+
+    public function addInscription(Cours $inscription): self
+    {
+        if (!$this->inscription->contains($inscription)) {
+            $this->inscription->add($inscription);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Cours $inscription): self
+    {
+        $this->inscription->removeElement($inscription);
+
+        return $this;
+    }
 }
+=======
+}
+>>>>>>> db0ac309fc2aef7c14532a41ed1c08018701cff4
