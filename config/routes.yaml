@@ -1,3 +1,16 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+# ACCUEIL
+route_accueil:
+    path: /accueil
+    controller: App\Controller\GoatController::index
+eleveLister:
+    path: /eleve/lister/
+    controller: App\Controller\EleveController::listerEleve
+eleveConsulter:
+    path: /eleve/consulter/{id}
+    controller: App\Controller\EleveController::consulterEleve
+eleveAjouter:
+    path: /eleve/ajouter/
+    controller: App\Controller\EleveController::ajouter
