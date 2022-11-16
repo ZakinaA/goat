@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		
+		LISTE DES RESPONSABLES</br>
+        </br>
+		<table>
+		{% for e in pResponsables %}
+       
+		<tr>
+			<td><a href="{{ path('consulterResponsable', { 'id': e.id }) }}">{{ e.nom }}</a></td>
+            <td>{{ e.prenom }}</a> </td>
+            <td>{{ e.adresse }}</a></td>
+            <td>{{ e.ville }}</a></td>
+            <td>{{ e.codepostal }}</a></td>
+            <td>{{ e.email }}</a></td>
+            <td>{{ e.tel1 }}</a></td>
+	{% else %}
+		<tr>
+		<td>Aucun reponsable n'a été trouvé.</td>
+		</tr>
+	{% endfor %}
+</table>
+	
+	 
+    </body>
+</html>
