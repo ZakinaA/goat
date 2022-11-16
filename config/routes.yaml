@@ -1,7 +1,15 @@
+
 # ACCUEIL
 route_accueil:
     path: /accueil
     controller: App\Controller\GoatController::index
+#RESPONSABLE
+ResponsableLister:
+    path: /responsable/lister/
+    controller: App\Controller\ResponsableController::listerResponsable
+consulterResponsable:
+    path: /responsable/consulter/{id}
+    controller: App\Controller\ResponsableController::consulterResponsable
 # ELEVE  
 eleveLister:
     path: /eleve/lister/
