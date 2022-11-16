@@ -130,5 +130,5 @@ class Cours
         return $this;
     }
 }
-}
+
 

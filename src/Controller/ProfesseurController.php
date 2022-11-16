@@ -19,7 +19,7 @@ public function consulterProfesseur(ManagerRegistry $doctrine, int $id){
 		$professeur= $doctrine->getRepository(Professeur::class)->find($id);
 		if (!$professeur) {
 			throw $this->createNotFoundException(
-            'Aucun etudiant trouvé avec le numéro '.$id
+            'Aucun professeur n a trouvé avec le numéro '.$id
 			);
 		}
 

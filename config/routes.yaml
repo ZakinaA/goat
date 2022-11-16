@@ -24,18 +24,18 @@ etudiantModifier:
     path: /eleve/modifier/{id}
     controller: App\Controller\EleveController::modifierEleve
 # COUR
-courLister:
-    path: /cour/lister/
-    controller: App\Controller\CourController::listerCour
-courConsulter:
-    path: /cour/consulter/{id}
-    controller: App\Controller\CourController::consulterCour
-courAjouter:
-    path: /cour/ajouter/
-    controller: App\Controller\CourController::ajouter
-courModifier:
-    path: /cour/modifier/{id}
-    controller: App\Controller\CourController::modifierCour
+coursLister:
+    path: /cours/lister/
+    controller: App\Controller\CoursController::listerCours
+coursConsulter:
+    path: /cours/consulter/{id}
+    controller: App\Controller\CoursController::consulterCours
+coursAjouter:
+    path: /cours/ajouter/
+    controller: App\Controller\CoursController::ajouter
+cousrModifier:
+    path: /cours/modifier/{id}
+    controller: App\Controller\CoursController::modifierCours
 #INSTRUMENT
 instrumentConsulter:
     path: /instrument/consulter/{id}

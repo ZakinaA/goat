@@ -106,12 +106,12 @@ class Professeur
     /**
      * @return Collection<int, Cours>
      */
-    public function getCours(): Collection
+    public function getCour(): Collection
     {
         return $this->cours;
     }
 
-    public function addCour(Cours $cour): self
+    public function addCour(Cour $cour): self
     {
         if (!$this->cours->contains($cour)) {
             $this->cours->add($cour);
@@ -121,9 +121,9 @@ class Professeur
         return $this;
     }
 
-    public function removeCour(Cours $cour): self
+    public function removeCour(Cour $cour): self
     {
-        if ($this->cours->removeElement($cour)) {
+        if ($this->cour->removeElement($cour)) {
             // set the owning side to null (unless already changed)
             if ($cour->getProfesseur() === $this) {
                 $cour->setProfesseur(null);
