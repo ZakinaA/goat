@@ -31,3 +31,16 @@ courAjouter:
 courModifier:
     path: /cour/modifier/{id}
     controller: App\Controller\CourController::modifierCour
+#INSTRUMENT
+instrumentConsulter:
+    path: /instrument/consulter/{id}
+    controller: App\Controller\InstrumentController::consulterInstrument
+instrumentAjouter:
+    path: /instrument/ajouter
+    controller: App\Controller\InstrumentController::ajouter
+instrumentLister:
+    path: /instrument/lister
+    controller: App\Controller\InstrumentController::lister
+instrumentModifier:
+    path: /instrument/modifier/{id}
+    controller: App\Controller\InstrumentController::modifierinstrument
