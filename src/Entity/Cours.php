@@ -30,6 +30,9 @@ class Cours
     #[ORM\ManyToMany(targetEntity: Eleve::class, mappedBy: 'inscription')]
     private Collection $eleves;
 
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?Professeur $professeur = null;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
@@ -111,6 +114,18 @@ class Cours
         if ($this->eleves->removeElement($elefe)) {
             $elefe->removeInscription($this);
         }
+
+        return $this;
+    }
+
+    public function getProfesseur(): ?Professeur
+    {
+        return $this->professeur;
+    }
+
+    public function setProfesseur(?Professeur $professeur): self
+    {
+        $this->professeur = $professeur;
 
         return $this;
     }
