@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Consulter professeurs</title>    
+    </head>
+    <body>
+    {% include 'header.html' %}
+
+    <div class="container">   
+    <div class="d-flex align-items-center">
+    <h5>PAGE DE CONSULTATION D'UN PROFESSEUR</h5>
+    </div>
+	
+
+  	<table class="table">
+    <!--<tr><td>Id : </td><td>{{professeur.id}} </td></tr>!-->
+	<tr>
+      <td>Nom : </td>
+      <td>{{professeur.nom}}</td>
+	{% set photo = 'img/professeur/'~ professeur.id ~'.png' %}
+	<td  rowspan="8" class="imgProf">
+					
+					 <img class="img-fluid img-thumbnail" style="width: 256px;" src="{{ asset(photo | trans )}}" title="{{ professeur.prenom ~ " " ~ professeur.nom }}" alt="{{ professeur.prenom ~ " " ~ professeur.nom }}" onerror="this.onerror=null; this.src='/goat/public/img/professeur/Default.png'"/>
+   </td>
+   </tr>		
+
+
+    <tr>
+      <td>Prénom : </td><td>{{professeur.prenom}}</td></tr>
+   </tr>
+   <tr>
+      <td>Ville : </td><td>{{professeur.ville}}</td></tr>
+   </tr>
+   <tr>
+      <td>Code postal : </td><td>{{professeur.codepostal}}</td></tr>
+   </tr>
+	
+ 	</table>
+	<input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
+ 	</div>
+	</div>
+    </body>
+</html>

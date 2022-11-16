@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lister professeurs</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    	{% include 'header.html' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>Liste des professeurs :</h5>
+		</div>
+	
+		</br>
+		<table class="table">
+		<tr>
+		<td>Nom</td>
+		<td>Prenom</td>
+		<td>Date de naissance</td>
+		<td>Ville</td>
+		</tr>
+		{% for e in pProfesseurs %}
+		<tr>
+			<td><a class="text-decoration-none" href="{{ path('professeurConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
+			<td>{{ e.prenom }}</a></td>
+			<td>{{ e.ville}}</a></td>
+	{% else %}
+		<tr>
+		<td>Aucune maisons n'a été trouvé.</td>
+		</tr>
+	{% endfor %}
+</table>
+	
+	 </tr>
+	</table>
+	<a class="btn btn-primary" href="/webstudent/public/professeur/ajouter">Ajouter</a>
+	</div>
+    </body>
+</html>

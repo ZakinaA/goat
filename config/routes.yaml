@@ -1,6 +1,4 @@
-controllers:
-    resource: ../src/Controller/
-    type: attribute
+
 # ACCUEIL
 route_accueil:
     path: /accueil
@@ -51,3 +49,10 @@ instrumentLister:
 instrumentModifier:
     path: /instrument/modifier/{id}
     controller: App\Controller\InstrumentController::modifierinstrument
+#PROFFESSEUR
+professeurConsulter:
+    path: /professeur/consulter/{id}
+    controller: App\Controller\ProfesseurController::consulterProfesseur
+professeurLister:
+    path: /professeur/lister
+    controller: App\Controller\ProfesseurController::listerProfesseur
