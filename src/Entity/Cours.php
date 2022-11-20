@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CoursRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CoursRepository::class)]
@@ -24,6 +26,14 @@ class Cours
 
     #[ORM\Column]
     private ?int $nbplaces = null;
+
+    #[ORM\OneToMany(mappedBy: 'cours', targetEntity: Eleve::class)]
+    private Collection $cours;
+
+    public function __construct()
+    {
+        $this->cours = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +84,36 @@ class Cours
     public function setNbplaces(int $nbplaces): self
     {
         $this->nbplaces = $nbplaces;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Eleve>
+     */
+    public function getCours(): Collection
+    {
+        return $this->cours;
+    }
+
+    public function addCour(Eleve $cour): self
+    {
+        if (!$this->cours->contains($cour)) {
+            $this->cours->add($cour);
+            $cour->setCours($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Eleve $cour): self
+    {
+        if ($this->cours->removeElement($cour)) {
+            // set the owning side to null (unless already changed)
+            if ($cour->getCours() === $this) {
+                $cour->setCours(null);
+            }
+        }
 
         return $this;
     }

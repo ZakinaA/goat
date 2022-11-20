@@ -23,6 +23,9 @@ class Eleve
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_naiss = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?Cours $cours = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Eleve
     public function setDateNaiss(\DateTimeInterface $date_naiss): self
     {
         $this->date_naiss = $date_naiss;
+
+        return $this;
+    }
+
+    public function getCours(): ?Cours
+    {
+        return $this->cours;
+    }
+
+    public function setCours(?Cours $cours): self
+    {
+        $this->cours = $cours;
 
         return $this;
     }
