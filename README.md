@@ -1,5 +1,5 @@
-#Goat
-#Initialisation du projet e-Music
+# Goat
+# Initialisation du projet e-Music
 
 ```
 Liste des membres : 
