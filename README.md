@@ -24,6 +24,7 @@ git config --global user.email "votremailducompteGithub"
 Framework choisi : 
 
 Bootstrap 5.2
+https://getbootstrap.com/docs/5.2
 
 ## Création branche :
 ``` 
