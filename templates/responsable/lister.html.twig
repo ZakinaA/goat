@@ -6,12 +6,23 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        {% include 'header.html' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-		
-		LISTE DES RESPONSABLES</br>
-        </br>
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>Liste des responsables :</h5>
 		<table>
+        </br>
+		<table class="table">
+		<tr>
+		<td>prenom</td>
+		<td>adresse</td>
+		<td>ville</td>
+		<td>codepostal</td>
+        <td>email</td>
+        <td>tel1</td>
+		</tr>
 		{% for e in pResponsables %}
        
 		<tr>
@@ -24,11 +35,14 @@
             <td>{{ e.tel1 }}</a></td>
 	{% else %}
 		<tr>
-		<td>Aucun reponsable n'a été trouvé.</td>
+		<td style="color : red;">Aucun reponsable n'a été trouvé.</td>
 		</tr>
 	{% endfor %}
 </table>
-	
+ </tr>
+	</table>
+    	<a class="btn btn-primary" href="http://localhost/goat/public/responsable/ajouter/">Ajouter</a>
+	</div>
 	 
     </body>
 </html>

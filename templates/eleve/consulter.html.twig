@@ -7,10 +7,11 @@
 		<h5>PAGE DE CONSULTATION D'UN ELEVE</h5>
  <p>
     <table>
+    <tr><td>Nom : </td><td>{{eleve.id}}</td>
       <tr><td>Nom : </td><td>{{eleve.nom}}</td>
       <tr><td>Prénom : </td><td>{{eleve.prenom}}</td></tr></tr>
     
-      
+      <a class="btn btn-primary" href="http://localhost/goat/public/eleve/supprimer/{{eleve.id}}">Supprimer</a>
     </table>
 
     </body>

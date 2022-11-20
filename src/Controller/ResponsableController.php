@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -7,8 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Responsable;
-
-
 
 
 
@@ -21,8 +20,6 @@ class ResponsableController extends AbstractController
             'controller_name' => 'ResponsableController',
         ]);
     }
-
-
     public function listerResponsable(ManagerRegistry $doctrine)
     {
         $repository = $doctrine->getRepository(Responsable::class);
@@ -48,8 +45,4 @@ class ResponsableController extends AbstractController
 		return $this->render('responsable/consulter.html.twig', [
             'responsable' => $responsable,]);
 	}
-
-
-
-
 }

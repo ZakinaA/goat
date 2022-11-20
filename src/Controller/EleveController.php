@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Eleve;
 use App\Form\EleveType;
 use App\Form\EleveModifierType;
+use App\Form\EleveSupprimerType;
 
 class EleveController extends AbstractController
 {
@@ -89,5 +90,33 @@ class EleveController extends AbstractController
                     return $this->render('eleve/ajouter.html.twig', array('form' => $form->createView(),));
             }
         }
+        }
+        public function supprimerEleve(ManagerRegistry $doctrine, $id, Request $request){
+ 
+            //récupération de l'élève dont l'id est passé en paramètre
+            $eleve = $doctrine->getRepository(Eleve::class)->find($id);
+        
+            if (!$eleve) {
+                throw $this->createNotFoundException('Aucun eleve trouvé avec le numéro '.$id);
+            }
+            else
+            {
+                    $form = $this->createForm(EleveSupprimerType::class, $eleve);
+                    $form->handleRequest($request);
+        
+                    if ($form->isSubmitted() && $form->isValid()) {
+        
+                        $entityManager = $doctrine->getManager();
+                        $entityManager ->remove($eleve);
+                        $entityManager->flush();
+                        $repository = $doctrine->getRepository(Eleve::class);
+                        $eleves = $repository->findAll();
+                        return $this->render('eleve/lister.html.twig', [
+                            'pEleves' => $eleves,]);	
+                }
+                else{
+                        return $this->render('eleve/ajouter.html.twig', array('form' => $form->createView(),));
+                }
+            }
         }
 }

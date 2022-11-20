@@ -8,12 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GoatController extends AbstractController
 {
-     /*
-    *#[Route('/goat', name: 'app_goat')]
-    */
+    #[Route('/goat', name: 'app_goat')]
     public function index(): Response
     {
-        return $this->render('goat/accueil.html.twig', [
+        return $this->render('goat/index.html.twig', [
             'controller_name' => 'GoatController',
         ]);
     }

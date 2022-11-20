@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ResponsableRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ResponsableRepository::class)]
@@ -15,43 +13,35 @@ class Responsable
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $adresse = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $ville = null;
 
-    #[ORM\Column(length: 5, nullable: true)]
+    #[ORM\Column(length: 9)]
     private ?string $code_postal = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
-    private ?string $tel1 = null;
+    #[ORM\Column]
+    private ?int $tel1 = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
-    private ?string $tel2 = null;
+    #[ORM\Column]
+    private ?int $tel2 = null;
 
-    #[ORM\Column(length: 10, nullable: true)]
-    private ?string $tel3 = null;
+    #[ORM\Column]
+    private ?int $tel3 = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $quotient_familial = null;
-
-    #[ORM\OneToMany(mappedBy: 'responsable', targetEntity: Eleve::class)]
-    private Collection $eleves;
-
-    public function __construct()
-    {
-        $this->eleves = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -63,7 +53,7 @@ class Responsable
         return $this->nom;
     }
 
-    public function setNom(?string $nom): self
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
 
@@ -75,7 +65,7 @@ class Responsable
         return $this->prenom;
     }
 
-    public function setPrenom(?string $prenom): self
+    public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
 
@@ -87,7 +77,7 @@ class Responsable
         return $this->adresse;
     }
 
-    public function setAdresse(?string $adresse): self
+    public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
 
@@ -99,7 +89,7 @@ class Responsable
         return $this->ville;
     }
 
-    public function setVille(?string $ville): self
+    public function setVille(string $ville): self
     {
         $this->ville = $ville;
 
@@ -111,7 +101,7 @@ class Responsable
         return $this->code_postal;
     }
 
-    public function setCodePostal(?string $code_postal): self
+    public function setCodePostal(string $code_postal): self
     {
         $this->code_postal = $code_postal;
 
@@ -123,43 +113,43 @@ class Responsable
         return $this->email;
     }
 
-    public function setEmail(?string $email): self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getTel1(): ?string
+    public function getTel1(): ?int
     {
         return $this->tel1;
     }
 
-    public function setTel1(?string $tel1): self
+    public function setTel1(int $tel1): self
     {
         $this->tel1 = $tel1;
 
         return $this;
     }
 
-    public function getTel2(): ?string
+    public function getTel2(): ?int
     {
         return $this->tel2;
     }
 
-    public function setTel2(?string $tel2): self
+    public function setTel2(int $tel2): self
     {
         $this->tel2 = $tel2;
 
         return $this;
     }
 
-    public function getTel3(): ?string
+    public function getTel3(): ?int
     {
         return $this->tel3;
     }
 
-    public function setTel3(?string $tel3): self
+    public function setTel3(int $tel3): self
     {
         $this->tel3 = $tel3;
 
@@ -171,39 +161,9 @@ class Responsable
         return $this->quotient_familial;
     }
 
-    public function setQuotientFamilial(?int $quotient_familial): self
+    public function setQuotientFamilial(int $quotient_familial): self
     {
         $this->quotient_familial = $quotient_familial;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Eleve>
-     */
-    public function getEleves(): Collection
-    {
-        return $this->eleves;
-    }
-
-    public function addElefe(Eleve $elefe): self
-    {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves->add($elefe);
-            $elefe->setResponsable($this);
-        }
-
-        return $this;
-    }
-
-    public function removeElefe(Eleve $elefe): self
-    {
-        if ($this->eleves->removeElement($elefe)) {
-            // set the owning side to null (unless already changed)
-            if ($elefe->getResponsable() === $this) {
-                $elefe->setResponsable(null);
-            }
-        }
 
         return $this;
     }

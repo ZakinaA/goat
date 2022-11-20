@@ -1,20 +1,25 @@
 <?php
- 
+
 namespace App\Controller;
- 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-use App\Entity\Professeur;
+use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Professeur;
 
- 
+
 class ProfesseurController extends AbstractController
 {
-
-
-public function consulterProfesseur(ManagerRegistry $doctrine, int $id){
+    #[Route('/professeur', name: 'app_professeur')]
+    public function index(): Response
+    {
+        return $this->render('professeur/index.html.twig', [
+            'controller_name' => 'ProfesseurController',
+        ]);
+    }
+    public function consulterProfesseur(ManagerRegistry $doctrine, int $id){
 		
 		$professeur= $doctrine->getRepository(Professeur::class)->find($id);
 		if (!$professeur) {
@@ -28,7 +33,7 @@ public function consulterProfesseur(ManagerRegistry $doctrine, int $id){
             'professeur' => $professeur,]);
 	}
 
-public function listerProfesseur(ManagerRegistry $doctrine){
+    public function listerProfesseur(ManagerRegistry $doctrine){
 
         $repository = $doctrine->getRepository(Professeur::class);
 		
@@ -58,7 +63,4 @@ public function listerProfesseur(ManagerRegistry $doctrine){
             return $this->render('professeur/ajouter.html.twig', array('form' => $form->createView(),));
 	}
 }
-
 }
-
-?>

@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ProfesseurRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
@@ -15,28 +13,20 @@ class Professeur
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 60, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 60, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 150, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $ville = null;
 
-    #[ORM\Column(length: 6, nullable: true)]
+    #[ORM\Column(length: 9)]
     private ?string $code_postal = null;
-
-    #[ORM\OneToMany(mappedBy: 'professeur', targetEntity: Cours::class)]
-    private Collection $cours;
-
-    public function __construct()
-    {
-        $this->cours = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -48,7 +38,7 @@ class Professeur
         return $this->nom;
     }
 
-    public function setNom(?string $nom): self
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
 
@@ -60,7 +50,7 @@ class Professeur
         return $this->prenom;
     }
 
-    public function setPrenom(?string $prenom): self
+    public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
 
@@ -72,7 +62,7 @@ class Professeur
         return $this->email;
     }
 
-    public function setEmail(?string $email): self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -84,7 +74,7 @@ class Professeur
         return $this->ville;
     }
 
-    public function setVille(?string $ville): self
+    public function setVille(string $ville): self
     {
         $this->ville = $ville;
 
@@ -96,39 +86,9 @@ class Professeur
         return $this->code_postal;
     }
 
-    public function setCodePostal(?string $code_postal): self
+    public function setCodePostal(string $code_postal): self
     {
         $this->code_postal = $code_postal;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Cours>
-     */
-    public function getCour(): Collection
-    {
-        return $this->cours;
-    }
-
-    public function addCour(Cour $cour): self
-    {
-        if (!$this->cours->contains($cour)) {
-            $this->cours->add($cour);
-            $cour->setProfesseur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCour(Cour $cour): self
-    {
-        if ($this->cour->removeElement($cour)) {
-            // set the owning side to null (unless already changed)
-            if ($cour->getProfesseur() === $this) {
-                $cour->setProfesseur(null);
-            }
-        }
 
         return $this;
     }

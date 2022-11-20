@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\CoursRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CoursRepository::class)]
@@ -18,25 +16,14 @@ class Cours
     #[ORM\Column(length: 50)]
     private ?string $libelle = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $agemini = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $agemaxi = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $nbplaces = null;
-
-    #[ORM\ManyToMany(targetEntity: Eleve::class, mappedBy: 'inscription')]
-    private Collection $eleves;
-
-    #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?Professeur $professeur = null;
-
-    public function __construct()
-    {
-        $this->eleves = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -60,7 +47,7 @@ class Cours
         return $this->agemini;
     }
 
-    public function setAgemini(?int $agemini): self
+    public function setAgemini(int $agemini): self
     {
         $this->agemini = $agemini;
 
@@ -72,7 +59,7 @@ class Cours
         return $this->agemaxi;
     }
 
-    public function setAgemaxi(?int $agemaxi): self
+    public function setAgemaxi(int $agemaxi): self
     {
         $this->agemaxi = $agemaxi;
 
@@ -84,51 +71,10 @@ class Cours
         return $this->nbplaces;
     }
 
-    public function setNbplaces(?int $nbplaces): self
+    public function setNbplaces(int $nbplaces): self
     {
         $this->nbplaces = $nbplaces;
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, Eleve>
-     */
-    public function getEleves(): Collection
-    {
-        return $this->eleves;
-    }
-
-    public function addElefe(Eleve $elefe): self
-    {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves->add($elefe);
-            $elefe->addInscription($this);
-        }
-
-        return $this;
-    }
-
-    public function removeElefe(Eleve $elefe): self
-    {
-        if ($this->eleves->removeElement($elefe)) {
-            $elefe->removeInscription($this);
-        }
-
-        return $this;
-    }
-
-    public function getProfesseur(): ?Professeur
-    {
-        return $this->professeur;
-    }
-
-    public function setProfesseur(?Professeur $professeur): self
-    {
-        $this->professeur = $professeur;
-
-        return $this;
-    }
 }
-
-

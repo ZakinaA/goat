@@ -6,26 +6,21 @@ use App\Entity\Instrument;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\HttpFoundation\Request;
 
 class InstrumentType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', TextType::class)
-            ->add('date achat', DateType::class, [
-                'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
-                 ])
-            ->add('Prix achat', TextType::class) 
-            ->add('Marque', TextType::class)
-            ->add('Modèle', TextType::class)
-            ->add('Numéro de série', TextType::class)
-            ->add('Couleur', TextType::class)
-            ->add('Utilisation', TextType::class)
-            ->add('maison', EntityType::class, array('class' => 'App\Entity\Maison','choice_label' => 'nom' ))
-            //->add('promotion')
-	    ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel étudiant'))
+            ->add('nom')
+            ->add('numero_serie')
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau Instrument'))
         ;
     }
 

@@ -18,15 +18,13 @@ class EleveModifierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('nom', TextType::class, array('label' => 'nom élève', 'disabled'=> true))
-        ->add('enregistrer', SubmitType::class, array('label' => 'Modifier élève'))
+            ->add('nom')
+            ->add('prenom')
+            ->add('date_naiss')
+            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier élève'))
          ;
         ;
     }
-
-    public function getParent(){
-        return EleveType::class;
-      }
 
     public function configureOptions(OptionsResolver $resolver): void
     {

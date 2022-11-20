@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Responsable;
+use App\Entity\Responsableville;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Responsable>
+ * @extends ServiceEntityRepository<Responsableville>
  *
- * @method Responsable|null find($id, $lockMode = null, $lockVersion = null)
- * @method Responsable|null findOneBy(array $criteria, array $orderBy = null)
- * @method Responsable[]    findAll()
- * @method Responsable[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Responsableville|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Responsableville|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Responsableville[]    findAll()
+ * @method Responsableville[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ResponsableRepository extends ServiceEntityRepository
+class ResponsablevilleRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Responsable::class);
+        parent::__construct($registry, Responsableville::class);
     }
 
-    public function save(Responsable $entity, bool $flush = false): void
+    public function save(Responsableville $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ResponsableRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Responsable $entity, bool $flush = false): void
+    public function remove(Responsableville $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class ResponsableRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Responsable[] Returns an array of Responsable objects
+//     * @return Responsableville[] Returns an array of Responsableville objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class ResponsableRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Responsable
+//    public function findOneBySomeField($value): ?Responsableville
 //    {
 //        return $this->createQueryBuilder('r')
 //            ->andWhere('r.exampleField = :val')

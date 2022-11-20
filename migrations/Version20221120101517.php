@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20221116081755 extends AbstractMigration
+final class Version20221120101517 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20221116081755 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE cour (id INT AUTO_INCREMENT NOT NULL, libelle VARCHAR(50) NOT NULL, agemini INT NOT NULL, agemaxi INT NOT NULL, nbplaces INT NOT NULL, id_instrument INT NOT NULL, id_type_cour INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE responsable (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, adresse VARCHAR(50) NOT NULL, ville VARCHAR(50) NOT NULL, code_postal VARCHAR(9) NOT NULL, email VARCHAR(50) NOT NULL, tel1 INT NOT NULL, tel2 INT NOT NULL, tel3 INT NOT NULL, quotient_familial INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE cour');
+        $this->addSql('DROP TABLE responsable');
     }
 }

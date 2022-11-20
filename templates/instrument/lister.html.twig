@@ -6,20 +6,33 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+	{% include 'header.html' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-		
-		LISTE DES INSTRUMENTS</br>
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>Liste des instruments :</h5>
+		</div>
+</br>
+		<table class="table">
+		<tr>
+		<td>Nom</td>
+
+		</tr>
 		<table>
 		{% for e in pinstruments %}
 		<tr>
 			<td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
 	{% else %}
 		<tr>
-		<td>Aucun instrument n'a été trouvé.</td>
+		<td style="color : red;">Aucun instrument n'a été trouvé.</td>
 		</tr>
 	{% endfor %}
 </table>
+ </tr>
+	</table>
+    	<a class="btn btn-primary" href="/webstudent/public/isntrument/ajouter">Ajouter</a>
+	</div>
 	
     </body>
 </html>

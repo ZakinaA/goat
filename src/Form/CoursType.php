@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Cour;
+use App\Entity\Cours;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\HttpFoundation\Request;
 
-class CourModifierType extends AbstractType
+class CoursType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -22,17 +22,14 @@ class CourModifierType extends AbstractType
             ->add('agemini')
             ->add('agemaxi')
             ->add('nbplaces')
-            ->add('id_instrument')
-            ->add('id_type_cour')
-            ->add('enregistrer', SubmitType::class, array('label' => 'Modifier cour'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau cours'))
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Cour::class,
+            'data_class' => Cours::class,
         ]);
     }
-
 }
