@@ -1,9 +1,6 @@
 # Goat
 # Initialisation du projet e-Music
 
-```
-
-```
 Liste des membres : 
 
 ```
