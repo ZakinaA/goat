@@ -1,18 +1,46 @@
+
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
     </head>
-    <body>       
-		<h5>PAGE DE CONSULTATION D'UN ELEVE</h5>
- <p>
-    <table>
-    <tr><td>Nom : </td><td>{{eleve.id}}</td>
-      <tr><td>Nom : </td><td>{{eleve.nom}}</td>
-      <tr><td>Prénom : </td><td>{{eleve.prenom}}</td></tr></tr>
-    
-      <a class="btn btn-primary" href="http://localhost/goat/public/eleve/supprimer/{{eleve.id}}">Supprimer</a>
-    </table>
+    <body>
+        {% include 'header.html' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION DE L'ELEVE <strong>{{eleve.nom}}</strong></h5>
+		<table>
+        </br>
+        <table class="table">
+		<tr>
 
+		<td>Nom</td>
+    <td>Prénom</td>
+    <td>Nom du Cours</td>
+    <td>Responsable</td>
+    <td>Adresse</td>
+    <td>Instrument</td>
+    <td>Téléphone</td>
+    <td>E-mail</td>
+		</tr>
+		<tr>
+    <td>{{eleve.nom}}</td>
+    <td>{{eleve.prenom}}</td>
+    <td><a class="" href="http://localhost/goat/public/cours/consulter/{{eleve.cours.id}}">{{eleve.cours.libelle}}</a></td>
+    <td><a class="" href="http://localhost/goat/public/responsable/consulter/{{eleve.responsable.id}}">{{eleve.responsable.nom}}</a></td>
+    <td>{{eleve.numrue}} {{eleve.rue}} {{eleve.ville}}</td>
+    <td><a class="" href="http://localhost/goat/public/instrument/consulter/{{eleve.contratPret.instrument.id}}">{{eleve.contratPret.id}}</a></td>
+    <td>{{eleve.tel}}</td>
+    <td>{{eleve.mail}}</td>     
+                <tr>      
+            </tr>
+        </table>
+       <a class="btn btn-primary" href="http://localhost/goat/public/eleve/supprimer/{{eleve.id}}">Supprimer</a>
+       <a class="btn btn-primary" href="http://localhost/goat/public/eleve/modifier/{{eleve.id}}">Modifier</a>
+	</div>
     </body>
 </html>
