@@ -1,21 +1,40 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
     </head>
-    <body>       
-		<h5>PAGE DE CONSULTATION D'UN COURS</h5>
- <p>
-    <table>
-      <tr><td>Id : </td><td>{{cours.id}}</td>
-      <tr><td>Libelle : </td><td>{{cours.libelle}}</td></tr></tr>
-      <tr><td>Age min : </td><td>{{cours.agemini}}</td></tr></tr>
-      <tr><td>Age max : </td><td>{{cours.agemaxi}}</td></tr></tr>
-      <tr><td>Nombre de place : </td><td>{{cours.nbplaces}}</td></tr></tr>
-      
-    
-      
-    </table>
+    <body>
+        {% include 'header.html' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION DU COURS <strong>{{cours.libelle}}</strong></h5>
+		<table>
+        </br>
+        <table class="table">
+		<tr>
 
+		<td>Nom</td>
+    <td>libelle</td>
+    <td>agemini</td>
+    <td>agemaxi</td>
+    <td>nbplaces</td>
+		</tr>
+		<tr>
+    <td>{{cours.id}}</td>
+    <td>{{cours.libelle}}</td>
+    <td>{{cours.agemini}} </td>
+    <td>{{cours.agemaxi}}</td>
+    <td>{{cours.nbplaces}}</td>     
+                <tr>      
+            </tr>
+        </table>
+       <a class="btn btn-primary" href="http://localhost/goat/public/cours/modifier/{{cours.id}}">Modifier</a>
+	</div>
     </body>
 </html>
