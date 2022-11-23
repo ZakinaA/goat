@@ -21,14 +21,6 @@ class EleveSupprimerType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('date_naiss')
-            ->add('numRue')
-            ->add('rue')
-            ->add('ville')
-            ->add('tel')
-            ->add('mail')
-            ->add('cours', EntityType::class, array('class' => 'App\Entity\Cours','choice_label' =>'libelle'))
-            ->add('responsable', EntityType::class, array('class' => 'App\Entity\Responsable','choice_label' =>'nom'))
-            ->add('ContratPret', EntityType::class, array('class' => 'App\Entity\ContratPret','choice_label' =>'id'))
             ->add('enregistrer', SubmitType::class, array('label' => 'Supprimer élève'))
          ;
         ;

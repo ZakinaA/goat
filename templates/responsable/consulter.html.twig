@@ -1,43 +1,24 @@
-
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        
     </head>
-    <body>
-        {% include 'header.html' %}
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-		<div class="container">   
-    	<div class="d-flex align-items-center">
-		<h5>PAGE DE CONSULTATION DU RESPONSABLE <strong>{{responsable.prenom}}</strong></h5>
-		<table>
-        </br>
-        <table class="table">
-		<tr>
+    <body>       
+		<h5>PAGE DE CONSULTATION D'UN RESPONSABLE</h5>
+ <p>
+  <table >
 
-		<td>Nom</td>
-    <td>Prénom</td>
-    <td>Adresse</td>
-    <td>Ville</td>
-    <td>Cp</td>
-    <td>E-mail</td>
-    <td>Téléphone</td>
-
-		</tr>
-		<tr>
-    <td>{{responsable.nom}}</td>
-    <td>{{responsable.prenom}}</td>
-    <td>{{responsable.adresse}}</td>
-    <td>{{responsable.ville}}</td>     
-    <td>{{responsable.codepostal}}</td>  
-    <td>{{responsable.email}}</td>  
-    <td>{{responsable.tel1}}</td>  
-                <tr>      
-            </tr>
-        </table>
-	</div>
+    <tr><td>Id : </td><td>{{responsable.id}} </td></tr>
+	<tr><td>Nom : </td><td>{{responsable.nom}}</td>
+    <tr><td>Prénom : </td><td>{{responsable.prenom}}</td></tr></tr>
+    <tr><td>Adresse : </td><td>{{responsable.adresse}}</td></tr>
+    <tr><td>Ville : </td><td>{{responsable.ville}}</td></tr>
+    <tr><td>Code postal : </td><td>{{responsable.codepostal}}</td></tr>
+    <tr><td>Email : </td><td>{{responsable.email}}</td></tr>
+    <tr><td>Tel1 : </td><td>{{responsable.tel1}}</td></tr>
+	
+ </table>
+	
+	 
     </body>
 </html>
