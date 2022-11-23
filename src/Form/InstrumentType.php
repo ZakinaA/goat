@@ -20,14 +20,7 @@ class InstrumentType extends AbstractType
         $builder
             ->add('nom')
             ->add('numero_serie')
-            ->add('dateAchat')
-            ->add('prixAchat')
-            ->add('utilisation')
-            ->add('cheminImage')
-            ->add('marque', EntityType::class, array('class' => 'App\Entity\Marque','choice_label' =>'libelle'))
-            ->add('couleur', EntityType::class, array('class' => 'App\Entity\Couleur','choice_label' =>'nom', 'multiple' => true))
-            //->add('typeInstruments', EntityType::class, array('class' => 'App\Entity\TypeInstruments','choice_label' =>'nom'))
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau instrument'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau Instrument'))
         ;
     }
 
