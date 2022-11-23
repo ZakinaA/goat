@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Cours;
 use App\Form\CoursType;
+use App\Form\CoursModifierType;
 
 class CoursController extends AbstractController
 {

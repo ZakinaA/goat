@@ -16,13 +16,17 @@
 		</br>
 		<table class="table">
 		<tr>
-		<td>id</td>
+        <td>Libelle</td>
+        <td>Age mini</td>
+        <td>Age maxi</td>
+        <td>nombre de place</td>
 		</tr>
 		{% for e in pCours %}
 		<tr>
 			<td><a href="{{ path('coursConsulter', { 'id': e.id }) }}">{{ e.libelle }}</a></td>
-		
-			
+		    <td>{{ e.agemini }}</td>
+			<td>{{ e.agemaxi }}</td>
+            <td>{{ e.nbplaces }}</td>
             {% else %}
                 <tr>
                 <td style="color : red;">Aucun cours n'a été trouvé.</td>

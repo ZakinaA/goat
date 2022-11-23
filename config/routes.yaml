@@ -51,7 +51,10 @@ instrumentLister:
     controller: App\Controller\InstrumentController::lister
 instrumentModifier:
     path: /instrument/modifier/{id}
-    controller: App\Controller\InstrumentController::modifierinstrument
+    controller: App\Controller\InstrumentController::modifierInstrument
+instrumentSupprimer:
+    path: instrument/supprimer/{id}
+    controller: App\Controller\InstrumentController::supprimerInstrument
 #PROFFESSEUR
 professeurConsulter:
     path: /professeur/consulter/{id}
@@ -59,3 +62,31 @@ professeurConsulter:
 professeurLister:
     path: /professeur/lister
     controller: App\Controller\ProfesseurController::listerProfesseur
+#ACCESSOIRE
+accessoireAjouter:
+    path: /accessoire/ajouter
+    controller: App\Controller\AccessoireController::ajouter
+accessoireConsulter:
+    path: /accessoire/consulter/{id}
+    controller: App\Controller\AccessoireController::consulterAccessoire
+#MARQUE
+marqueAjouter:
+    path: /marque/ajouter
+    controller: App\Controller\MarqueController::ajouter
+marqueConsulter:
+    path: /accessoire/consulter/{id}
+    controller: App\Controller\MarqueController::consulterMarque
+#COULEUR
+couleurAjouter:
+    path: /couleur/ajouter
+    controller: App\Controller\CouleurController::ajouter
+couleurConsulter:
+    path: /couleur/consulter/{id}
+    controller: App\Controller\CouleurController::consulterCouleur
+#TYPEINSTRUMENT
+typeInstrumentAjouter:
+    path: /typeInstrument/ajouter
+    controller: App\Controller\TypeInstrumentController::ajouter
+typeInstrumentConsulter:
+    path: /typeInstrument/consulter/{id}
+    controller: App\Controller\TypeInstrumentController::consulterTypeInstrument

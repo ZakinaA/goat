@@ -21,6 +21,11 @@ git push origin branch
 git config --global user.name "votreusernameGithub" 
 git config --global user.email "votremailducompteGithub"
 ```
+**Supprimer votre branch** : 
+```
+git push origin -d nombranch" 
+
+```
 Framework choisi : 
 
 Bootstrap 5.2
