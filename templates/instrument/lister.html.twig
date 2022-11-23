@@ -13,16 +13,17 @@
     	<div class="d-flex align-items-center">
 		<h5>Liste des instruments :</h5>
 		</div>
-</br>
+</br><table>
+        </br>
 		<table class="table">
 		<tr>
 		<td>Nom</td>
-
+		<td>Numéro de série</td>
 		</tr>
-		<table>
 		{% for e in pinstruments %}
 		<tr>
 			<td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
+			<td>{{e.numeroserie}}</td>
 	{% else %}
 		<tr>
 		<td style="color : red;">Aucun instrument n'a été trouvé.</td>
@@ -31,7 +32,7 @@
 </table>
  </tr>
 	</table>
-    	<a class="btn btn-primary" href="/webstudent/public/isntrument/ajouter">Ajouter</a>
+    	<a class="btn btn-primary" href="http://localhost/goat/public/instrument/ajouter/">Ajouter</a>
 	</div>
 	
     </body>

@@ -1,17 +1,36 @@
+
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
     </head>
-    <body>       
-		<h5>PAGE DE CONSULTATION D'UN INSTRUMENTS</h5>
- <p>
-  <table >
-     <tr><td>Id : </td><td>{{instrument.id}} </td></tr>
-	<tr><td>Nom : </td><td>{{instrument.nom}}</td>
-	
- </table>
-	
-	 
+    <body>
+        {% include 'header.html' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION DE L'INSTRUMENT <strong>{{instrument.nom}}</strong></h5>
+		<table>
+        </br>
+        <table class="table">
+		<tr>
+
+		<td>Id</td>
+    <td>Nom</td>
+    <td>Numéro de série</td>
+		</tr>
+		<tr>
+    <td>{{instrument.id}}</td>
+    <td>{{instrument.nom}}</td>
+    <td>{{instrument.numeroserie}}</td>     
+                <tr>      
+            </tr>
+        </table>
+       <a class="btn btn-primary" href="http://localhost/goat/public/instrument/modifier/{{instrument.id}}">Modifier</a>
+        <a class="btn btn-primary" href="http://localhost/goat/public/instrument/supprimer/{{instrument.id}}">Supprimer</a>
+	</div>
     </body>
 </html>

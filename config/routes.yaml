@@ -51,7 +51,10 @@ instrumentLister:
     controller: App\Controller\InstrumentController::lister
 instrumentModifier:
     path: /instrument/modifier/{id}
-    controller: App\Controller\InstrumentController::modifierinstrument
+    controller: App\Controller\InstrumentController::modifierInstrument
+instrumentSupprimer:
+    path: instrument/supprimer/{id}
+    controller: App\Controller\InstrumentController::supprimerInstrument
 #PROFFESSEUR
 professeurConsulter:
     path: /professeur/consulter/{id}
