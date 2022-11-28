@@ -16,20 +16,21 @@
         </br>
         <table class="table">
 		<tr>
-		<td>nom</td>
-		<td>prenom</td>
-        <td>Cours</td>
+		<td>Nom</td>
+		<td>Prenom</td>
 		</tr>
 		{% for e in pEleves %}
 		<tr>
 			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
 			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.prenom }}</a></td>
-			<td>{{e.cours.libelle}}</a></td>
+			
             {% else %}
                 <tr>
                 <td style="color : red;">Aucun eleve n'a été trouvé.</td>
-            </tr>
+           
             {% endfor %}
+            </table>
+        </tr>
         </table>
         <a class="btn btn-primary" href="http://localhost/goat/public/eleve/ajouter/">Ajouter</a>
 	</div>

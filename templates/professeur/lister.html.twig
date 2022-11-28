@@ -19,14 +19,15 @@
 		<tr>
 		<td>Nom</td>
 		<td>Prenom</td>
-		<td>Date de naissance</td>
 		<td>Ville</td>
+		<td>Code Postal</td>
 		</tr>
 		{% for e in pProfesseurs %}
 		<tr>
 			<td><a class="text-decoration-none" href="{{ path('professeurConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
 			<td>{{ e.prenom }}</a></td>
 			<td>{{ e.ville}}</a></td>
+			<td>{{ e.codepostal}}</a></td>
 	{% else %}
 		<tr>
 		<td style="color : red;">Aucun professeurs n'a été trouvé.</td>

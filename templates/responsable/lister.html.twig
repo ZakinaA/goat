@@ -16,23 +16,14 @@
         </br>
 		<table class="table">
 		<tr>
-		<td>prenom</td>
-		<td>adresse</td>
-		<td>ville</td>
-		<td>codepostal</td>
-        <td>email</td>
-        <td>tel1</td>
+		<td>Nom</td>
+		<td>Prenom</td>
 		</tr>
 		{% for e in pResponsables %}
        
 		<tr>
 			<td><a href="{{ path('consulterResponsable', { 'id': e.id }) }}">{{ e.nom }}</a></td>
             <td>{{ e.prenom }}</a> </td>
-            <td>{{ e.adresse }}</a></td>
-            <td>{{ e.ville }}</a></td>
-            <td>{{ e.codepostal }}</a></td>
-            <td>{{ e.email }}</a></td>
-            <td>{{ e.tel1 }}</a></td>
 	{% else %}
 		<tr>
 		<td style="color : red;">Aucun reponsable n'a été trouvé.</td>

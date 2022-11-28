@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CoursRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CoursRepository::class)]
@@ -29,6 +30,13 @@ class Cours
 
     #[ORM\OneToMany(mappedBy: 'cours', targetEntity: Eleve::class)]
     private Collection $cours;
+
+    #[ORM\Column(length: 50)]
+    private ?string $HeureDebut = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $HeureFin = null;
+
 
     public function __construct()
     {
@@ -117,4 +125,29 @@ class Cours
 
         return $this;
     }
+
+    public function getHeureDebut(): ?string
+    {
+        return $this->HeureDebut;
+    }
+
+    public function setHeureDebut(string $HeureDebut): self
+    {
+        $this->HeureDebut = $HeureDebut;
+
+        return $this;
+    }
+
+    public function getHeureFin(): ?string
+    {
+        return $this->HeureFin;
+    }
+
+    public function setHeureFin(string $HeureFin): self
+    {
+        $this->HeureFin = $HeureFin;
+
+        return $this;
+    }
+
 }

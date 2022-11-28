@@ -3,99 +3,87 @@
 namespace App\Entity;
 
 use App\Repository\CompteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: CompteRepository::class)]
-#[UniqueEntity(fields: ['identifiant'], message: 'There is already an account with this identifiant')]
-class Compte implements UserInterface, PasswordAuthenticatedUserInterface
+class Compte
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
-    private ?string $identifiant = null;
+    #[ORM\Column(length: 50)]
+    private ?string $mdp = null;
 
-    #[ORM\Column]
-    private array $roles = [];
+    #[ORM\ManyToOne(inversedBy: 'compte')]
+    private ?Role $role = null;
 
-    /**
-     * @var string The hashed password
-     */
-    #[ORM\Column]
-    private ?string $password = null;
+
+    public function __construct()
+    {
+        $this->eleve = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdentifiant(): ?string
+    public function getMdp(): ?string
     {
-        return $this->identifiant;
+        return $this->mdp;
     }
 
-    public function setIdentifiant(string $identifiant): self
+    public function setMdp(string $mdp): self
     {
-        $this->identifiant = $identifiant;
+        $this->mdp = $mdp;
 
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->identifiant;
-    }
 
     /**
-     * @see UserInterface
+     * @return Collection<int, Eleve>
      */
-    public function getRoles(): array
+    public function getEleve(): Collection
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->eleve;
     }
 
-    public function setRoles(array $roles): self
+    public function addEleve(Eleve $eleve): self
     {
-        $this->roles = $roles;
+        if (!$this->eleve->contains($eleve)) {
+            $this->eleve->add($eleve);
+            $eleve->setCompte($this);
+        }
 
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
+    public function removeEleve(Eleve $eleve): self
     {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
+        if ($this->eleve->removeElement($eleve)) {
+            // set the owning side to null (unless already changed)
+            if ($eleve->getCompte() === $this) {
+                $eleve->setCompte(null);
+            }
+        }
 
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
+    public function getRole(): ?Role
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
+
+        return $this;
     }
 }

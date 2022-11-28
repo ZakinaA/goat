@@ -5,8 +5,12 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Instrument;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Instrument;
+use App\Form\InstrumentType;
+use App\Form\InstrumentModifierType;
+use App\Form\InstrumentSupprimerType;
 
 class InstrumentController extends AbstractController
 {
@@ -41,4 +45,81 @@ class InstrumentController extends AbstractController
     return $this->render('instrument/lister.html.twig', [
     'pinstruments' => $instruments,]);	
     }
+
+    public function ajouter(ManagerRegistry $doctrine, Request $request){
+        $instrument = new instrument();
+        $form = $this->createForm(InstrumentType::class, $instrument);
+        $form->handleRequest($request);
+     
+        if ($form->isSubmitted() && $form->isValid()) {
+     
+                $instrument = $form->getData();
+    
+    
+                $entityManager = $doctrine->getManager();
+                $entityManager->persist($instrument);
+                $entityManager->flush();
+     
+            return $this->render('instrument/consulter.html.twig', ['instrument' => $instrument,]);
+        }
+        else
+            {
+                return $this->render('instrument/ajouter.html.twig', array('form' => $form->createView(),));
+        }
+    }
+
+    public function modifierInstrument(ManagerRegistry $doctrine, $id, Request $request){
+ 
+        //récupération de l'élève dont l'id est passé en paramètre
+        $instrument = $doctrine->getRepository(Instrument::class)->find($id);
+    
+        if (!$instrument) {
+            throw $this->createNotFoundException('Aucun instrument trouvé avec le numéro '.$id);
+        }
+        else
+        {
+                $form = $this->createForm(InstrumentModifierType::class, $instrument);
+                $form->handleRequest($request);
+    
+                if ($form->isSubmitted() && $form->isValid()) {
+    
+                    $instrument = $form->getData();
+                    $entityManager = $doctrine->getManager();
+                    $entityManager->persist($instrument);
+                    $entityManager->flush();
+                    return $this->render('instrument/consulter.html.twig', ['instrument' => $instrument,]);
+            }
+            else{
+                    return $this->render('instrument/ajouter.html.twig', array('form' => $form->createView(),));
+            }
+        }
+        }
+        public function supprimerInstrument(ManagerRegistry $doctrine, $id, Request $request){
+ 
+            //récupération de l'élève dont l'id est passé en paramètre
+            $instrument = $doctrine->getRepository(Instrument::class)->find($id);
+        
+            if (!$instrument) {
+                throw $this->createNotFoundException('Aucun instrument trouvé avec le numéro '.$id);
+            }
+            else
+            {
+                    $form = $this->createForm(InstrumentSupprimerType::class, $instrument);
+                    $form->handleRequest($request);
+        
+                    if ($form->isSubmitted() && $form->isValid()) {
+        
+                        $entityManager = $doctrine->getManager();
+                        $entityManager ->remove($instrument);
+                        $entityManager->flush();
+                        $repository = $doctrine->getRepository(Instrument::class);
+                        $instruments = $repository->findAll();
+                        return $this->render('instrument/lister.html.twig', [
+                            'pInstruments' => $instruments,]);	
+                }
+                else{
+                        return $this->render('instrument/ajouter.html.twig', array('form' => $form->createView(),));
+                }
+            }
+        }
 }
