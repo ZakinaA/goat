@@ -21,7 +21,8 @@
 		</tr>
 		{% for e in pinstruments %}
 		<tr>
-			<td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
+			<td><a href="{{ path('ptypeInstrumentInstrument', { 'id': e.id }) }}">{{ e.typeinstrument.libelle }}</a></td>
+			<td>{{e.numeroserie}}</td>
 	{% else %}
 		<tr>
 		<td style="color : red;">Aucun instrument n'a été trouvé.</td>
