@@ -32,6 +32,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?eleve $eleve = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,6 +113,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getEleve(): ?eleve
+    {
+        return $this->eleve;
+    }
+
+    public function setEleve(?eleve $eleve): self
+    {
+        $this->eleve = $eleve;
 
         return $this;
     }
