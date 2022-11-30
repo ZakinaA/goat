@@ -24,7 +24,13 @@
 		<tr>
 			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
 			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.prenom }}</a></td>
-			<td>{{e.cours.libelle}}</a></td>
+
+            {% if e.cours == null %}
+			   <td style="color : red;">L'eleve n'a aucun cours.</td>
+            {% else %}
+            <td>{{e.cours.libelle}}</a></td>
+          
+             {% endif %}
             {% else %}
                 <tr>
                 <td style="color : red;">Aucun eleve n'a été trouvé.</td>

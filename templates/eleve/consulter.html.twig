@@ -30,10 +30,23 @@
 		<tr>
     <td>{{eleve.nom}}</td>
     <td>{{eleve.prenom}}</td>
+     {% if eleve.cours == null %}
+	<td style="color : red;">L'eleve n'a aucun cours.</td>
+    {% else %}
     <td><a class="" href="http://localhost/goat/public/cours/consulter/{{eleve.cours.id}}">{{eleve.cours.libelle}}</a></td>
+    {% endif %}
+    {% if eleve.responsable == null %}
+    <td style="color : red;">L'eleve n'a aucun responsable.</td>
+    {% else %}
     <td><a class="" href="http://localhost/goat/public/responsable/consulter/{{eleve.responsable.id}}">{{eleve.responsable.nom}}</a></td>
-    <td>{{eleve.numrue}} {{eleve.rue}} {{eleve.ville}}</td>
-    <td><a class="" href="http://localhost/goat/public/instrument/consulter/{{eleve.contratPret.instrument.id}}">{{eleve.contratPret.instrument.nom}}</a></td>
+    {% endif %}
+     <td>{{eleve.numrue}} {{eleve.rue}} {{eleve.ville}}</td>
+    {% if eleve.contratpret == null %}
+	<td style="color : red;">L'eleve n'a aucun instrument.</td>
+    {% else %}
+     <td><a class="" href="http://localhost/goat/public/instrument/consulter/{{eleve.contratPret.instrument.id}}">{{eleve.contratPret.instrument.nom}}</a></td>
+    {% endif %}
+   
     <td>{{eleve.tel}}</td>
     <td>{{eleve.mail}}</td>     
                 <tr>      
@@ -41,6 +54,7 @@
         </table>
        <a class="btn btn-primary" href="http://localhost/goat/public/eleve/supprimer/{{eleve.id}}">Supprimer</a>
        <a class="btn btn-primary" href="http://localhost/goat/public/eleve/modifier/{{eleve.id}}">Modifier</a>
+       	<input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
 	</div>
     </body>
 </html>
