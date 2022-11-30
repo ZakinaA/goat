@@ -11,9 +11,10 @@ security:
                 property: email
     firewalls:
         dev:
-            pattern:  ^/
-            security: false
-            
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false            
+        main:
+            # ...
             form_login:
                 # "app_login" is the name of the route created previously
                 login_path: app_login
