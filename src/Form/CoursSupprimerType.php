@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\HttpFoundation\Request;
 
-class CoursType extends AbstractType
+class CoursSupprimerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -23,9 +23,9 @@ class CoursType extends AbstractType
             ->add('agemaxi')
             ->add('nbplaces')
             ->add('dateD')
-            ->add('heureD')
+            ->add('HeureD')
             ->add('heureF')
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau cours'))
+            ->add('enregistrer', SubmitType::class, array('label' => 'Supprimer cours'))
         ;
     }
 

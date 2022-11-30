@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CoursRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CoursRepository::class)]
@@ -29,6 +30,15 @@ class Cours
 
     #[ORM\OneToMany(mappedBy: 'cours', targetEntity: Eleve::class)]
     private Collection $cours;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $dateD = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $HeureD = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $heureF = null;
 
     public function __construct()
     {
@@ -114,6 +124,43 @@ class Cours
                 $cour->setCours(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateD(): ?\DateTimeInterface
+    {
+        return $this->dateD;
+    }
+
+    public function setDateD(\DateTimeInterface $dateD): self
+    {
+        $this->dateD = $dateD;
+
+        return $this;
+    }
+
+
+    public function getHeureD(): ?string
+    {
+        return $this->HeureD;
+    }
+
+    public function setHeureD(string $HeureD): self
+    {
+        $this->HeureD = $HeureD;
+
+        return $this;
+    }
+
+    public function getHeureF(): ?string
+    {
+        return $this->heureF;
+    }
+
+    public function setHeureF(string $heureF): self
+    {
+        $this->heureF = $heureF;
 
         return $this;
     }

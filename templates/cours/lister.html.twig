@@ -20,6 +20,8 @@
         <td>Age mini</td>
         <td>Age maxi</td>
         <td>nombre de place</td>
+        <td>Date de début</td>
+       
 		</tr>
 		{% for e in pCours %}
 		<tr>
@@ -27,6 +29,7 @@
 		    <td>{{ e.agemini }}</td>
 			<td>{{ e.agemaxi }}</td>
             <td>{{ e.nbplaces }}</td>
+            <td>{{ e.dateD|date("d/n/Y")}}</td>
             {% else %}
                 <tr>
                 <td style="color : red;">Aucun cours n'a été trouvé.</td>

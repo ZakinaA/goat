@@ -24,17 +24,24 @@
     <td>agemini</td>
     <td>agemaxi</td>
     <td>nbplaces</td>
+    <td>date de début</td>
+    <td>date de fin</td>
+    <td>Heure de début</td>
 		</tr>
 		<tr>
     <td>{{cours.id}}</td>
     <td>{{cours.libelle}}</td>
     <td>{{cours.agemini}} </td>
     <td>{{cours.agemaxi}}</td>
-    <td>{{cours.nbplaces}}</td>     
+    <td>{{cours.nbplaces}}</td>  
+    <td>{{ cours.dateD|date("d/n/Y")}}</td>
+    <td>{{cours.heureD}}</td>  
+    <td>{{cours.heureF}}</td>  
                 <tr>      
             </tr>
         </table>
        <a class="btn btn-primary" href="http://localhost/goat/public/cours/modifier/{{cours.id}}">Modifier</a>
+       <a class="btn btn-primary" href="http://localhost/goat/public/cours/supprimer/{{cours.id}}">Supprimer</a>
 	</div>
     </body>
 </html>
