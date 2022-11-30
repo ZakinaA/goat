@@ -99,10 +99,12 @@
       </ul>
 
       <div class="col-md-3 text-end">
+       
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<a class="btn btn-outline-primary me-2" href="{{ path('app_logout') }}">Me déconnecter</a>
+        {%else%}
         <a class="btn btn-outline-primary me-2"  href="/goat/public/login" >Connexion</a>
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<a class="btn btn-outline-primary me-2" href="{{ path('app_logout') }}">Me déconnecter</a>{% endif %}
         <a href="/goat/public/register" class="btn btn-primary">S'inscrire</a>
-        
+        {% endif %}
       </div>
     </header>
   </div>
