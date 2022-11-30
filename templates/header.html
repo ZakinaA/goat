@@ -97,8 +97,10 @@
       </ul>
 
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Connexion</button>
-        <button type="button" class="btn btn-primary">S'inscrire</button>
+        <a href="/goat/public/login" class="btn btn-outline-primary me-2">Connexion</a>
+          <a href="/goat/public/register" class="btn btn-primary">S'inscrire</a>
+          <td></td><td>{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}{{ app.user.email }}{% endif %}</td></tr>
+         
       </div>
     </header>
   </div>

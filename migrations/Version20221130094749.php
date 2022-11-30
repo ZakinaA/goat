@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20221130090941 extends AbstractMigration
+final class Version20221130094749 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,6 +21,7 @@ final class Version20221130090941 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE accessoire (id INT AUTO_INCREMENT NOT NULL, instrument_id INT DEFAULT NULL, libelle VARCHAR(50) NOT NULL, INDEX IDX_8FD026ACF11D9C (instrument_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE compt (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE contrat_pret (id INT AUTO_INCREMENT NOT NULL, instrument_id INT DEFAULT NULL, eleve_id INT DEFAULT NULL, date_debut DATE NOT NULL, date_fin DATE NOT NULL, attestation_assurance VARCHAR(50) NOT NULL, etat_detaille_debut VARCHAR(50) NOT NULL, etat_detaille_fin VARCHAR(50) NOT NULL, INDEX IDX_1FB84C67CF11D9C (instrument_id), INDEX IDX_1FB84C67A6CC7B2 (eleve_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE couleur (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE cours (id INT AUTO_INCREMENT NOT NULL, libelle VARCHAR(50) NOT NULL, agemini INT NOT NULL, agemaxi INT NOT NULL, nbplaces INT NOT NULL, date_d DATE NOT NULL, heure_d VARCHAR(50) NOT NULL, heure_f VARCHAR(50) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -65,6 +66,7 @@ final class Version20221130090941 extends AbstractMigration
         $this->addSql('ALTER TABLE type_instrument_instrument DROP FOREIGN KEY FK_88859E797C1CAAA9');
         $this->addSql('ALTER TABLE type_instrument_instrument DROP FOREIGN KEY FK_88859E79CF11D9C');
         $this->addSql('DROP TABLE accessoire');
+        $this->addSql('DROP TABLE compt');
         $this->addSql('DROP TABLE contrat_pret');
         $this->addSql('DROP TABLE couleur');
         $this->addSql('DROP TABLE cours');
