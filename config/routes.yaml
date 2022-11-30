@@ -108,4 +108,6 @@ app_login:
 app_register:
     path: /register
     controller: App\Controller\RegistrationController::register
-
+app_logout:
+    path: /logout
+    methods: GET
