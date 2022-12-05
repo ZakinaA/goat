@@ -85,15 +85,7 @@
   <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <a href="/goat/public/accueil" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"><img src="/goat/public/img/logo-cro.png" style="width: 28%;"></br>
-        <td></td><td>{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}{{ app.user.eleve.nom }} {{ app.user.eleve.prenom }}{% endif %}</td></tr>
-      <a href="/goat/public/accueil" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">e-Music</br>
-        <td></td><td>{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-          {% if app.user.prenom  %}
-          {{ app.user.prenom }} {{app.user.nom }} {% endif %}
-          {%else%}
-          Aucun utilisateur
-          {% endif %}
-        </td></tr>
+        <td></td><td>{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}-{{ app.user.nom }} {{ app.user.prenom }}{% endif %}</td></tr>
          
       </a>
 
