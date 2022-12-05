@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -32,8 +35,45 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    private ?eleve $eleve = null;
+    #[ORM\Column(length: 50)]
+    private ?string $prenom = null;
+
+    #[ORM\ManyToOne(inversedBy: 'usersProf')]
+    private ?Professeur $professeur = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $nom = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_naiss = null;
+
+    #[ORM\Column]
+    private ?int $numRue = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $rue = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $ville = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $codePostal = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $tel = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Eleve::class)]
+    private Collection $eleves;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Responsable::class)]
+    private Collection $responsables;
+
+    public function __construct()
+    {
+        $this->eleves = new ArrayCollection();
+        $this->professeurs = new ArrayCollection();
+        $this->responsables = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -117,14 +157,190 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getEleve(): ?eleve
+
+    public function getPrenom(): ?string
     {
-        return $this->eleve;
+        return $this->prenom;
     }
 
-    public function setEleve(?eleve $eleve): self
+    public function setPrenom(string $prenom): self
     {
-        $this->eleve = $eleve;
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getDateNaiss(): ?\DateTimeInterface
+    {
+        return $this->date_naiss;
+    }
+
+    public function setDateNaiss(\DateTimeInterface $date_naiss): self
+    {
+        $this->date_naiss = $date_naiss;
+
+        return $this;
+    }
+
+    public function getNumRue(): ?int
+    {
+        return $this->numRue;
+    }
+
+    public function setNumRue(int $numRue): self
+    {
+        $this->numRue = $numRue;
+
+        return $this;
+    }
+
+    public function getRue(): ?string
+    {
+        return $this->rue;
+    }
+
+    public function setRue(string $rue): self
+    {
+        $this->rue = $rue;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?string
+    {
+        return $this->codePostal;
+    }
+
+    public function setCodePostal(string $codePostal): self
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    public function getTel(): ?string
+    {
+        return $this->tel;
+    }
+
+    public function setTel(string $tel): self
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Eleve>
+     */
+    public function getEleves(): Collection
+    {
+        return $this->eleves;
+    }
+
+    public function addElefe(Eleve $elefe): self
+    {
+        if (!$this->eleves->contains($elefe)) {
+            $this->eleves->add($elefe);
+            $elefe->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeElefe(Eleve $elefe): self
+    {
+        if ($this->eleves->removeElement($elefe)) {
+            // set the owning side to null (unless already changed)
+            if ($elefe->getUser() === $this) {
+                $elefe->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Professeur>
+     */
+    public function getProfesseurs(): Collection
+    {
+        return $this->professeurs;
+    }
+
+    public function addProfesseur(Professeur $professeur): self
+    {
+        if (!$this->professeurs->contains($professeur)) {
+            $this->professeurs->add($professeur);
+            $professeur->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfesseur(Professeur $professeur): self
+    {
+        if ($this->professeurs->removeElement($professeur)) {
+            // set the owning side to null (unless already changed)
+            if ($professeur->getUser() === $this) {
+                $professeur->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Responsable>
+     */
+    public function getResponsables(): Collection
+    {
+        return $this->responsables;
+    }
+
+    public function addResponsable(Responsable $responsable): self
+    {
+        if (!$this->responsables->contains($responsable)) {
+            $this->responsables->add($responsable);
+            $responsable->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResponsable(Responsable $responsable): self
+    {
+        if ($this->responsables->removeElement($responsable)) {
+            // set the owning side to null (unless already changed)
+            if ($responsable->getUser() === $this) {
+                $responsable->setUser(null);
+            }
+        }
 
         return $this;
     }

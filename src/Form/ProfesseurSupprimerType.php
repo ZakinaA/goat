@@ -18,11 +18,7 @@ class ProfesseurSupprimerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('email')
-            ->add('ville')
-            ->add('code_postal')
+             # ajouter relation user
             ->add('enregistrer', SubmitType::class, array('label' => 'Supprimer professeur'))
         ;
     }
