@@ -16,32 +16,9 @@ class Eleve
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $nom = null;
-
-    #[ORM\Column(length: 50)]
-    private ?string $prenom = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_naiss = null;
 
     #[ORM\ManyToOne(inversedBy: 'cours')]
     private ?Cours $cours = null;
-
-    #[ORM\Column]
-    private ?int $numRue = null;
-
-    #[ORM\Column(length: 50)]
-    private ?string $rue = null;
-
-    #[ORM\Column(length: 50)]
-    private ?string $ville = null;
-
-    #[ORM\Column(length: 50)]
-    private ?string $tel = null;
-
-    #[ORM\Column(length: 50)]
-    private ?string $mail = null;
 
     #[ORM\ManyToOne(inversedBy: 'eleves')]
     private ?Responsable $responsable = null;
@@ -58,6 +35,9 @@ class Eleve
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: User::class)]
     private Collection $users;
 
+    #[ORM\ManyToOne(inversedBy: 'elevesUser')]
+    private ?user $user = null;
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
@@ -70,42 +50,7 @@ class Eleve
         return $this->id;
     }
 
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getDateNaiss(): ?\DateTimeInterface
-    {
-        return $this->date_naiss;
-    }
-
-    public function setDateNaiss(\DateTimeInterface $date_naiss): self
-    {
-        $this->date_naiss = $date_naiss;
-
-        return $this;
-    }
-
+   
     public function getCours(): ?Cours
     {
         return $this->cours;
@@ -114,66 +59,6 @@ class Eleve
     public function setCours(?Cours $cours): self
     {
         $this->cours = $cours;
-
-        return $this;
-    }
-
-    public function getNumRue(): ?int
-    {
-        return $this->numRue;
-    }
-
-    public function setNumRue(int $numRue): self
-    {
-        $this->numRue = $numRue;
-
-        return $this;
-    }
-
-    public function getRue(): ?string
-    {
-        return $this->rue;
-    }
-
-    public function setRue(string $rue): self
-    {
-        $this->rue = $rue;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getTel(): ?string
-    {
-        return $this->tel;
-    }
-
-    public function setTel(string $tel): self
-    {
-        $this->tel = $tel;
-
-        return $this;
-    }
-
-    public function getMail(): ?string
-    {
-        return $this->mail;
-    }
-
-    public function setMail(string $mail): self
-    {
-        $this->mail = $mail;
 
         return $this;
     }
@@ -288,6 +173,18 @@ class Eleve
                 $user->setEleve(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

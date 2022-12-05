@@ -12,12 +12,13 @@
         {% include 'header.html' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-		<div class="container">   
+		<div class="container"> 
+        <a class="btn btn-primary" href="http://localhost/goat/public/professeur/ajouter/">Vous etes professeur</a>  
     	<div class="d-flex align-items-center">
-		<h5>PAGE DE MODIFICATION D'UN ELEVE</h5>
+		<h5>PAGE D'AJOUT D'UN ELEVE</h5>
 		<table>
         </br>
-       
+      
 {{ form_start(form) }}{{ form_widget(form) }}
 {{ form_end(form) }}
 	<input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">

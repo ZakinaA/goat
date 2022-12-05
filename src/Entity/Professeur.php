@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProfesseurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
@@ -13,20 +15,20 @@ class Professeur
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $nom = null;
+    #[ORM\OneToMany(mappedBy: 'professeur', targetEntity: User::class)]
+    private Collection $users;
 
-    #[ORM\Column(length: 50)]
-    private ?string $prenom = null;
+    #[ORM\OneToMany(mappedBy: 'professeur', targetEntity: User::class)]
+    private Collection $usersProf;
 
-    #[ORM\Column(length: 50)]
-    private ?string $email = null;
+    #[ORM\ManyToOne(inversedBy: 'professeurs')]
+    private ?user $user = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $ville = null;
-
-    #[ORM\Column(length: 9)]
-    private ?string $code_postal = null;
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+        $this->usersProf = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +91,78 @@ class Professeur
     public function setCodePostal(string $code_postal): self
     {
         $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setProfesseur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getProfesseur() === $this) {
+                $user->setProfesseur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsersProf(): Collection
+    {
+        return $this->usersProf;
+    }
+
+    public function addUsersProf(User $usersProf): self
+    {
+        if (!$this->usersProf->contains($usersProf)) {
+            $this->usersProf->add($usersProf);
+            $usersProf->setProfesseur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUsersProf(User $usersProf): self
+    {
+        if ($this->usersProf->removeElement($usersProf)) {
+            // set the owning side to null (unless already changed)
+            if ($usersProf->getProfesseur() === $this) {
+                $usersProf->setProfesseur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

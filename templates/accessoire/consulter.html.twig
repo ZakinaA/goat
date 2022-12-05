@@ -3,14 +3,29 @@
     <head>
         
     </head>
-    <body>       
-		<h5>PAGE DE CONSULTATION D'UN ACCESSOIRE</h5>
- <p>
-    <table>
-      <tr><td>Id : </td><td>{{accessoire.id}}</td>
-      <tr><td>Libelle : </td><td>{{accessoire.libelle}}</td></tr></tr>
- 
-    </table>
+    <body> 
+    {% include 'header.html' %}
+    {% include 'footer.html' %}
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+		<div class="container">   
+    <div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION D'UN ACCESSOIRE <strong>{{accessoire.libelle}}</strong></h5>
+		<table>
+      </br>
+        <table class="table">
+    	<tr>
 
+		<td>Id</td>
+    <td>Libelle</td>
+
+		</tr>
+		<tr>
+      <td>{{accessoire.id}}</td>
+      <td>{{accessoire.libelle}}</td>
+                <tr>      
+            </tr>
+        </table>
+	</div>
     </body>
 </html>

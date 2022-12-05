@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Instrument;
 use App\Form\InstrumentType;
+use App\Entity\TypeInstrument;
 use App\Form\InstrumentModifierType;
 use App\Form\InstrumentSupprimerType;
 
@@ -37,12 +38,44 @@ class InstrumentController extends AbstractController
             'instrument' => $instrument,]);
     }
 
+    public function consulterTypeInstrument(ManagerRegistry $doctrine, int $id){
+		
+
+        $typeInstrument = $doctrine->getRepository(typeInstrument::class)->find($id);
+        /*echo ($typeInstrument->getLibelle());
+
+        foreach ($typeInstrument->$getInstruments() as $instru){
+            echo ($instru->getNom());
+        }*/
+  
+
+        /*var_dump($typeInstrument);*/
+
+        if (!$typeInstrument) {
+            throw $this->createNotFoundException(
+            'Aucun instrument trouvé avec le numéro '.$id
+            );
+        }
+    
+        return $this->render('instrument/consulterType.html.twig', [
+            'typeInstrument' => $typeInstrument]);
+    }
+
     public function lister(ManagerRegistry $doctrine){
 
         $repository = $doctrine->getRepository(Instrument::class);
 
     $instruments= $repository->findAll();
     return $this->render('instrument/lister.html.twig', [
+    'pinstruments' => $instruments,]);	
+    }
+
+    public function listerType(ManagerRegistry $doctrine){
+
+        $repository = $doctrine->getRepository(TypeInstrument::class);
+
+    $instruments= $repository->findAll();
+    return $this->render('instrument/listerType.html.twig', [
     'pinstruments' => $instruments,]);	
     }
 
@@ -122,4 +155,11 @@ class InstrumentController extends AbstractController
                 }
             }
         }
+
+        public function show(Instrument $uninstrument)
+	{
+ 
+		return $this->render('instrument/consulter.html.twig', [
+            'instrument' => $unInstrument,]);
+	}
 }
