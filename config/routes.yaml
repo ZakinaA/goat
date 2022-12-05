@@ -114,6 +114,11 @@ typeInstrumentLister:
 typeInstrumentConsulterType:
     path: /type_instrument/consulterType/{id}
     controller: App\Controller\TypeInstrumentController::consulterTypeInstrument
+#USER
+UserConsulter:
+    path: /user/information/
+    controller: App\Controller\UserController::index
+
 app_login:
     path: /login
     controller: App\Controller\LoginController::index
@@ -123,4 +128,5 @@ app_register:
 app_logout:
     path: /logout
     methods: GET
+
 
