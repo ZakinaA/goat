@@ -68,11 +68,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Responsable::class)]
     private Collection $responsables;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Eleve::class)]
+    private Collection $elevesUser;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
         $this->professeurs = new ArrayCollection();
         $this->responsables = new ArrayCollection();
+        $this->elevesUser = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -339,6 +343,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($responsable->getUser() === $this) {
                 $responsable->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Eleve>
+     */
+    public function getElevesUser(): Collection
+    {
+        return $this->elevesUser;
+    }
+
+    public function addElevesUser(Eleve $elevesUser): self
+    {
+        if (!$this->elevesUser->contains($elevesUser)) {
+            $this->elevesUser->add($elevesUser);
+            $elevesUser->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeElevesUser(Eleve $elevesUser): self
+    {
+        if ($this->elevesUser->removeElement($elevesUser)) {
+            // set the owning side to null (unless already changed)
+            if ($elevesUser->getUser() === $this) {
+                $elevesUser->setUser(null);
             }
         }
 

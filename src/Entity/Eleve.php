@@ -16,6 +16,10 @@ class Eleve
     #[ORM\Column]
     private ?int $id = null;
 
+
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?Cours $cours = null;
+
     #[ORM\ManyToOne(inversedBy: 'eleves')]
     private ?Responsable $responsable = null;
 
@@ -31,8 +35,8 @@ class Eleve
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: User::class)]
     private Collection $users;
 
-    #[ORM\ManyToOne(inversedBy: 'eleves')]
-    private ?USER $user = null;
+    #[ORM\ManyToOne(inversedBy: 'elevesUser')]
+    private ?user $user = null;
 
     public function __construct()
     {
@@ -46,8 +50,7 @@ class Eleve
         return $this->id;
     }
 
-  
-
+   
     public function getCours(): ?Cours
     {
         return $this->cours;
@@ -174,12 +177,12 @@ class Eleve
         return $this;
     }
 
-    public function getUser(): ?USER
+    public function getUser(): ?user
     {
         return $this->user;
     }
 
-    public function setUser(?USER $user): self
+    public function setUser(?user $user): self
     {
         $this->user = $user;
 

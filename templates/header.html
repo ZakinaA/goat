@@ -109,7 +109,7 @@
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<a class="btn btn-outline-primary me-2" href="{{ path('app_logout') }}">Me déconnecter</a>
         {%else%}
         <a class="btn btn-outline-primary me-2"  href="/goat/public/login" >Connexion</a>
-        <a href="/goat/public/eleve/ajouter" class="btn btn-primary">S'inscrire</a>
+        <a href="/goat/public/register" class="btn btn-primary">S'inscrire</a>
         {% endif %}
       </div>
     </header>
