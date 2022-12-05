@@ -39,6 +39,9 @@ coursAjouter:
 cousrModifier:
     path: /cours/modifier/{id}
     controller: App\Controller\CoursController::modifierCours
+coursSupprimer:
+    path: /cours/supprimer/{id}
+    controller: App\Controller\CoursController::supprimerCours
 #INSTRUMENT
 instrumentConsulter:
     path: /instrument/consulter/{id}
@@ -68,6 +71,15 @@ professeurConsulter:
 professeurLister:
     path: /professeur/lister
     controller: App\Controller\ProfesseurController::listerProfesseur
+professeurAjouter:
+    path: /professeur/ajouter
+    controller: App\Controller\ProfesseurController::ajouterProfesseur
+professeurModifier:
+    path: /professeur/modifier/{id}
+    controller: App\Controller\ProfesseurController::modifierProfesseur
+professeurSupprimer:
+    path: professeur/supprimer/{id}
+    controller: App\Controller\ProfesseurController::supprimerProfesseur
 #ACCESSOIRE
 accessoireAjouter:
     path: /accessoire/ajouter
@@ -102,3 +114,13 @@ typeInstrumentLister:
 typeInstrumentConsulterType:
     path: /type_instrument/consulterType/{id}
     controller: App\Controller\TypeInstrumentController::consulterTypeInstrument
+app_login:
+    path: /login
+    controller: App\Controller\LoginController::index
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+app_logout:
+    path: /logout
+    methods: GET
+

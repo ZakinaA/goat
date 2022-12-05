@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Eleve;
+use App\Entity\Professeur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,24 +13,21 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\HttpFoundation\Request;
 
-class EleveType extends AbstractType
+
+class ProfesseurModifierType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            # ajouter relation user
-            ->add('user', EntityType::class, array('class' => 'App\Entity\User','choice_label' =>'nom'))
-            ->add('cours', EntityType::class, array('class' => 'App\Entity\Cours','choice_label' =>'libelle'))
-            ->add('responsable', EntityType::class, array('class' => 'App\Entity\Responsable','choice_label' =>'nom'))
-            ->add('ContratPret', EntityType::class, array('class' => 'App\Entity\ContratPret','choice_label' =>'id'))
-            ->add('enregistrer', SubmitType::class, array('label' => 'Nouvel élève'))
+        ->add('user', EntityType::class, array('class' => 'App\Entity\User','choice_label' =>'nom'))
+        ->add('enregistrer', SubmitType::class, array('label' => 'Ajouter un professeur'))
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Eleve::class,
+            'data_class' => Professeur::class,
         ]);
     }
 }

@@ -20,14 +20,15 @@
 		<tr>
 		<td>Nom</td>
 		<td>Prenom</td>
-		<td>Date de naissance</td>
 		<td>Ville</td>
+		<td>Cp</td>
 		</tr>
 		{% for e in pProfesseurs %}
 		<tr>
-			<td><a class="text-decoration-none" href="{{ path('professeurConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
-			<td>{{ e.prenom }}</a></td>
-			<td>{{ e.ville}}</a></td>
+			<td><a class="text-decoration-none" href="{{ path('professeurConsulter', { 'id': e.id }) }}">{{ e.user.nom }}</a></td>
+			<td>{{ e.user.prenom }}</a></td>
+			<td>{{ e.user.ville}}</a></td>
+			<td>{{ e.user.codepostal}}</a></td>
 	{% else %}
 		<tr>
 		<td style="color : red;">Aucun professeurs n'a été trouvé.</td>
@@ -37,7 +38,7 @@
 	
 	 </tr>
 	</table>
-	<a class="btn btn-primary" href="/webstudent/public/professeur/ajouter">Ajouter</a>
+	<a class="btn btn-primary" href="/goat/public/professeur/ajouter">Ajouter</a>
 	</div>
     </body>
 </html>

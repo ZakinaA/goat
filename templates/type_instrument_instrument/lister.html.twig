@@ -7,25 +7,22 @@
     </head>
     <body>
 	{% include 'header.html' %}
-	{% include 'footer.html' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 		<div class="container">   
     	<div class="d-flex align-items-center">
 		<h5>Liste des instruments :</h5>
-		
 		</div>
-		<a class="btn btn-success" href="http://localhost/goat/public/marque/ajouter/">Ajouter une marque</a>
-		<a class="btn btn-success" href="http://localhost/goat/public/couleur/ajouter/">Ajouter une couleur</a>
 </br><table>
         </br>
 		<table class="table">
 		<tr>
 		<td>Nom</td>
 		</tr>
-		{% for e in instruments %}
+		{% for e in pinstruments %}
 		<tr>
-			<td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
+			<td><a href="{{ path('ptypeInstrumentInstrument', { 'id': e.id }) }}">{{ e.typeinstrument.libelle }}</a></td>
+			<td>{{e.numeroserie}}</td>
 	{% else %}
 		<tr>
 		<td style="color : red;">Aucun instrument n'a été trouvé.</td>

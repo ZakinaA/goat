@@ -22,6 +22,9 @@ class CoursType extends AbstractType
             ->add('agemini')
             ->add('agemaxi')
             ->add('nbplaces')
+            ->add('dateD')
+            ->add('heureD')
+            ->add('heureF')
             ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau cours'))
         ;
     }

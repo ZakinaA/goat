@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 28 nov. 2022 à 13:44
+-- Généré le : mer. 23 nov. 2022 à 10:09
 -- Version du serveur : 10.4.13-MariaDB
 -- Version de PHP : 8.1.12
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `contrat_pret` (
 --
 
 INSERT INTO `contrat_pret` (`id`, `instrument_id`, `eleve_id`, `date_debut`, `date_fin`, `attestation_assurance`, `etat_detaille_debut`, `etat_detaille_fin`) VALUES
-(1, 13, 1, '2022-11-01', '2022-11-30', 'Oui', 'NEUF', 'BON ETAT');
+(1, 6, 1, '2022-11-01', '2022-11-24', 'Oui', 'NEUF', 'BON ETAT');
 
 -- --------------------------------------------------------
 
@@ -75,15 +75,16 @@ CREATE TABLE IF NOT EXISTS `couleur` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `couleur`
 --
 
 INSERT INTO `couleur` (`id`, `nom`) VALUES
-(1, 'Noir'),
-(2, 'Rouge');
+(1, 'noir'),
+(2, 'bleu'),
+(3, 'rouge');
 
 -- --------------------------------------------------------
 
@@ -99,18 +100,14 @@ CREATE TABLE IF NOT EXISTS `cours` (
   `agemaxi` int(11) NOT NULL,
   `nbplaces` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cours`
 --
 
 INSERT INTO `cours` (`id`, `libelle`, `agemini`, `agemaxi`, `nbplaces`) VALUES
-(1, 'Guitare', 7, 10, 30),
-(5, 'Guitare', 7, 15, 15),
-(6, 'Piano', 10, 18, 15),
-(7, 'Violencelle', 7, 18, 30),
-(8, 'Trompette', 7, 18, 15);
+(1, 'test', 5, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -131,14 +128,7 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20221128093409', '2022-11-28 09:34:21', 488),
-('DoctrineMigrations\\Version20221128093937', '2022-11-28 09:39:42', 1186),
-('DoctrineMigrations\\Version20221128094438', '2022-11-28 09:44:45', 1058),
-('DoctrineMigrations\\Version20221128094646', '2022-11-28 09:46:55', 195),
-('DoctrineMigrations\\Version20221128095143', '2022-11-28 09:51:52', 856),
-('DoctrineMigrations\\Version20221128100915', '2022-11-28 10:09:27', 1078),
-('DoctrineMigrations\\Version20221128101414', '2022-11-28 10:14:22', 3251),
-('DoctrineMigrations\\Version20221128102749', '2022-11-28 10:27:51', 13205);
+('DoctrineMigrations\\Version20221123090218', '2022-11-23 09:02:28', 10898);
 
 -- --------------------------------------------------------
 
@@ -164,14 +154,14 @@ CREATE TABLE IF NOT EXISTS `eleve` (
   KEY `IDX_ECA105F77ECF78B0` (`cours_id`),
   KEY `IDX_ECA105F753C59D72` (`responsable_id`),
   KEY `IDX_ECA105F7B2AF233D` (`contrat_pret_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `eleve`
 --
 
 INSERT INTO `eleve` (`id`, `cours_id`, `responsable_id`, `contrat_pret_id`, `nom`, `prenom`, `date_naiss`, `num_rue`, `rue`, `ville`, `tel`, `mail`) VALUES
-(1, 1, 1, 1, 'Thomas', 'Sparta', '2012-11-01', 54, 'Rue Bonovo', 'Caen', '075123652', 'thomas@gmail.com');
+(1, 1, 1, 1, 'Arthur', 'tytyty', '2017-01-01', 2, 'tyt', 'yty', 'ytyt', 'tyt');
 
 -- --------------------------------------------------------
 
@@ -206,26 +196,21 @@ CREATE TABLE IF NOT EXISTS `instrument` (
   `chemin_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_3CBF69DD4827B9B2` (`marque_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `instrument`
 --
 
 INSERT INTO `instrument` (`id`, `marque_id`, `nom`, `numero_serie`, `date_achat`, `prix_achat`, `utilisation`, `chemin_image`) VALUES
-(1, 1, 'Basse électrique', 'Q07219', '2022-11-01', 30, '', NULL),
-(2, 2, 'Guitare électrique', 'Q07220', '2022-11-02', 40, '', NULL),
-(3, 3, 'Guitare électrique', 'Q07220', '2022-11-02', 40, '', NULL),
-(4, 4, 'Clavier amplifié', 'Q07221', '2022-11-03', 60, '', NULL),
-(6, 5, 'Orgue', 'Q07223', '2022-11-05', 120, '', NULL),
-(7, 4, 'Saxophone', 'Q07224', '2022-11-06', 130, '7', NULL),
-(8, 3, 'Clarinette', 'Q07225', '2022-11-07', 150, '', NULL),
-(9, 2, 'Flute traversière', 'Q07226', '2022-11-08', 160, '', NULL),
-(10, 1, 'Trombone', 'Q07226', '2022-11-09', 190, '', NULL),
-(11, 1, 'Tuba', 'Q07227', '2022-11-10', 205, '', NULL),
-(12, 2, 'Violon', 'Q07228', '2022-11-11', 300, '', NULL),
-(13, 3, 'Batterie', 'Q07229', '2022-11-12', 305, '', NULL),
-(14, 3, 'Piano', 'A4578D', '2017-01-01', 850, '0', NULL);
+(6, 1, 'guitard', 'A4578D', '2017-01-01', 5, '1', 'dfdfd'),
+(7, 1, 'guitard', 'A4578D', '2017-01-01', 5, '1', 'dfdfd'),
+(8, 1, 'guitard', 'A4578D', '2017-01-01', 5, '1', 'dfdfd'),
+(9, 1, 'guitard', 'A4578D', '2017-01-01', 5, '1', 'dfdfd'),
+(10, 1, 'guitard', 'A4578D', '2017-01-01', 5, '1', 'dfdfd'),
+(11, 1, 'guitard', 'A4578D', '2017-01-01', 5, '1', 'dfdfd'),
+(12, 1, 'guitard', 'A4578D', '2017-01-01', 5, '1', 'dfdfd'),
+(13, 1, 'guitard', 'A4578D', '2017-01-01', 5, '1', 'dfdfd');
 
 -- --------------------------------------------------------
 
@@ -247,8 +232,14 @@ CREATE TABLE IF NOT EXISTS `instrument_couleur` (
 --
 
 INSERT INTO `instrument_couleur` (`instrument_id`, `couleur_id`) VALUES
+(6, 2),
 (7, 2),
-(14, 1);
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 2),
+(13, 3);
 
 -- --------------------------------------------------------
 
@@ -261,18 +252,14 @@ CREATE TABLE IF NOT EXISTS `marque` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `marque`
 --
 
 INSERT INTO `marque` (`id`, `libelle`) VALUES
-(1, 'Startone'),
-(2, 'Harley Benton'),
-(3, 'Behringer'),
-(4, 'Stagg'),
-(5, 'Squier');
+(1, 'Carap');
 
 -- --------------------------------------------------------
 
@@ -310,19 +297,7 @@ CREATE TABLE IF NOT EXISTS `professeur` (
   `ville` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `code_postal` varchar(9) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `professeur`
---
-
-INSERT INTO `professeur` (`id`, `nom`, `prenom`, `email`, `ville`, `code_postal`) VALUES
-(1, 'Jacobin', 'Milou', 'jacob@gmail.com', 'Caen', '14000'),
-(2, 'Mister', 'Pascal', 'mister@gmail.com', 'Cherbourg', '50100'),
-(3, 'Bill', 'Mailhe', 'bill@gmail.com', 'Caen ', '14000'),
-(4, 'Thomas', 'Gilber', 'thomas@gmail.com', 'Caen ', '14000'),
-(5, 'Gustave', 'Remi', 'gustave@gmail.com', 'Cherbourg', '50100'),
-(6, 'Ahamadi', 'Kaize', 'ahamadi@gmail.com', 'Caen', '14000');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -351,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `responsable` (
 --
 
 INSERT INTO `responsable` (`id`, `nom`, `prenom`, `adresse`, `ville`, `code_postal`, `email`, `tel1`, `tel2`, `tel3`, `quotient_familial`) VALUES
-(1, 'Louis', 'Zabz', '4 rue des bosq', 'Caen', '14000', 'louis.barach@gmail.com', 685457495, 75457445, 645457445, 5);
+(1, 'Laflèche', 'Zabz', '4 rue des bosq', 'Caen', '14000', 'louis.barach@gmail.com', 685457495, 54, 8989, 5);
 
 -- --------------------------------------------------------
 
@@ -364,15 +339,14 @@ CREATE TABLE IF NOT EXISTS `type_instrument` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `type_instrument`
 --
 
 INSERT INTO `type_instrument` (`id`, `libelle`) VALUES
-(1, 'PIANO'),
-(2, 'Batterie');
+(1, 'guitard');
 
 -- --------------------------------------------------------
 
@@ -387,29 +361,6 @@ CREATE TABLE IF NOT EXISTS `type_instrument_instrument` (
   PRIMARY KEY (`type_instrument_id`,`instrument_id`),
   KEY `IDX_88859E797C1CAAA9` (`type_instrument_id`),
   KEY `IDX_88859E79CF11D9C` (`instrument_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `type_instrument_instrument`
---
-
-INSERT INTO `type_instrument_instrument` (`type_instrument_id`, `instrument_id`) VALUES
-(1, 14);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

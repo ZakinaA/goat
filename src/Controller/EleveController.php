@@ -58,7 +58,7 @@ class EleveController extends AbstractController
             $entityManager->persist($eleve);
             $entityManager->flush();
  
-	    return $this->render('eleve/consulter.html.twig', ['eleve' => $eleve,]);
+            return $this->redirectToRoute('app_register');
 	}
 	else
         {
