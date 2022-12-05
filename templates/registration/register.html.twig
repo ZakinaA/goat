@@ -6,10 +6,9 @@
     <body>
     {% include 'header.html' %}
 
-    <div class="container">   
-    <div class="d-flex align-items-center">
-    <h1>S'inscrire</h1>
-    </div>
+    <div class="container" style="width: 48rem;">
+    <div class="align-self-center">
+    <h3>S'inscrire</h3>
     {% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
@@ -19,6 +18,7 @@
         <br>
         <button type="submit" class="btn btn-primary">Register</button>
     {{ form_end(registrationForm) }}
+    </div>
     </div>
     </body>
 </html>
