@@ -71,6 +71,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Eleve::class)]
     private Collection $elevesUser;
 
+    #[ORM\Column(length: 100)]
+    private ?string $cheminImg = null;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
@@ -375,6 +378,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $elevesUser->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCheminImg(): ?string
+    {
+        return $this->cheminImg;
+    }
+
+    public function setCheminImg(string $cheminImg): self
+    {
+        $this->cheminImg = $cheminImg;
 
         return $this;
     }

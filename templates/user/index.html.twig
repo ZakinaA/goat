@@ -25,6 +25,7 @@
     <td>date de naissance</td>
     <td>Adresse</td>
     <td>Téléphone</td>
+    <td>-</td>
 		</tr>
 		<tr>
      {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
@@ -34,6 +35,11 @@
     <td>{{ app.user.datenaiss|date("d/n/Y") }}</td>
     <td>{{ app.user.numrue }} {{ app.user.rue }}  {{ app.user.ville }} {{ app.user.codepostal }}</td> 
     <td>{{ app.user.email }}</td> 
+
+     <td>
+		{% set photo = 'img/'~ app.user.cheminimg ~'.jpg' %}
+					<img style="width: 30%;" src="{{ asset(photo | trans )}}" title="{{ app.user.nom ~ " " ~ app.user.prenom }}" alt="{{ app.user.nom ~ " " ~ app.user.prenom }}"/></span></td></tr> </td>
+    <td> <img src="{{app.user.cheminimg}}"></td>
     {% endif %}
    
                 <tr>      
