@@ -7,6 +7,7 @@
     </head>
     <body>
         {% include 'header.html' %}
+        {% include 'footer.html' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 		<div class="container">   
@@ -22,8 +23,8 @@
 		</tr>
 		{% for e in pEleves %}
 		<tr>
-			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
-			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.prenom }}</a></td>
+			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.user.nom }}</a></td>
+			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.user.prenom  }}</a></td>
 
             {% if e.cours == null %}
 			   <td style="color : red;">L'eleve n'a aucun cours.</td>

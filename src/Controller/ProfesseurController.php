@@ -58,7 +58,8 @@ class ProfesseurController extends AbstractController
             $entityManager->persist($professeur);
             $entityManager->flush();
  
-	    return $this->render('professeur/consulter.html.twig', ['professeur' => $professeur,]);
+	    
+            return $this->redirectToRoute('app_register');
 	}
 	else
         {

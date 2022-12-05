@@ -4,13 +4,31 @@
         
     </head>
     <body>       
-		<h5>PAGE DE CONSULTATION D'UNE MARQUE</h5>
- <p>
-    <table>
-      <tr><td>Id : </td><td>{{marque.id}}</td>
-      <tr><td>Libelle : </td><td>{{marque.libelle}}</td></tr></tr>
+		{% include 'header.html' %}
+        {% include 'footer.html' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		    <h5>PAGE DE CONSULTATION D'UNE MARQUE <strong>{{marque.libelle}}</strong></h5>
+		      <table>
+            </br>
+              <table class="table">
+    	          <tr>
+
+		              <td>Id</td>
+                  <td>Libelle</td>
+
+		            </tr>
+		            <tr>
+                  <td>{{marque.id}}</td>
+                  <td>{{marque.libelle}}</td>
+                <tr>      
+              </tr>
+          </table>
+	      </div>
  
-    </table>
+      </table>
 
     </body>
 </html>

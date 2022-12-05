@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GoatController!{% endblock %}
+{% block title %}Hello AccueilController!{% endblock %}
 
 {% block body %}
+{% include 'header.html' %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/goat/src/Controller/GoatController.php'|file_link(0) }}">src/Controller/GoatController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/goat/templates/goat/index.html.twig'|file_link(0) }}">templates/goat/index.html.twig</a></code></li>
-    </ul>
+<div class="container" style="width: 48rem;">
+<div class="align-self-center">
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Bienvenue</h5>
+    <p class="card-text">La musique fait partie intégrante de la vie humaine. Elle a le pouvoir d'exprimer des pensées et des émotions et est une source d'inspiration. La musique peut être un sujet difficile à maîtriser, mais elle peut aussi être un passe-temps enrichissant. Si vous voulez devenir musicien professionnel ou si vous souhaitez apprendre pendant votre temps libre, <b>e-Music est fait pour vous.</b></p>
+<p class="card-text">
+Les bonnes habitudes d'étude consistent à assister régulièrement à des conférences et à des répétitions et à garder vos cahiers propres. Vous devrez également participer à des devoirs et à des révisions qui vous aideront à apprendre votre matière. Obtenir de bonnes notes vous aide à éviter de prendre du retard dans vos cours et oblige les instructeurs à suivre votre rythme avec le reste de la classe. De solides habitudes d'étude vous permettront de rester concentré pendant que vous apprenez de nouvelles théories musicales.
+</p>
+</div>
+</div>
+</div>
 </div>
 {% endblock %}

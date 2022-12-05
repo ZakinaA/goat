@@ -18,11 +18,7 @@ class ProfesseurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('email')
-            ->add('ville')
-            ->add('code_postal')
+            ->add('user', EntityType::class, array('class' => 'App\Entity\User','choice_label' =>'nom'))
             ->add('enregistrer', SubmitType::class, array('label' => 'Ajouter un professeur'))
         ;
     }

@@ -11,12 +11,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder
+        $builder    
+            ->add('prenom')
+            ->add('nom')
+            ->add('datenaiss')
+            ->add('numrue')
+            ->add('rue')
+            ->add('ville')
+            ->add('codepostal')
+            ->add('tel')
             ->add('email')
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,

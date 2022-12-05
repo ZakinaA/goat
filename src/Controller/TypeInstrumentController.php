@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\TypeInstrument;
+use App\Entity\instrument;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\TypeInstrumentType;
@@ -16,23 +17,24 @@ class TypeInstrumentController extends AbstractController
     public function index(): Response
     {
         return $this->render('type_instrument/index.html.twig', [
-            'controller_name' => 'typeInstrumentController',
+            'controller_name' => 'TypeInstrumentController',
         ]);
     }
     
     public function consulterTypeInstrument(ManagerRegistry $doctrine, int $id){
+		
+        $typeInstrument = $doctrine->getRepository(TypeInstrument::class)->findOneById($id);
 
-        $typeInstrument= $doctrine->getRepository(TypeInstrument::class)->find($id);
+        $instruments = $doctrine->getRepository(Instrument::class)->findByTypeInstrument($id);
     
-        if (!$typeInstrument) {
+        if (!$instruments) {
             throw $this->createNotFoundException(
-            'Aucun typeInstrument trouvé avec le numéro '.$id
+            'Aucun instruments trouvé avec le numéro '.$id
             );
         }
     
-        //return new Response('TypeInstrument : '.$TypeInstrument->getNom());
-        return $this->render('type_instrument/consulter.html.twig', [
-            'typeInstrument' => $typeInstrument,]);
+        return $this->render('type_instrument/consulterType.html.twig', [
+            'instruments' => $instruments,]);
     }
 
     public function lister(ManagerRegistry $doctrine){
@@ -40,7 +42,7 @@ class TypeInstrumentController extends AbstractController
         $repository = $doctrine->getRepository(TypeInstrument::class);
 
     $typeInstruments= $repository->findAll();
-    return $this->render('type_instrument/lister.html.twig', [
+    return $this->render('typeInstrument/lister.html.twig', [
     'ptypeInstruments' => $typeInstruments,]);	
     }
 
@@ -58,11 +60,11 @@ class TypeInstrumentController extends AbstractController
                 $entityManager->persist($typeInstrument);
                 $entityManager->flush();
      
-            return $this->render('type_instrument/consulter.html.twig', ['typeInstrument' => $typeInstrument,]);
+            return $this->render('typeInstrument/consulter.html.twig', ['typeInstrument' => $typeInstrument,]);
         }
         else
             {
-                return $this->render('type_instrument/ajouter.html.twig', array('form' => $form->createView(),));
+                return $this->render('typeInstrument/ajouter.html.twig', array('form' => $form->createView(),));
         }
     }
 }

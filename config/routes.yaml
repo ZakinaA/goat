@@ -46,12 +46,18 @@ coursSupprimer:
 instrumentConsulter:
     path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulterInstrument
+instrumentConsulterType:
+    path: /instrument/consulterType/{id}
+    controller: App\Controller\InstrumentController::consulterTypeInstrument
 instrumentAjouter:
     path: /instrument/ajouter
     controller: App\Controller\InstrumentController::ajouter
 instrumentLister:
     path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
+instrumentListerType:
+    path: /instrument/listerType
+    controller: App\Controller\InstrumentController::listerType
 instrumentModifier:
     path: /instrument/modifier/{id}
     controller: App\Controller\InstrumentController::modifierInstrument
@@ -97,10 +103,16 @@ couleurConsulter:
     controller: App\Controller\CouleurController::consulterCouleur
 #TYPEINSTRUMENT
 typeInstrumentAjouter:
-    path: /typeInstrument/ajouter
+    path: /type_instrument/ajouter
     controller: App\Controller\TypeInstrumentController::ajouter
 typeInstrumentConsulter:
-    path: /typeInstrument/consulter/{id}
+    path: /type_instrument/consulter/{id}
+    controller: App\Controller\TypeInstrumentController::consulterTypeInstrument
+typeInstrumentLister:
+    path: /type_instrument/lister
+    controller: App\Controller\TypeInstrumentController::lister
+typeInstrumentConsulterType:
+    path: /type_instrument/consulterType/{id}
     controller: App\Controller\TypeInstrumentController::consulterTypeInstrument
 app_login:
     path: /login
@@ -111,3 +123,4 @@ app_register:
 app_logout:
     path: /logout
     methods: GET
+
