@@ -16,23 +16,23 @@
     <!--<tr><td>Id : </td><td>{{professeur.id}} </td></tr>!-->
 	<tr>
       <td>Nom : </td>
-      <td>{{professeur.nom}}</td>
+      <td>{{professeur.user.nom}}</td>
 	{% set photo = 'img/professeur/'~ professeur.id ~'.png' %}
 	<td  rowspan="8" class="imgProf">
 					
-					 <img class="img-fluid img-thumbnail" style="width: 256px;" src="{{ asset(photo | trans )}}" title="{{ professeur.prenom ~ " " ~ professeur.nom }}" alt="{{ professeur.prenom ~ " " ~ professeur.nom }}" onerror="this.onerror=null; this.src='/goat/public/img/professeur/Default.png'"/>
+					 <img class="img-fluid img-thumbnail" style="width: 256px;" src="{{ asset(photo | trans )}}" title="{{ professeur.user.prenom ~ " " ~ professeur.user.nom }}" alt="{{ professeur.user.prenom ~ " " ~ professeur.user.nom }}" onerror="this.onerror=null; this.src='/goat/public/img/professeur/Default.png'"/>
    </td>
    </tr>		
 
 
     <tr>
-      <td>Prénom : </td><td>{{professeur.prenom}}</td></tr>
+      <td>Prénom : </td><td>{{professeur.user.prenom}}</td></tr>
    </tr>
    <tr>
-      <td>Ville : </td><td>{{professeur.ville}}</td></tr>
+      <td>Ville : </td><td>{{professeur.user.ville}}</td></tr>
    </tr>
    <tr>
-      <td>Code postal : </td><td>{{professeur.codepostal}}</td></tr>
+      <td>Code postal : </td><td>{{professeur.user.codepostal}}</td></tr>
    </tr>
 	
  	</table>
