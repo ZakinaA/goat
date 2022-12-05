@@ -4,13 +4,32 @@
         
     </head>
     <body>       
-		<h5>PAGE DE CONSULTATION D'UN TYPE D'INTRUMENT</h5>
- <p>
-    <table>
-      <tr><td>Id : </td><td>{{coiuleur.id}}</td>
-      <tr><td>Libelle : </td><td>{{couleur.libelle}}</td></tr></tr>
+    {% include 'header.html' %}
+    {% include 'footer.html' %}
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+		<div class="container">   
+    <div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION D'UN TYPE D'INTRUMENT <strong>{{typeInstrument.libelle}}</strong></h5>
+		<table>
+            </br>
+              <table class="table">
+    	          <tr>
+
+		              <td>Id</td>
+                  <td>Libelle</td>
+
+		            </tr>
+		            <tr>
+                  <td>{{typeInstrument.id}}</td>
+                  <td>{{typeInstrument.libelle}}</td>
+                <tr> 
+                  <td>{{typeInstrument.instrument.id}}{{typeInstrument.instrument.nom}}</td>     
+              </tr>
+          </table>
+	      </div>
  
-    </table>
+      </table>
 
     </body>
 </html>

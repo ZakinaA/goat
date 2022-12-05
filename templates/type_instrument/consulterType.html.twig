@@ -18,10 +18,12 @@
         </br>
 		<table class="table">
 		<tr>
+        <td>Id</td>
 		<td>Nom</td>
 		</tr>
-		{% for e in instruments %}
+		{% for e in typeInstrument %}
 		<tr>
+            <td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.typeInstrument.id }}</td>
 			<td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
 	{% else %}
 		<tr>

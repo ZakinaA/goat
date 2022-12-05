@@ -43,14 +43,15 @@ class Instrument
     #[ORM\ManyToMany(targetEntity: couleur::class, inversedBy: 'instruments')]
     private Collection $couleur;
 
-    #[ORM\ManyToMany(targetEntity: TypeInstrument::class, mappedBy: 'instrument')]
-    private Collection $typeInstruments;
+    #[ORM\ManyToOne(inversedBy: 'instruments')]
+    private ?TypeInstrument $typeInstrument = null;
+
+ 
 
     public function __construct()
     {
         $this->accessoire = new ArrayCollection();
         $this->couleur = new ArrayCollection();
-        $this->typeInstruments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -196,30 +197,17 @@ class Instrument
         return $this;
     }
 
-    /**
-     * @return Collection<int, TypeInstrument>
-     */
-    public function getTypeInstruments(): Collection
+    public function getTypeInstrument(): ?TypeInstrument
     {
-        return $this->typeInstruments;
+        return $this->typeInstrument;
     }
 
-    public function addTypeInstrument(TypeInstrument $typeInstrument): self
+    public function setTypeInstrument(?TypeInstrument $typeInstrument): self
     {
-        if (!$this->typeInstruments->contains($typeInstrument)) {
-            $this->typeInstruments->add($typeInstrument);
-            $typeInstrument->addInstrument($this);
-        }
+        $this->typeInstrument = $typeInstrument;
 
         return $this;
     }
 
-    public function removeTypeInstrument(TypeInstrument $typeInstrument): self
-    {
-        if ($this->typeInstruments->removeElement($typeInstrument)) {
-            $typeInstrument->removeInstrument($this);
-        }
 
-        return $this;
-    }
 }

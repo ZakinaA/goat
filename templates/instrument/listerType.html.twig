@@ -20,9 +20,9 @@
 		<tr>
 		<td>Nom</td>
 		</tr>
-		{% for e in instruments %}
+		{% for e in pinstruments %}
 		<tr>
-			<td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
+			<td><a href="{{ path('instrumentConsulterType', { 'id': e.id }) }}">{{ e.libelle }}</a></td>
 	{% else %}
 		<tr>
 		<td style="color : red;">Aucun instrument n'a été trouvé.</td>
