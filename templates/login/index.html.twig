@@ -7,10 +7,9 @@
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-    <div class="container">   
-    <div class="d-flex align-items-center">
-    <h1>Se connecter</h1>
-    </div>
+    <div class="container" style="width: 48rem;">
+    <div class="align-self-center">
+    <h3>Se connecter</h3>
     <form action="{{ path('app_login') }}" method="post">
         <label for="username">Email:</label>
         <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" maxlength="20">
@@ -23,5 +22,6 @@
         <br>
         <button class="btn btn-primary" type="submit">login</button>
     </form>
+    </div>
     </div>
 {% endblock %}
