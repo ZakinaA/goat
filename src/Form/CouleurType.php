@@ -18,7 +18,6 @@ class CouleurType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('instruments')
             ->add('enregistrer', SubmitType::class, array('label' => 'Nouvelle couleur'))
         ;
     }
