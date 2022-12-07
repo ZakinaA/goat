@@ -23,7 +23,6 @@
     <td>Prénom</td>
     <td>Responsable</td>
     <td>Adresse</td>
-    <td>Instrument</td>
     <td>Téléphone</td>
     <td>E-mail</td>
 		</tr>
@@ -37,15 +36,9 @@
     <td><a class="" href="http://localhost/goat/public/responsable/consulter/{{eleve.responsable.id}}">{{eleve.responsable.nom}}</a></td>
     {% endif %}
     <td>{{user.numrue}} {{user.rue}} {{user.ville}}</td>
-    {% if eleve.contratpret == null %}
-	<td style="color : red;">L'eleve n'a aucun instrument.</td>
-    {% else %}
-    <td><a class="" href="http://localhost/goat/public/instrument/consulter/{{eleve.contratPret.instrument.id}}">{{eleve.contratPret.instrument.nom}}</a></td>
-    {% endif %}
     {% else %}
     <td style="color : red;">L'eleve n'a aucun responsable.</td>
     <td>{{user.numrue}} {{user.rue}} {{user.ville}}</td>
-    <td style="color : red;">L'eleve n'a aucun instrument.</td>
     {% endif %}
     <td>{{user.tel}}</td>
     <td>{{user.email}}</td>     
