@@ -46,7 +46,7 @@ class Instrument
     #[ORM\ManyToOne(inversedBy: 'instruments')]
     private ?TypeInstrument $typeInstrument = null;
 
- 
+    
 
     public function __construct()
     {
