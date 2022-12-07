@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Eleve;
+use App\Entity\User;
 use App\Form\EleveType;
 use App\Form\EleveModifierType;
 use App\Form\EleveSupprimerType;
@@ -17,30 +18,31 @@ class EleveController extends AbstractController
     #[Route('/eleve', name: 'app_eleve')]
     public function index(): Response
     {
-        return $this->render('eleve/index.html.twig', [
+        return $this->render('/eleve/index.html.twig', [
             'controller_name' => 'EleveController',
         ]);
     }
     public function listerEleve(ManagerRegistry $doctrine){
-        $repository = $doctrine->getRepository(Eleve::class);
+        $repository = $doctrine->getRepository(User::class);
 
         $eleves = $repository->findAll();
 
-        return $this->render('eleve/lister.html.twig', [
+        return $this->render('/eleve/lister.html.twig', [
             'pEleves' => $eleves,]);	
     }
     public function consulterEleve(ManagerRegistry $doctrine,$id){
 		
-        $eleve = $doctrine->getRepository(Eleve::class)->find($id);
+        $user = $doctrine->getRepository(User::class)->find($id);
     
-        if (!$eleve) {
+        if (!$user) {
             throw $this->createNotFoundException(
             'Aucun eleve trouvé avec le numéro '.$id
             );
         }
-    
+        $eleve = $doctrine->getRepository(Eleve::class)->find($id);
         //return new Response('eleve : '.$eleve->getNom());
-        return $this->render('eleve/consulter.html.twig', [
+        
+        return $this->render('/eleve/consulter.html.twig', [
             'eleve' => $eleve,]);
     }
 

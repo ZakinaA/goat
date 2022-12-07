@@ -28,9 +28,6 @@ class Cours
     #[ORM\Column]
     private ?int $nbplaces = null;
 
-    #[ORM\OneToMany(mappedBy: 'cours', targetEntity: Eleve::class)]
-    private Collection $cours;
-
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateD = null;
 
@@ -40,9 +37,13 @@ class Cours
     #[ORM\Column(length: 50)]
     private ?string $heureF = null;
 
+    #[ORM\ManyToMany(targetEntity: Eleve::class, mappedBy: 'Cours')]
+    private Collection $eleves;
+
     public function __construct()
     {
         $this->cours = new ArrayCollection();
+        $this->eleves = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -98,36 +99,6 @@ class Cours
         return $this;
     }
 
-    /**
-     * @return Collection<int, Eleve>
-     */
-    public function getCours(): Collection
-    {
-        return $this->cours;
-    }
-
-    public function addCour(Eleve $cour): self
-    {
-        if (!$this->cours->contains($cour)) {
-            $this->cours->add($cour);
-            $cour->setCours($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCour(Eleve $cour): self
-    {
-        if ($this->cours->removeElement($cour)) {
-            // set the owning side to null (unless already changed)
-            if ($cour->getCours() === $this) {
-                $cour->setCours(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getDateD(): ?\DateTimeInterface
     {
         return $this->dateD;
@@ -161,6 +132,33 @@ class Cours
     public function setHeureF(string $heureF): self
     {
         $this->heureF = $heureF;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Eleve>
+     */
+    public function getEleves(): Collection
+    {
+        return $this->eleves;
+    }
+
+    public function addElefe(Eleve $elefe): self
+    {
+        if (!$this->eleves->contains($elefe)) {
+            $this->eleves->add($elefe);
+            $elefe->addCour($this);
+        }
+
+        return $this;
+    }
+
+    public function removeElefe(Eleve $elefe): self
+    {
+        if ($this->eleves->removeElement($elefe)) {
+            $elefe->removeCour($this);
+        }
 
         return $this;
     }

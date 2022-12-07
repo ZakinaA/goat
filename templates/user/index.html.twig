@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% include 'header.html' %}
+        {% include 'footer.html' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION DE VOS INFORMATIONS <strong></strong></h5>
+		<table>
+        </br>
+        <table class="table">
+		<tr>
+
+	<td>Nom</td>
+    <td>Prénom</td>
+    <td>E-mail</td>
+    <td>date de naissance</td>
+    <td>Adresse</td>
+    <td>Téléphone</td>
+    <td>-</td>
+		</tr>
+		<tr>
+     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+	 <td>{{ app.user.nom }}</td> 
+    <td>{{ app.user.prenom }}</td>
+    <td>{{ app.user.email }}</td> 
+    <td>{{ app.user.datenaiss|date("d/n/Y") }}</td>
+    <td>{{ app.user.numrue }} {{ app.user.rue }}  {{ app.user.ville }} {{ app.user.codepostal }}</td> 
+    <td>{{ app.user.email }}</td> 
+
+     <td>
+		{% set photo = 'img/'~ app.user.cheminimg ~'.jpg' %}
+					<img style="width: 30%;" src="{{ asset(photo | trans )}}" title="{{ app.user.nom ~ " " ~ app.user.prenom }}" alt="{{ app.user.nom ~ " " ~ app.user.prenom }}"/></span></td></tr> </td>
+    <td> <img src="{{app.user.cheminimg}}"></td>
+    {% endif %}
+   
+                <tr>      
+            </tr>
+        </table>
+       	<input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
+	</div>
+    </body>
+</html>

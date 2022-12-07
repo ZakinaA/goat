@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -20,7 +21,11 @@ class RegistrationFormType extends AbstractType
         $builder    
             ->add('prenom')
             ->add('nom')
-            ->add('datenaiss')
+            ->add('datenaiss', DateType::class, array('input' => 'datetime',
+                                                          'widget' => 'single_text',
+                                                          'required' => true,
+                                                          'label' =>'Date de naissance',
+                                                          'placeholder' => 'jj/mm/aaaa'))
             ->add('numrue')
             ->add('rue')
             ->add('ville')

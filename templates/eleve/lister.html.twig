@@ -11,36 +11,25 @@
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 		<div class="container">   
-    	<div class="d-flex align-items-center">
+        <div class="align-self-center">
 		<h5>Liste des élèves :</h5>
 		<table>
+        
         </br>
         <table class="table">
 		<tr>
 		<td>nom</td>
 		<td>prenom</td>
-        <td>Cours</td>
 		</tr>
 		{% for e in pEleves %}
 		<tr>
-			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.user.nom }}</a></td>
-			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.user.prenom  }}</a></td>
-
-            {% if e.cours == null %}
-			   <td style="color : red;">L'eleve n'a aucun cours.</td>
-            {% else %}
-            <td>{{e.cours.libelle}}</a></td>
-          
-             {% endif %}
-            {% else %}
-                <tr>
-                <td style="color : red;">Aucun eleve n'a été trouvé.</td>
-           
+			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.nom }}</a></td>
+			<td><a href="{{ path('eleveConsulter', { 'id': e.id }) }}">{{ e.prenom  }}</a></td>
             {% endfor %}
             </table>
         </tr>
         </table>
-        <a class="btn btn-primary" href="http://localhost/goat/public/eleve/ajouter/">Ajouter</a>
+        <!--<a class="btn btn-primary" href="http://localhost/goat/public/eleve/ajouter/">Ajouter</a>!-->
 	</div>
     </body>
 </html>
