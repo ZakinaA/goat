@@ -64,7 +64,7 @@ class EleveController extends AbstractController
 	}
 	else
         {
-            return $this->render('eleve/ajouter.html.twig', array('form' => $form->createView(),));
+            return $this->render('/eleve/ajouter.html.twig', array('form' => $form->createView(),));
 	}
 }
     public function modifierEleve(ManagerRegistry $doctrine, $id, Request $request){
