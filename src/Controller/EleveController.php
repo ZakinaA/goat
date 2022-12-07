@@ -47,6 +47,7 @@ class EleveController extends AbstractController
     public function ajouter(ManagerRegistry $doctrine, Request $request){
     $eleve = new eleve();
 	$form = $this->createForm(EleveType::class, $eleve);
+    
 	$form->handleRequest($request);
  
 	if ($form->isSubmitted() && $form->isValid()) {
