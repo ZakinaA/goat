@@ -12,8 +12,8 @@
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 		<div class="container">   
-    	<div class="d-flex align-items-center">
-		<h5>PAGE DE CONSULTATION DE L'ELEVE <strong>{{eleve.user.nom}}</strong></h5>
+    	<div class="align-self-center">
+		<h5>PAGE DE CONSULTATION DE L'ELEVE <strong>{{user.nom}}</strong></h5>
 		<table>
         </br>
         <table class="table">
@@ -21,7 +21,6 @@
 
 	<td>Nom</td>
     <td>Prénom</td>
-    <td>Nom du Cours</td>
     <td>Responsable</td>
     <td>Adresse</td>
     <td>Instrument</td>
@@ -29,32 +28,32 @@
     <td>E-mail</td>
 		</tr>
 		<tr>
-    <td>{{eleve.user.nom}}</td>
-    <td>{{eleve.user.prenom}}</td>
-     {% if eleve.cours == null %}
-	<td style="color : red;">L'eleve n'a aucun cours.</td>
-    {% else %}
-    <td><a class="" href="http://localhost/goat/public/cours/consulter/{{eleve.cours.id}}">{{eleve.cours.libelle}}</a></td>
-    {% endif %}
+    <td>{{user.nom}}</td>
+    <td>{{user.prenom}}</td>
+    {% if eleve %}
     {% if eleve.responsable == null %}
     <td style="color : red;">L'eleve n'a aucun responsable.</td>
     {% else %}
     <td><a class="" href="http://localhost/goat/public/responsable/consulter/{{eleve.responsable.id}}">{{eleve.responsable.nom}}</a></td>
     {% endif %}
-     <td>{{eleve.user.numrue}} {{eleve.user.rue}} {{eleve.user.ville}}</td>
+    <td>{{user.numrue}} {{user.rue}} {{user.ville}}</td>
     {% if eleve.contratpret == null %}
 	<td style="color : red;">L'eleve n'a aucun instrument.</td>
     {% else %}
-     <td><a class="" href="http://localhost/goat/public/instrument/consulter/{{eleve.contratPret.instrument.id}}">{{eleve.contratPret.instrument.nom}}</a></td>
+    <td><a class="" href="http://localhost/goat/public/instrument/consulter/{{eleve.contratPret.instrument.id}}">{{eleve.contratPret.instrument.nom}}</a></td>
     {% endif %}
-   
-    <td>{{eleve.user.tel}}</td>
-    <td>{{eleve.user.email}}</td>     
+    {% else %}
+    <td style="color : red;">L'eleve n'a aucun responsable.</td>
+    <td>{{user.numrue}} {{user.rue}} {{user.ville}}</td>
+    <td style="color : red;">L'eleve n'a aucun instrument.</td>
+    {% endif %}
+    <td>{{user.tel}}</td>
+    <td>{{user.email}}</td>     
                 <tr>      
             </tr>
         </table>
-       <a class="btn btn-primary" href="http://localhost/goat/public/eleve/supprimer/{{eleve.id}}">Supprimer</a>
-       <a class="btn btn-primary" href="http://localhost/goat/public/eleve/modifier/{{eleve.id}}">Modifier</a>
+       <a class="btn btn-primary" href="http://localhost/goat/public/eleve/supprimer/{{user.id}}">Supprimer</a>
+       <a class="btn btn-primary" href="http://localhost/goat/public/eleve/modifier/{{user.id}}">Modifier</a>
        	<input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
 	</div>
     </body>
