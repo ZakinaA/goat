@@ -93,6 +93,7 @@
         <li><a href="/goat/public/utilisateur/accueil" class="nav-link px-2 link-dark">Accueil</a></li>
         {% if is_granted('ROLE_ADMIN') %}
         <li><a href="/goat/public/admin/eleve/lister" class="nav-link px-2 link-dark">Eleves</a></li>
+        
         {% endif %}
         <li><a href="/goat/public/utilisateur/professeur/lister" class="nav-link px-2 link-dark">Professeurs</a></li>
         <li><a href="/goat/public/utilisateur/cours/lister" class="nav-link px-2 link-dark">Cours</a></li>
