@@ -18,7 +18,7 @@ class EleveController extends AbstractController
     #[Route('/eleve', name: 'app_eleve')]
     public function index(): Response
     {
-        return $this->render('utilisateur/eleve/index.html.twig', [
+        return $this->render('/eleve/index.html.twig', [
             'controller_name' => 'EleveController',
         ]);
     }
@@ -27,7 +27,7 @@ class EleveController extends AbstractController
 
         $eleves = $repository->findAll();
 
-        return $this->render('utilisateur/eleve/lister.html.twig', [
+        return $this->render('/eleve/lister.html.twig', [
             'pEleves' => $eleves,]);	
     }
     public function consulterEleve(ManagerRegistry $doctrine,$id){
@@ -42,7 +42,7 @@ class EleveController extends AbstractController
         $eleve = $doctrine->getRepository(Eleve::class)->find($id);
         //return new Response('eleve : '.$eleve->getNom());
         
-        return $this->render('utilisateur/eleve/consulter.html.twig', [
+        return $this->render('/eleve/consulter.html.twig', [
             'eleve' => $eleve,]);
     }
 
