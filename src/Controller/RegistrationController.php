@@ -41,10 +41,10 @@ class RegistrationController extends AbstractController
 
             // generate a signed url and email it to the user
 
-            return $this->redirectToRoute('eleveLister');
+            return $this->redirectToRoute('route_accueil');
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('utilisateur/registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

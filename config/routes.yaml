@@ -1,132 +1,132 @@
 
 # ACCUEIL
 route_accueil:
-    path: /accueil
+    path: /utilisateur/accueil
     controller: App\Controller\GoatController::index
 #RESPONSABLE
 ResponsableLister:
-    path: /responsable/lister/
+    path: /admin/responsable/lister/
     controller: App\Controller\ResponsableController::listerResponsable
 consulterResponsable:
-    path: /responsable/consulter/{id}
+    path: /admin/responsable/consulter/{id}
     controller: App\Controller\ResponsableController::consulterResponsable
 # ELEVE  
 eleveLister:
-    path: /eleve/lister/
+    path: /admin/eleve/lister/
     controller: App\Controller\EleveController::listerEleve
 eleveConsulter:
-    path: /eleve/consulter/{id}
+    path: /admin/eleve/consulter/{id}
     controller: App\Controller\EleveController::consulterEleve
 eleveAjouter:
-    path: /eleve/ajouter/
+    path: /admin/eleve/ajouter/
     controller: App\Controller\EleveController::ajouter
 etudiantModifier:
-    path: /eleve/modifier/{id}
+    path: /admin/eleve/modifier/{id}
     controller: App\Controller\EleveController::modifierEleve
 etudiantSupprimer:
-    path: eleve/supprimer/{id}
+    path: /admin/eleve/supprimer/{id}
     controller: App\Controller\EleveController::supprimerEleve
 # COUR
 coursLister:
-    path: /cours/lister/
+    path: /utilisateur/cours/lister/
     controller: App\Controller\CoursController::listerCours
 coursConsulter:
-    path: /cours/consulter/{id}
+    path: /utilisateur/cours/consulter/{id}
     controller: App\Controller\CoursController::consulterCours
 coursAjouter:
-    path: /cours/ajouter/
+    path: /admin/cours/ajouter/
     controller: App\Controller\CoursController::ajouter
 cousrModifier:
-    path: /cours/modifier/{id}
+    path: /admin/cours/modifier/{id}
     controller: App\Controller\CoursController::modifierCours
 coursSupprimer:
-    path: /cours/supprimer/{id}
+    path: /admin/cours/supprimer/{id}
     controller: App\Controller\CoursController::supprimerCours
 #INSTRUMENT
 instrumentConsulter:
-    path: /instrument/consulter/{id}
+    path: /utilisateur/instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulterInstrument
 instrumentConsulterType:
-    path: /instrument/consulterType/{id}
+    path: /utilisateur/instrument/consulterType/{id}
     controller: App\Controller\InstrumentController::consulterTypeInstrument
 instrumentAjouter:
-    path: /instrument/ajouter
+    path: /admin/instrument/ajouter
     controller: App\Controller\InstrumentController::ajouter
 instrumentLister:
-    path: /instrument/lister
+    path: /utilisateur/instrument/lister
     controller: App\Controller\InstrumentController::lister
 instrumentListerType:
-    path: /instrument/listerType
+    path: /utilisateur/instrument/listerType
     controller: App\Controller\InstrumentController::listerType
 instrumentModifier:
-    path: /instrument/modifier/{id}
+    path: /admin/instrument/modifier/{id}
     controller: App\Controller\InstrumentController::modifierInstrument
 instrumentSupprimer:
-    path: instrument/supprimer/{id}
+    path: /admin/instrument/supprimer/{id}
     controller: App\Controller\InstrumentController::supprimerInstrument
 #PROFFESSEUR
 professeurConsulter:
-    path: /professeur/consulter/{id}
+    path: /utilisateur/professeur/consulter/{id}
     controller: App\Controller\ProfesseurController::consulterProfesseur
 professeurLister:
-    path: /professeur/lister
+    path: /utilisateur/professeur/lister
     controller: App\Controller\ProfesseurController::listerProfesseur
 professeurAjouter:
-    path: /professeur/ajouter
+    path: /admin/professeur/ajouter
     controller: App\Controller\ProfesseurController::ajouterProfesseur
 professeurModifier:
-    path: /professeur/modifier/{id}
+    path: /admin/professeur/modifier/{id}
     controller: App\Controller\ProfesseurController::modifierProfesseur
 professeurSupprimer:
-    path: professeur/supprimer/{id}
+    path: /admin/professeur/supprimer/{id}
     controller: App\Controller\ProfesseurController::supprimerProfesseur
 #ACCESSOIRE
 accessoireAjouter:
-    path: /accessoire/ajouter
+    path: /admin/accessoire/ajouter
     controller: App\Controller\AccessoireController::ajouter
 accessoireConsulter:
-    path: /accessoire/consulter/{id}
+    path: /admin/accessoire/consulter/{id}
     controller: App\Controller\AccessoireController::consulterAccessoire
 #MARQUE
 marqueAjouter:
-    path: /marque/ajouter
+    path: /admin/marque/ajouter
     controller: App\Controller\MarqueController::ajouter
 marqueConsulter:
-    path: /accessoire/consulter/{id}
+    path: /admin/accessoire/consulter/{id}
     controller: App\Controller\MarqueController::consulterMarque
 #COULEUR
 couleurAjouter:
-    path: /couleur/ajouter
+    path: /admin/couleur/ajouter
     controller: App\Controller\CouleurController::ajouter
 couleurConsulter:
-    path: /couleur/consulter/{id}
+    path: /admin/couleur/consulter/{id}
     controller: App\Controller\CouleurController::consulterCouleur
 #TYPEINSTRUMENT
 typeInstrumentAjouter:
     path: /type_instrument/ajouter
     controller: App\Controller\TypeInstrumentController::ajouter
 typeInstrumentConsulter:
-    path: /type_instrument/consulter/{id}
+    path: /utilisateur/type_instrument/consulter/{id}
     controller: App\Controller\TypeInstrumentController::consulterTypeInstrument
 typeInstrumentLister:
-    path: /type_instrument/lister
+    path: /utilisateur/type_instrument/lister
     controller: App\Controller\TypeInstrumentController::lister
 typeInstrumentConsulterType:
-    path: /type_instrument/consulterType/{id}
+    path: /utilisateur/type_instrument/consulterType/{id}
     controller: App\Controller\TypeInstrumentController::consulterTypeInstrument
 #USER
 UserConsulter:
-    path: /user/information/
+    path: /utilisateur/user/information/
     controller: App\Controller\UserController::index
-
+#LOGIN
 app_login:
-    path: /login
+    path: /utilisateur/login
     controller: App\Controller\LoginController::index
 app_register:
-    path: /register
+    path: /utilisateur/register
     controller: App\Controller\RegistrationController::register
 app_logout:
-    path: /logout
+    path: /utilisateur/logout
     methods: GET
 
 
