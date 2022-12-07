@@ -30,8 +30,8 @@ class EleveController extends AbstractController
         return $this->render('/eleve/lister.html.twig', [
             'pEleves' => $eleves,]);	
     }
-    public function consulterEleve(ManagerRegistry $doctrine,$id){
-		
+     public function consulterEleve(ManagerRegistry $doctrine,$id){
+        
         $user = $doctrine->getRepository(User::class)->find($id);
     
         if (!$user) {
@@ -41,8 +41,8 @@ class EleveController extends AbstractController
         }
         $eleve = $doctrine->getRepository(Eleve::class)->find($id);
         //return new Response('eleve : '.$eleve->getNom());
-        
-        return $this->render('/eleve/consulter.html.twig', [
+        return $this->render('eleve/consulter.html.twig', [
+            'user' => $user,
             'eleve' => $eleve,]);
     }
 
