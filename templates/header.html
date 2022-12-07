@@ -90,14 +90,15 @@
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/goat/public/utilisateur/accueil" class="nav-link px-2 link-dark">Accueil</a></li>
+        <li><a href="/goat/public/accueil" class="nav-link px-2 link-dark">Accueil</a></li>
         {% if is_granted('ROLE_ADMIN') %}
         <li><a href="/goat/public/admin/eleve/lister" class="nav-link px-2 link-dark">Eleves</a></li>
+        
         {% endif %}
-        <li><a href="/goat/public/utilisateur/professeur/lister" class="nav-link px-2 link-dark">Professeurs</a></li>
-        <li><a href="/goat/public/utilisateur/cours/lister" class="nav-link px-2 link-dark">Cours</a></li>
-        <li><a href="/goat/public/utilisateur/instrument/listerType" class="nav-link px-2 link-dark">Instrument</a></li>
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<li><a href="/goat/public/utilisateur/user/information/"  class="nav-link px-2 link-dark; link-primary"  
+        <li><a href="/goat/public/professeur/lister" class="nav-link px-2 link-dark">Professeurs</a></li>
+        <li><a href="/goat/public/cours/lister" class="nav-link px-2 link-dark">Cours</a></li>
+        <li><a href="/goat/public/instrument/listerType" class="nav-link px-2 link-dark">Instrument</a></li>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<li><a href="/goat/public/user/information/"  class="nav-link px-2 link-dark; link-primary"  
           > Compte : {{ app.user.nom }} {{ app.user.prenom }}</a></li>{% endif %}
       </ul>
 
@@ -105,8 +106,8 @@
        
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<a class="btn btn-outline-primary me-2" href="{{ path('app_logout') }}">Me déconnecter</a>
         {%else%}
-        <a class="btn btn-outline-primary me-2"  href="/goat/public/utilisateur/login" >Connexion</a>
-        <a href="/goat/public/utilisateur/register" class="btn btn-primary">S'inscrire</a>
+        <a class="btn btn-outline-primary me-2"  href="/goat/public/login" >Connexion</a>
+        <a href="/goat/public/register" class="btn btn-primary">S'inscrire</a>
         {% endif %}
       </div>
     </header>
