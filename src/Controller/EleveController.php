@@ -32,16 +32,17 @@ class EleveController extends AbstractController
     }
     public function consulterEleve(ManagerRegistry $doctrine,$id){
 		
-        $eleve = $doctrine->getRepository(Eleve::class)->find($id);
+        $user = $doctrine->getRepository(User::class)->find($id);
     
-        if (!$eleve) {
+        if (!$user) {
             throw $this->createNotFoundException(
             'Aucun eleve trouvé avec le numéro '.$id
             );
         }
-    
+        $eleve = $doctrine->getRepository(Eleve::class)->find($id);
         //return new Response('eleve : '.$eleve->getNom());
         return $this->render('eleve/consulter.html.twig', [
+            'user' => $user,
             'eleve' => $eleve,]);
     }
 

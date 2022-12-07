@@ -16,21 +16,8 @@ class Eleve
     #[ORM\Column]
     private ?int $id = null;
 
-
-    #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?Cours $cours = null;
-
     #[ORM\ManyToOne(inversedBy: 'eleves')]
     private ?Responsable $responsable = null;
-
-    #[ORM\OneToMany(mappedBy: 'Eleve', targetEntity: Inscription::class)]
-    private Collection $inscriptions;
-
-    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: ContratPret::class)]
-    private Collection $contratPrets;
-
-    #[ORM\ManyToOne(inversedBy: 'eleves')]
-    private ?ContratPret $ContratPret = null;
 
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: User::class)]
     private Collection $users;
@@ -38,29 +25,22 @@ class Eleve
     #[ORM\ManyToOne(inversedBy: 'elevesUser')]
     private ?user $user = null;
 
+    #[ORM\ManyToMany(targetEntity: Cours::class, inversedBy: 'eleves')]
+    private Collection $Cours;
+
+    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: ContratPret::class)]
+    private Collection $Contrats;
+
     public function __construct()
     {
-        $this->inscriptions = new ArrayCollection();
-        $this->contratPrets = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->Cours = new ArrayCollection();
+        $this->Contrats = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-   
-    public function getCours(): ?Cours
-    {
-        return $this->cours;
-    }
-
-    public function setCours(?Cours $cours): self
-    {
-        $this->cours = $cours;
-
-        return $this;
     }
 
     public function getResponsable(): ?Responsable
@@ -71,78 +51,6 @@ class Eleve
     public function setResponsable(?Responsable $responsable): self
     {
         $this->responsable = $responsable;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Inscription>
-     */
-    public function getInscriptions(): Collection
-    {
-        return $this->inscriptions;
-    }
-
-    public function addInscription(Inscription $inscription): self
-    {
-        if (!$this->inscriptions->contains($inscription)) {
-            $this->inscriptions->add($inscription);
-            $inscription->setEleve($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInscription(Inscription $inscription): self
-    {
-        if ($this->inscriptions->removeElement($inscription)) {
-            // set the owning side to null (unless already changed)
-            if ($inscription->getEleve() === $this) {
-                $inscription->setEleve(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, ContratPret>
-     */
-    public function getContratPrets(): Collection
-    {
-        return $this->contratPrets;
-    }
-
-    public function addContratPret(ContratPret $contratPret): self
-    {
-        if (!$this->contratPrets->contains($contratPret)) {
-            $this->contratPrets->add($contratPret);
-            $contratPret->setEleve($this);
-        }
-
-        return $this;
-    }
-
-    public function removeContratPret(ContratPret $contratPret): self
-    {
-        if ($this->contratPrets->removeElement($contratPret)) {
-            // set the owning side to null (unless already changed)
-            if ($contratPret->getEleve() === $this) {
-                $contratPret->setEleve(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getContratPret(): ?ContratPret
-    {
-        return $this->ContratPret;
-    }
-
-    public function setContratPret(?ContratPret $ContratPret): self
-    {
-        $this->ContratPret = $ContratPret;
 
         return $this;
     }
@@ -185,6 +93,60 @@ class Eleve
     public function setUser(?user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cours>
+     */
+    public function getCours(): Collection
+    {
+        return $this->Cours;
+    }
+
+    public function addCour(Cours $cour): self
+    {
+        if (!$this->Cours->contains($cour)) {
+            $this->Cours->add($cour);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Cours $cour): self
+    {
+        $this->Cours->removeElement($cour);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContratPret>
+     */
+    public function getContrats(): Collection
+    {
+        return $this->Contrats;
+    }
+
+    public function addContrat(ContratPret $contrat): self
+    {
+        if (!$this->Contrats->contains($contrat)) {
+            $this->Contrats->add($contrat);
+            $contrat->setEleve($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContrat(ContratPret $contrat): self
+    {
+        if ($this->Contrats->removeElement($contrat)) {
+            // set the owning side to null (unless already changed)
+            if ($contrat->getEleve() === $this) {
+                $contrat->setEleve(null);
+            }
+        }
 
         return $this;
     }
