@@ -38,6 +38,6 @@ https://getbootstrap.com/docs/5.2
 Connexion compte : 
 
 ```
-arthur@gmail.com
-MParthur
+admin@gmail.com
+MPadmin
 ```
