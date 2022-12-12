@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% include 'header.html' %}
+        {% include 'footer.html' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION DES INTERVENTIONS</h5>
+		<table>
+        </br>
+        <table class="table">
+		<tr>
+
+		<td>Id</td>
+    <td>Instrument</td>
+    <td>dateDebut</td>
+    <td>dateFin</td>
+    <td>Descriptif</td>
+    <td>prix</td>
+		</tr>
+		<tr>
+    <td>{{intervention.instrument.nom}}</td>
+    <td>{{intervention.dateDebut|date("d/n/Y")}}</td>
+    <td>{{intervention.dateFin|date("d/n/Y")}}</td>    
+    <td>{{intervention.descriptif}}</td>
+    <td>{{intervention.prix}}</td>
+                <tr>      
+            </tr>
+        </table>
+         {% if is_granted('ROLE_ADMIN') %}
+       <a class="btn btn-primary" href="http://localhost/goat/public/instrument/modifier/{{instrument.id}}">Modifier</a>
+        <a class="btn btn-primary" href="http://localhost/goat/public/instrument/supprimer/{{instrument.id}}">Supprimer</a>
+	 {% endif %}
+    </div>
+    </body>
+</html>

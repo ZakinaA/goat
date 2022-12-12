@@ -129,4 +129,22 @@ app_logout:
     path: /logout
     methods: GET
 
+#INTERVENTION
 
+interventionLister:
+    path: /intervention/lister/
+    controller: App\Controller\InterventionController::lister
+interventionConsulter:
+    path: /intervention/consulter/{id}
+    controller: App\Controller\InterventionController::consulterIntervention
+interventionAjouter:
+    path: /intervention/ajouter/
+    controller: App\Controller\InterventionController::ajouterIntervention
+
+interventionSupprimer:
+    path: /intervention/supprimer/{id}
+    controller: App\Controller\InterventionController::supprimerIntervention
+
+interventionModifier:
+    path: /intervention/modifier/{id}
+    controller: App\Controller\InterventionController::modofierIntervention

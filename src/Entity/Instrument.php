@@ -43,15 +43,15 @@ class Instrument
     #[ORM\ManyToMany(targetEntity: couleur::class, inversedBy: 'instruments')]
     private Collection $couleur;
 
-    #[ORM\ManyToOne(inversedBy: 'instruments')]
-    private ?TypeInstrument $typeInstrument = null;
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: Intervention::class)]
+    private Collection $intervention;
 
- 
 
     public function __construct()
     {
         $this->accessoire = new ArrayCollection();
         $this->couleur = new ArrayCollection();
+        $this->intervention = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -205,6 +205,36 @@ class Instrument
     public function setTypeInstrument(?TypeInstrument $typeInstrument): self
     {
         $this->typeInstrument = $typeInstrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Intervention>
+     */
+    public function getIntervention(): Collection
+    {
+        return $this->intervention;
+    }
+
+    public function addIntervention(Intervention $intervention): self
+    {
+        if (!$this->intervention->contains($intervention)) {
+            $this->intervention->add($intervention);
+            $intervention->setInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIntervention(Intervention $intervention): self
+    {
+        if ($this->intervention->removeElement($intervention)) {
+            // set the owning side to null (unless already changed)
+            if ($intervention->getInstrument() === $this) {
+                $intervention->setInstrument(null);
+            }
+        }
 
         return $this;
     }
