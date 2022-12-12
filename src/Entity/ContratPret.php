@@ -34,13 +34,8 @@ class ContratPret
     #[ORM\ManyToOne(inversedBy: 'contratPrets')]
     private ?instrument $instrument = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Contrats')]
-    private ?Eleve $eleve = null;
-
-    public function __construct()
-    {
-        $this->eleves = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'contratPretsUser')]
+    private ?user $user = null;
 
     public function getId(): ?int
     {
@@ -119,15 +114,16 @@ class ContratPret
         return $this;
     }
 
-    public function getEleve(): ?Eleve
+    public function getUser(): ?user
     {
-        return $this->eleve;
+        return $this->user;
     }
 
-    public function setEleve(?Eleve $eleve): self
+    public function setUser(?user $user): self
     {
-        $this->eleve = $eleve;
+        $this->user = $user;
 
         return $this;
     }
+
 }

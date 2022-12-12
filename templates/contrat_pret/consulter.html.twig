@@ -33,7 +33,7 @@
                   <td>{{contratPret.etatDetailleDebut}}</td>
                   <td>{{contratPret.etatDetailleFin}}</td>
                   <td><a href="{{ path('instrumentConsulter', { 'id': contratPret.instrument.id }) }}">{{contratPret.instrument.nom}}</a></td>
-                  <td><a href="{{ path('eleveConsulter', { 'id': contratPret.eleve.id }) }}">{{contratPret.eleve.user.nom}}</a></td>
+                  <td><a href="{{ path('eleveConsulter', { 'id': contratPret.user.id }) }}">{{contratPret.user.nom}}</a></td>
                 <tr>      
               </tr>
           </table>
