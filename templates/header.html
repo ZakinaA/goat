@@ -99,6 +99,9 @@
         <li><a href="/goat/public/professeur/lister" class="nav-link px-2 link-dark">Professeurs</a></li>
         <li><a href="/goat/public/cours/lister" class="nav-link px-2 link-dark">Cours</a></li>
         <li><a href="/goat/public/instrument/listerType" class="nav-link px-2 link-dark">Instrument</a></li>
+        <li><a href="/goat/public/intervention/lister" class="nav-link px-2 link-dark">Intervention</a></li>
+        
+        
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}<li><a href="/goat/public/user/information/"  class="nav-link px-2 link-dark; link-primary"  
           > Compte : {{ app.user.nom }} {{ app.user.prenom }}</a></li>{% endif %}
       </ul>
