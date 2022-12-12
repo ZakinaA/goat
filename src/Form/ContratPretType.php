@@ -23,8 +23,7 @@ class ContratPretType extends AbstractType
             ->add('etatDetailleDebut')
             ->add('etatDetailleFin')
             ->add('instrument', EntityType::class, array('class' => 'App\Entity\Instrument','choice_label' =>'nom'))
-            ->add('eleve', EntityType::class, array('class' => 'App\Entity\User','choice_label' =>'nom'))
-            ->add('eleve', EntityType::class, array('class' => 'App\Entity\User','choice_label' =>'prenom'))
+            ->add('user', EntityType::class, array('class' => 'App\Entity\User','choice_label' =>'prenom'))
             ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau ContratPret'))
         ;
     }

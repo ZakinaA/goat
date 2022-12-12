@@ -29,7 +29,8 @@
     <td>Marque </td>
     <td>Couleur </td>
     <td>Accessoire </td>
-    <td>Contrat pret</td>
+     <td>Contrat pret</td>
+
     
 		</tr>
 		<tr>
@@ -50,13 +51,14 @@
     {% endfor %}
     
                 <tr>      
-            </tr>
+            </tr>         
         </table>
          {% if is_granted('ROLE_ADMIN') %}
        <a class="btn btn-primary" href="http://localhost/goat/public/instrument/modifier/{{instrument.id}}">Modifier</a>
         <a class="btn btn-primary" href="http://localhost/goat/public/instrument/supprimer/{{instrument.id}}">Supprimer</a>
         <a class="btn btn-primary" href="http://localhost/goat/public/contrat_pret/ajouter/{{instrument.id}}">Ajouter un contrat de pret</a>
         <a class="btn btn-primary" href="http://localhost/goat/public/accessoire/ajouter">Ajouter un accessoire</a>
+
 	</div>
 	 {% endif %}
     </div>

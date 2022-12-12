@@ -129,14 +129,12 @@ app_logout:
     methods: GET
 #CONTRATPRET
 contratPretAjouter:
-    path: /contrat_pret/ajouter/{id}
+    path: /professeur/contratPret/ajouter/
     controller: App\Controller\ContratPretController::ajouter
 contratPretConsulter:
-    path: /contratPret/consulter/{id}
+    path: /professeur/contratPret/consulter/{id}
     controller: App\Controller\ContratPretController::consulterContratPret
-
 #INTERVENTION
-
 interventionLister:
     path: /intervention/lister/
     controller: App\Controller\InterventionController::lister
