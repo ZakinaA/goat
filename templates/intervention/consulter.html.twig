@@ -17,7 +17,7 @@
         </br>
         <table class="table">
 		<tr>
-
+    <td>#</td>
     <td>Instrument</td>
     <td>dateDebut</td>
     <td>dateFin</td>
@@ -25,11 +25,13 @@
     <td>prix</td>
 		</tr>
 		<tr>
+
+    <td>{{intervention.id}}</td>
     <td>{{intervention.instrument.nom}}</td>
-    <td>{{intervention.dateDebut|date("d/n/Y")}}</td>
-    <td>{{intervention.dateFin|date("d/n/Y")}}</td>    
-    <td>{{intervention.descriptif}}</td>
-    <td>{{intervention.prix}}</td>
+   <td>{{intervention.datedebut|date("d/n/Y")}}</td>    
+    <td>{{intervention.datefin|date("d/n/Y")}}</td>  
+    <td>{{intervention.descriptif}}</td>  
+<td>{{intervention.prix}}</td>
                 <tr>      
             </tr>
         </table>
