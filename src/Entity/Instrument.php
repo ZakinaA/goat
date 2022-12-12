@@ -43,11 +43,11 @@ class Instrument
     #[ORM\ManyToMany(targetEntity: couleur::class, inversedBy: 'instruments')]
     private Collection $couleur;
 
-    #[ORM\ManyToOne(inversedBy: 'instruments')]
-    private ?TypeInstrument $typeInstrument = null;
-
     #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: contratPret::class)]
     private Collection $contrat_pret;
+
+    #[ORM\ManyToOne(inversedBy: 'instrumentsType')]
+    private ?typeInstrument $typeInstrument = null;
 
     public function __construct()
     {
@@ -199,18 +199,6 @@ class Instrument
         return $this;
     }
 
-    public function getTypeInstrument(): ?TypeInstrument
-    {
-        return $this->typeInstrument;
-    }
-
-    public function setTypeInstrument(?TypeInstrument $typeInstrument): self
-    {
-        $this->typeInstrument = $typeInstrument;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, contratPret>
      */
@@ -237,6 +225,18 @@ class Instrument
                 $contratPret->setInstrument(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTypeInstrument(): ?typeInstrument
+    {
+        return $this->typeInstrument;
+    }
+
+    public function setTypeInstrument(?typeInstrument $typeInstrument): self
+    {
+        $this->typeInstrument = $typeInstrument;
 
         return $this;
     }

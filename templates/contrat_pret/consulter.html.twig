@@ -24,8 +24,6 @@
                     <td>Etat détail de fin</td>
                     <td>Instrument</td>
                     <td>Nom</td>
-                    <td>Prenom</td>
-
 		            </tr>
 		            <tr>
                   <td>{{contratPret.id}}</td>
@@ -34,13 +32,8 @@
                   <td>{{contratPret.attestationAssurance}}</td>
                   <td>{{contratPret.etatDetailleDebut}}</td>
                   <td>{{contratPret.etatDetailleFin}}</td>
-                  {% for e in contratPret.instrument %}
-                  <td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{e.nom}}</a></td>
-                  {% endfor %}
-                  {% for e in contratPret.eleve %}
-                  <td><a href="{{ path('contratPretConsulter', { 'id': e.id }) }}">{{e.nom}}</a></td>
-                  <td><a href="{{ path('contratPretConsulter', { 'id': e.id }) }}">{{e.prenom}}</a></td>
-                  {% endfor %}
+                  <td><a href="{{ path('instrumentConsulter', { 'id': contratPret.instrument.id }) }}">{{contratPret.instrument.nom}}</a></td>
+                  <td><a href="{{ path('eleveConsulter', { 'id': contratPret.eleve.id }) }}">{{contratPret.eleve.user.nom}}</a></td>
                 <tr>      
               </tr>
           </table>
