@@ -18,7 +18,6 @@
         <table class="table">
 		<tr>
 
-		<td>Id</td>
     <td>Instrument</td>
     <td>dateDebut</td>
     <td>dateFin</td>
@@ -35,8 +34,8 @@
             </tr>
         </table>
          {% if is_granted('ROLE_ADMIN') %}
-       <a class="btn btn-primary" href="http://localhost/goat/public/instrument/modifier/{{instrument.id}}">Modifier</a>
-        <a class="btn btn-primary" href="http://localhost/goat/public/instrument/supprimer/{{instrument.id}}">Supprimer</a>
+       <a class="btn btn-primary" href="http://localhost/goat/public/instrument/modifier/{{intervention.id}}">Modifier</a>
+        <a class="btn btn-primary" href="http://localhost/goat/public/instrument/supprimer/{{intervention.id}}">Supprimer</a>
 	 {% endif %}
     </div>
     </body>

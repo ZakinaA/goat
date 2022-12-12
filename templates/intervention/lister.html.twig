@@ -15,29 +15,25 @@
 		<h5>Liste les intervention :</h5>
 
         </div>
+		{% if is_granted('ROLE_ADMIN') %}
 		<a class="btn btn-success" href="http://localhost/goat/public/intervention/ajouter/">Ajouter un intervention</a>
-		<a class="btn btn-success" href="http://localhost/goat/public/intervention/modifier/">Modifier un intervention</a>
-        <a class="btn btn-success" href="http://localhost/goat/public/intervention/Supprimer/">Supprimer un intervention</a>
+
+		 {% endif %}
 </br><table>
         </br>
 		<table class="table">
 		<tr>
-		<td>Nom de l'instrument</td>
+		<td>Nom de l'intervention</td>
 		</tr>
 		{% for e in pinterventions %}
 		<tr>
 			<td><a href="{{ path('interventionConsulter', { 'id': e.id }) }}">{{ e.instrument.nom  }}</a></td>
 	{% else %}
 		<tr>
-		<td style="color : red;">Aucun instrument n'a été trouvé.</td>
+		<td style="color : red;">Aucun intervention n'a été trouvé.</td>
 		</tr>
 	{% endfor %}
 </table>
-{% if is_granted('ROLE_ADMIN') %}
-    	<a class="btn btn-primary" href="http://localhost/goat/public/admin/intervention/ajouter/">Ajouter</a>
-        <a class="btn btn-primary" href="http://localhost/goat/public/admin/intervention/modifier/">Modifier</a>
-        <a class="btn btn-primary" href="http://localhost/goat/public/admin/intervention/supprimer/">Supprimer</a>
-        {% endif %}
 	</div>
     </body>
 </html>
