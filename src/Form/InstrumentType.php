@@ -26,7 +26,7 @@ class InstrumentType extends AbstractType
             ->add('cheminImage')
             ->add('marque', EntityType::class, array('class' => 'App\Entity\Marque','choice_label' =>'libelle'))
             ->add('couleur', EntityType::class, array('class' => 'App\Entity\Couleur','choice_label' =>'nom', 'multiple' => true))
-            //->add('typeInstruments', EntityType::class, array('class' => 'App\Entity\TypeInstruments','choice_label' =>'nom'))
+            ->add('typeInstrument', EntityType::class, array('class' => 'App\Entity\TypeInstrument','choice_label' =>'libelle'))
             ->add('enregistrer', SubmitType::class, array('label' => 'Nouveau instrument'))
         ;
     }

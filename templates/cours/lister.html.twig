@@ -39,7 +39,9 @@
         </table>
          </tr>
 	</table>
-    	<a class="btn btn-primary" href="http://localhost/goat/public/cours/ajouter/">Ajouter</a>
+    {% if is_granted('ROLE_ADMIN') %}
+    	<a class="btn btn-primary" href="http://localhost/goat/public/admin/cours/ajouter/">Ajouter</a>
+        {% endif %}
 	</div>
     </body>
 </html>

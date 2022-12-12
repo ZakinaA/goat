@@ -14,8 +14,14 @@
     	<div class="d-flex align-items-center">
 		<h5>Liste des instruments :</h5>
 		</div>
-		<a class="btn btn-success" href="http://localhost/goat/public/marque/ajouter/">Ajouter une marque</a>
-		<a class="btn btn-success" href="http://localhost/goat/public/couleur/ajouter/">Ajouter une couleur</a>
+		
+
+
+		 {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-success" href="http://localhost/goat/public/admin/marque/ajouter/">Ajouter une marque</a>
+		<a class="btn btn-success" href="http://localhost/goat/public/admin/couleur/ajouter/">Ajouter une couleur</a>
+		<a class="btn btn-primary" href="http://localhost/goat/public/admin/instrument/ajouter/">Ajouter un instrument</a> 
+		{% endif %}
 </br><table>
         </br>
 		<table class="table">
@@ -33,7 +39,7 @@
 </table>
  </tr>
 	</table>
-    	<a class="btn btn-primary" href="http://localhost/goat/public/instrument/ajouter/">Ajouter</a>
+    	
 	</div>
 	
     </body>

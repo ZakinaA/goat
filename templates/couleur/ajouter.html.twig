@@ -1,5 +1,5 @@
-{# templates/coueleur/ajouter.html.twig #}
 
+{# templates/coueleur/ajouter.html.twig #}
     
 <!DOCTYPE html>
 <html>
@@ -15,13 +15,18 @@
         {% block javascripts %}{% endblock %}
 		<div class="container">   
     	<div class="d-flex align-items-center">
-		<h5>AJOUTER UNE COULEUR</h5>
+		<h5>AJOUT D'UNE COULEUR</h5>
 		<table>
         </br>
+        <table class="table">
        
-{{ form_start(form) }}{{ form_widget(form) }}
-{{ form_end(form) }}
+{{ form_start(form) }}
+{{ form_widget(form) }}
 
+{{ form_end(form) }}
+ <tr>      
+            </tr>
+        </table>
 	</div>
     </body>
 </html>

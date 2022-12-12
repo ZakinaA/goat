@@ -10,21 +10,21 @@ ResponsableLister:
 consulterResponsable:
     path: /responsable/consulter/{id}
     controller: App\Controller\ResponsableController::consulterResponsable
-# ELEVE  
+# ELEVE
 eleveLister:
-    path: /eleve/lister/
+    path: /professeur/eleve/lister/
     controller: App\Controller\EleveController::listerEleve
 eleveConsulter:
-    path: /eleve/consulter/{id}
+    path: /professeur/eleve/consulter/{id}
     controller: App\Controller\EleveController::consulterEleve
 eleveAjouter:
-    path: /eleve/ajouter/
+    path: /admin/eleve/ajouter/
     controller: App\Controller\EleveController::ajouter
 etudiantModifier:
     path: /eleve/modifier/{id}
     controller: App\Controller\EleveController::modifierEleve
 etudiantSupprimer:
-    path: eleve/supprimer/{id}
+    path: /eleve/supprimer/{id}
     controller: App\Controller\EleveController::supprimerEleve
 # COUR
 coursLister:
@@ -37,10 +37,10 @@ coursAjouter:
     path: /cours/ajouter/
     controller: App\Controller\CoursController::ajouter
 cousrModifier:
-    path: /cours/modifier/{id}
+    path: /admin/cours/modifier/{id}
     controller: App\Controller\CoursController::modifierCours
 coursSupprimer:
-    path: /cours/supprimer/{id}
+    path: /admin/cours/supprimer/{id}
     controller: App\Controller\CoursController::supprimerCours
 #INSTRUMENT
 instrumentConsulter:
@@ -50,7 +50,7 @@ instrumentConsulterType:
     path: /instrument/consulterType/{id}
     controller: App\Controller\InstrumentController::consulterTypeInstrument
 instrumentAjouter:
-    path: /instrument/ajouter
+    path: /admin/instrument/ajouter
     controller: App\Controller\InstrumentController::ajouter
 instrumentLister:
     path: /instrument/lister
@@ -59,10 +59,10 @@ instrumentListerType:
     path: /instrument/listerType
     controller: App\Controller\InstrumentController::listerType
 instrumentModifier:
-    path: /instrument/modifier/{id}
+    path: /admin/instrument/modifier/{id}
     controller: App\Controller\InstrumentController::modifierInstrument
 instrumentSupprimer:
-    path: instrument/supprimer/{id}
+    path: /admin/instrument/supprimer/{id}
     controller: App\Controller\InstrumentController::supprimerInstrument
 #PROFFESSEUR
 professeurConsulter:
@@ -75,10 +75,10 @@ professeurAjouter:
     path: /professeur/ajouter
     controller: App\Controller\ProfesseurController::ajouterProfesseur
 professeurModifier:
-    path: /professeur/modifier/{id}
+    path: /admin/professeur/modifier/{id}
     controller: App\Controller\ProfesseurController::modifierProfesseur
 professeurSupprimer:
-    path: professeur/supprimer/{id}
+    path: /admin/professeur/supprimer/{id}
     controller: App\Controller\ProfesseurController::supprimerProfesseur
 #ACCESSOIRE
 accessoireAjouter:
@@ -89,21 +89,21 @@ accessoireConsulter:
     controller: App\Controller\AccessoireController::consulterAccessoire
 #MARQUE
 marqueAjouter:
-    path: /marque/ajouter
+    path: /admin/marque/ajouter
     controller: App\Controller\MarqueController::ajouter
 marqueConsulter:
     path: /accessoire/consulter/{id}
     controller: App\Controller\MarqueController::consulterMarque
 #COULEUR
 couleurAjouter:
-    path: /couleur/ajouter
+    path: /admin/couleur/ajouter
     controller: App\Controller\CouleurController::ajouter
 couleurConsulter:
     path: /couleur/consulter/{id}
     controller: App\Controller\CouleurController::consulterCouleur
 #TYPEINSTRUMENT
 typeInstrumentAjouter:
-    path: /type_instrument/ajouter
+    path: /admin/type_instrument/ajouter
     controller: App\Controller\TypeInstrumentController::ajouter
 typeInstrumentConsulter:
     path: /type_instrument/consulter/{id}

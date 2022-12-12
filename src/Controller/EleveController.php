@@ -18,7 +18,7 @@ class EleveController extends AbstractController
     #[Route('/eleve', name: 'app_eleve')]
     public function index(): Response
     {
-        return $this->render('eleve/index.html.twig', [
+        return $this->render('/eleve/index.html.twig', [
             'controller_name' => 'EleveController',
         ]);
     }
@@ -27,21 +27,22 @@ class EleveController extends AbstractController
 
         $eleves = $repository->findAll();
 
-        return $this->render('eleve/lister.html.twig', [
+        return $this->render('/eleve/lister.html.twig', [
             'pEleves' => $eleves,]);	
     }
-    public function consulterEleve(ManagerRegistry $doctrine,$id){
-		
-        $eleve = $doctrine->getRepository(Eleve::class)->find($id);
+     public function consulterEleve(ManagerRegistry $doctrine,$id){
+        
+        $user = $doctrine->getRepository(User::class)->find($id);
     
-        if (!$eleve) {
+        if (!$user) {
             throw $this->createNotFoundException(
             'Aucun eleve trouvé avec le numéro '.$id
             );
         }
-    
+        $eleve = $doctrine->getRepository(Eleve::class)->find($id);
         //return new Response('eleve : '.$eleve->getNom());
         return $this->render('eleve/consulter.html.twig', [
+            'user' => $user,
             'eleve' => $eleve,]);
     }
 
@@ -63,7 +64,7 @@ class EleveController extends AbstractController
 	}
 	else
         {
-            return $this->render('eleve/ajouter.html.twig', array('form' => $form->createView(),));
+            return $this->render('/eleve/ajouter.html.twig', array('form' => $form->createView(),));
 	}
 }
     public function modifierEleve(ManagerRegistry $doctrine, $id, Request $request){

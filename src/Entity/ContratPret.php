@@ -34,11 +34,8 @@ class ContratPret
     #[ORM\ManyToOne(inversedBy: 'contratPrets')]
     private ?instrument $instrument = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contratPrets')]
-    private ?eleve $eleve = null;
-
-    #[ORM\OneToMany(mappedBy: 'ContratPret', targetEntity: Eleve::class)]
-    private Collection $eleves;
+    #[ORM\ManyToOne(inversedBy: 'Contrats')]
+    private ?Eleve $eleve = null;
 
     public function __construct()
     {
@@ -122,44 +119,14 @@ class ContratPret
         return $this;
     }
 
-    public function getEleve(): ?eleve
+    public function getEleve(): ?Eleve
     {
         return $this->eleve;
     }
 
-    public function setEleve(?eleve $eleve): self
+    public function setEleve(?Eleve $eleve): self
     {
         $this->eleve = $eleve;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Eleve>
-     */
-    public function getEleves(): Collection
-    {
-        return $this->eleves;
-    }
-
-    public function addElefe(Eleve $elefe): self
-    {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves->add($elefe);
-            $elefe->setContratPret($this);
-        }
-
-        return $this;
-    }
-
-    public function removeElefe(Eleve $elefe): self
-    {
-        if ($this->eleves->removeElement($elefe)) {
-            // set the owning side to null (unless already changed)
-            if ($elefe->getContratPret() === $this) {
-                $elefe->setContratPret(null);
-            }
-        }
 
         return $this;
     }
