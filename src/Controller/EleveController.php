@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Eleve;
+use App\Entity\User;
 use App\Form\EleveType;
 use App\Form\EleveModifierType;
 use App\Form\EleveSupprimerType;
@@ -22,7 +23,7 @@ class EleveController extends AbstractController
         ]);
     }
     public function listerEleve(ManagerRegistry $doctrine){
-        $repository = $doctrine->getRepository(Eleve::class);
+        $repository = $doctrine->getRepository(User::class);
 
         $eleves = $repository->findAll();
 
