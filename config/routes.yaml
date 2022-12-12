@@ -26,7 +26,7 @@ etudiantModifier:
 etudiantSupprimer:
     path: /eleve/supprimer/{id}
     controller: App\Controller\EleveController::supprimerEleve
-# COUR
+# COURS
 coursLister:
     path: /cours/lister/
     controller: App\Controller\CoursController::listerCours
@@ -34,7 +34,7 @@ coursConsulter:
     path: /cours/consulter/{id}
     controller: App\Controller\CoursController::consulterCours
 coursAjouter:
-    path: /cours/ajouter/
+    path: /admin/cours/ajouter/
     controller: App\Controller\CoursController::ajouter
 cousrModifier:
     path: /admin/cours/modifier/{id}
@@ -72,7 +72,7 @@ professeurLister:
     path: /professeur/lister
     controller: App\Controller\ProfesseurController::listerProfesseur
 professeurAjouter:
-    path: /professeur/ajouter
+    path: /admin/professeur/ajouter
     controller: App\Controller\ProfesseurController::ajouterProfesseur
 professeurModifier:
     path: /admin/professeur/modifier/{id}
