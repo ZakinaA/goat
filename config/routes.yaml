@@ -10,12 +10,12 @@ ResponsableLister:
 consulterResponsable:
     path: /responsable/consulter/{id}
     controller: App\Controller\ResponsableController::consulterResponsable
-# ELEVE  
+# ELEVE
 eleveLister:
-    path: /admin/eleve/lister/
+    path: /professeur/eleve/lister/
     controller: App\Controller\EleveController::listerEleve
 eleveConsulter:
-    path: /admin/eleve/consulter/{id}
+    path: /professeur/eleve/consulter/{id}
     controller: App\Controller\EleveController::consulterEleve
 eleveAjouter:
     path: /admin/eleve/ajouter/
@@ -118,7 +118,6 @@ typeInstrumentConsulterType:
 UserConsulter:
     path: /user/information/
     controller: App\Controller\UserController::index
-
 app_login:
     path: /login
     controller: App\Controller\LoginController::index
@@ -128,6 +127,13 @@ app_register:
 app_logout:
     path: /logout
     methods: GET
+#CONTRATPRET
+contratPretAjouter:
+    path: /contrat_pret/ajouter/{id}
+    controller: App\Controller\ContratPretController::ajouter
+contratPretConsulter:
+    path: /contratPret/consulter/{id}
+    controller: App\Controller\ContratPretController::consulterContratPret
 
 #INTERVENTION
 

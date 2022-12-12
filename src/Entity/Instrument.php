@@ -43,15 +43,17 @@ class Instrument
     #[ORM\ManyToMany(targetEntity: couleur::class, inversedBy: 'instruments')]
     private Collection $couleur;
 
-    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: Intervention::class)]
-    private Collection $intervention;
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: contratPret::class)]
+    private Collection $contrat_pret;
 
+    #[ORM\ManyToOne(inversedBy: 'instrumentsType')]
+    private ?typeInstrument $typeInstrument = null;
 
     public function __construct()
     {
         $this->accessoire = new ArrayCollection();
         $this->couleur = new ArrayCollection();
-        $this->intervention = new ArrayCollection();
+        $this->contrat_pret = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -197,44 +199,44 @@ class Instrument
         return $this;
     }
 
-    public function getTypeInstrument(): ?TypeInstrument
+    /**
+     * @return Collection<int, contratPret>
+     */
+    public function getContratPret(): Collection
+    {
+        return $this->contrat_pret;
+    }
+
+    public function addContratPret(contratPret $contratPret): self
+    {
+        if (!$this->contrat_pret->contains($contratPret)) {
+            $this->contrat_pret->add($contratPret);
+            $contratPret->setInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratPret(contratPret $contratPret): self
+    {
+        if ($this->contrat_pret->removeElement($contratPret)) {
+            // set the owning side to null (unless already changed)
+            if ($contratPret->getInstrument() === $this) {
+                $contratPret->setInstrument(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTypeInstrument(): ?typeInstrument
     {
         return $this->typeInstrument;
     }
 
-    public function setTypeInstrument(?TypeInstrument $typeInstrument): self
+    public function setTypeInstrument(?typeInstrument $typeInstrument): self
     {
         $this->typeInstrument = $typeInstrument;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Intervention>
-     */
-    public function getIntervention(): Collection
-    {
-        return $this->intervention;
-    }
-
-    public function addIntervention(Intervention $intervention): self
-    {
-        if (!$this->intervention->contains($intervention)) {
-            $this->intervention->add($intervention);
-            $intervention->setInstrument($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIntervention(Intervention $intervention): self
-    {
-        if ($this->intervention->removeElement($intervention)) {
-            // set the owning side to null (unless already changed)
-            if ($intervention->getInstrument() === $this) {
-                $intervention->setInstrument(null);
-            }
-        }
 
         return $this;
     }

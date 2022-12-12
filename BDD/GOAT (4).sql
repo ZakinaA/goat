@@ -143,7 +143,7 @@ CREATE TABLE `eleve` (
 -- Déchargement des données de la table `eleve`
 --
 
-INSERT INTO `eleve` (`id`, `cours_id`, `responsable_id`, `contrat_pret_id`, `user_id`) VALUES
+INSERT INTO `eleve` (`id`, `responsable_id` `user_id`) VALUES
 (2, 2, NULL, NULL, 2);
 
 -- --------------------------------------------------------
@@ -366,13 +366,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `professeur_id`, `email`, `roles`, `password`, `is_verified`, `prenom`, `nom`, `date_naiss`, `num_rue`, `rue`, `ville`, `code_postal`, `tel`, `chemin_img`) VALUES
-(2, NULL, 'guillaume@gmail.com', '[\"ROLE_USER\"]', '$2y$13$jjMInzXqLLIWTbRqfK/ZYOfPf220Tz3K44Ral75IOAa6QMcpXRJte', 1, 'Guillaume', 'Martin', NULL, 9, 'Capuche', 'Caen', '14000', '0654554457', 'valentin'),
-(3, NULL, 'herman@gmail.com', '[\"ROLE_USER\"]', '$2y$13$Urgn2TmpI8M2zaCXq3L4Ce6w4awi2YoqCjHW5Jg4W5ZywMTsSj4ru', 1, 'Louis', 'Herman', NULL, 9, 'folche', 'Caen', '14000', '065784445', NULL),
-(4, NULL, 'baloche@gmail.com', '[\"ROLE_USER\"]', '$2y$13$pM5DbZClO9hNrjoDrexOMOygJDdNILD3Lb/u4slPM7483oDz.lE9S', 1, 'Martin', 'baloche', NULL, 6, 'Capuche', 'Caen', '14000', '0654578450', NULL),
+(2, NULL, 'guillaume@gmail.com', '[\"ROLE_USER\"]', '$2y$13$jjMInzXqLLIWTbRqfK/ZYOfPf220Tz3K44Ral75IOAa6QMcpXRJte', 1, 'Guillaume', 'Martin',  '2022-12-09', 9, 'Capuche', 'Caen', '14000', '0654554457', '\\goat\\public\\img\\valentin.png'),
+(3, NULL, 'herman@gmail.com', '[\"ROLE_USER\"]', '$2y$13$Urgn2TmpI8M2zaCXq3L4Ce6w4awi2YoqCjHW5Jg4W5ZywMTsSj4ru', 1, 'Louis', 'Herman',  '2022-12-09', 9, 'folche', 'Caen', '14000', '065784445', '\\goat\\public\\img\\valentin.png'),
+(4, NULL, 'baloche@gmail.com', '[\"ROLE_USER\"]', '$2y$13$pM5DbZClO9hNrjoDrexOMOygJDdNILD3Lb/u4slPM7483oDz.lE9S', 1, 'Martin', 'baloche',  '2022-12-09', 6, 'Capuche', 'Caen', '14000', '0654578450', '\\goat\\public\\img\\valentin.png'),
 (5, NULL, 'valentinlemarie50@gmail.com', '[\"ROLE_USER\"]', '$2y$13$EAu788uV0gfRPObOBqFh9unKWnplSvoKLn241PkrQiGWoq5VXK7x2', 1, 'Valentin', 'LEMARIE', '2001-09-28', 2, 'la vraie rue', 'la vraie ville', '50130', '0769975566 oui cest mon vrai num', '\\goat\\public\\img\\valentin.png'),
-(7, NULL, 'ardelaide@gmail.com', '[\"ROLE_USER\"]', '$2y$13$9xWgbdeVN8v6mMh4M5NX3uWBRpxPWLNDglCEEKf4FnjpdaszVR5hy', 1, 'Ardelaide', 'DJAE', '2003-11-15', 4, 'rue Pepsi', 'Caen', '14000', '06526458952', NULL),
-(8, NULL, 'arthur@gmail.com', '[\"ROLE_USER\"]', '$2y$13$xeNpcnqGUbQbJKUkvKrt.uAxGhWjY7HLdywQSyR0JVzOJ5k5XErpa', 1, 'Arthur', 'Farietti', '2022-12-09', 4, 'Capuche', 'Caen', '14000', '0654554457', NULL),
-(9, NULL, 'admin@gmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$DA6fENBzoqMMpdffHr.Ec.V0c9NzfzOVnAN9UJ.isq2Z693Yb7Tz.', 1, 'ADMIN', 'ADMIN', '2022-12-01', 0, 'ADMIN', 'ADMIN', '00000', '0000000000', NULL);
+(7, NULL, 'ardelaide@gmail.com', '[\"ROLE_USER\"]', '$2y$13$9xWgbdeVN8v6mMh4M5NX3uWBRpxPWLNDglCEEKf4FnjpdaszVR5hy', 1, 'Ardelaide', 'DJAE', '2003-11-15', 4, 'rue Pepsi', 'Caen', '14000', '06526458952', '\\goat\\public\\img\\valentin.png'),
+(8, NULL, 'arthur@gmail.com', '[\"ROLE_USER\"]', '$2y$13$xeNpcnqGUbQbJKUkvKrt.uAxGhWjY7HLdywQSyR0JVzOJ5k5XErpa', 1, 'Arthur', 'Farietti', '2022-12-09', 4, 'Capuche', 'Caen', '14000', '0654554457', '\\goat\\public\\img\\valentin.png'),
+(9, NULL, 'admin@gmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$DA6fENBzoqMMpdffHr.Ec.V0c9NzfzOVnAN9UJ.isq2Z693Yb7Tz.', 1, 'ADMIN', 'ADMIN', '2022-12-01', 0, 'ADMIN', 'ADMIN', '00000', '0000000000', '\\goat\\public\\img\\valentin.png');
 
 --
 -- Index pour les tables déchargées

@@ -37,8 +37,8 @@
 	
  	</table>
     {% if is_granted('ROLE_ADMIN') %}
-   <a class="btn btn-primary" href="http://localhost/goat/public/professeur/modifier/{{professeur.id}}">Modifier</a>
-   <a class="btn btn-primary" href="http://localhost/goat/public/professeur/supprimer/{{professeur.id}}">Supprimer</a>
+   <a class="btn btn-primary" href="http://localhost/goat/public/admin/professeur/modifier/{{professeur.id}}">Modifier</a>
+   <a class="btn btn-primary" href="http://localhost/goat/public/admin/professeur/supprimer/{{professeur.id}}">Supprimer</a>
 	{% endif %}
    <input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
  	</div>

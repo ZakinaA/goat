@@ -21,10 +21,14 @@ class TypeInstrument
     #[ORM\OneToMany(mappedBy: 'typeInstrument', targetEntity: Instrument::class)]
     private Collection $instruments;
 
+    #[ORM\OneToMany(mappedBy: 'typeInstrument', targetEntity: Instrument::class)]
+    private Collection $instrumentsType;
+
 
     public function __construct()
     {
         $this->instruments = new ArrayCollection();
+        $this->instrumentsType = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,6 +72,36 @@ class TypeInstrument
             // set the owning side to null (unless already changed)
             if ($instrument->getTypeInstrument() === $this) {
                 $instrument->setTypeInstrument(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Instrument>
+     */
+    public function getInstrumentsType(): Collection
+    {
+        return $this->instrumentsType;
+    }
+
+    public function addInstrumentsType(Instrument $instrumentsType): self
+    {
+        if (!$this->instrumentsType->contains($instrumentsType)) {
+            $this->instrumentsType->add($instrumentsType);
+            $instrumentsType->setTypeInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInstrumentsType(Instrument $instrumentsType): self
+    {
+        if ($this->instrumentsType->removeElement($instrumentsType)) {
+            // set the owning side to null (unless already changed)
+            if ($instrumentsType->getTypeInstrument() === $this) {
+                $instrumentsType->setTypeInstrument(null);
             }
         }
 

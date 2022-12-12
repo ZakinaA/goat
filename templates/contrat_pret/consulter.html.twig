@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>  
+    {% include 'header.html' %}
+    {% include 'footer.html' %}
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+		<div class="container">   
+    <div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION D'UN PRET <strong>{{contratPret.id}}</strong></h5>
+		<table>
+            </br>
+              <table class="table">
+    	          <tr>
+
+		            <td>Id</td>
+                    <td>Date de debut</td>
+                    <td>Date de fin</td>
+                    <td>Attestation d'assurance</td>
+                    <td>Etat détail de debut</td>
+                    <td>Etat détail de fin</td>
+                    <td>Instrument</td>
+                    <td>Nom</td>
+		            </tr>
+		            <tr>
+                  <td>{{contratPret.id}}</td>
+                  <td>{{contratPret.dateDebut|date("d/n/Y")}}</td>
+                  <td>{{contratPret.dateFin|date("d/n/Y")}}</td>
+                  <td>{{contratPret.attestationAssurance}}</td>
+                  <td>{{contratPret.etatDetailleDebut}}</td>
+                  <td>{{contratPret.etatDetailleFin}}</td>
+                  <td><a href="{{ path('instrumentConsulter', { 'id': contratPret.instrument.id }) }}">{{contratPret.instrument.nom}}</a></td>
+                  <td><a href="{{ path('eleveConsulter', { 'id': contratPret.eleve.id }) }}">{{contratPret.eleve.user.nom}}</a></td>
+                <tr>      
+              </tr>
+          </table>
+	      </div>
+ 
+      </table>
+
+    </body>
+</html>
