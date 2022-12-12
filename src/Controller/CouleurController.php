@@ -5,9 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Couleur;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Couleur;
 use App\Form\CouleurType;
 
 class CouleurController extends AbstractController
@@ -31,8 +31,7 @@ class CouleurController extends AbstractController
         }
     
         //return new Response('Couleur : '.$Couleur->getNom());
-        return $this->render('couleur/consulter.html.twig', [
-            'couleur' => $couleur,]);
+        return $this->render('couleur/consulter.html.twig', ['couleur' => $couleur,]);
     }
 
     public function lister(ManagerRegistry $doctrine){

@@ -46,12 +46,14 @@ class Instrument
     #[ORM\ManyToOne(inversedBy: 'instruments')]
     private ?TypeInstrument $typeInstrument = null;
 
- 
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: contratPret::class)]
+    private Collection $contrat_pret;
 
     public function __construct()
     {
         $this->accessoire = new ArrayCollection();
         $this->couleur = new ArrayCollection();
+        $this->contrat_pret = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -205,6 +207,36 @@ class Instrument
     public function setTypeInstrument(?TypeInstrument $typeInstrument): self
     {
         $this->typeInstrument = $typeInstrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, contratPret>
+     */
+    public function getContratPret(): Collection
+    {
+        return $this->contrat_pret;
+    }
+
+    public function addContratPret(contratPret $contratPret): self
+    {
+        if (!$this->contrat_pret->contains($contratPret)) {
+            $this->contrat_pret->add($contratPret);
+            $contratPret->setInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratPret(contratPret $contratPret): self
+    {
+        if ($this->contrat_pret->removeElement($contratPret)) {
+            // set the owning side to null (unless already changed)
+            if ($contratPret->getInstrument() === $this) {
+                $contratPret->setInstrument(null);
+            }
+        }
 
         return $this;
     }

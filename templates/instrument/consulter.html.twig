@@ -28,6 +28,9 @@
     <td>Image</td>
     <td>Marque </td>
     <td>Couleur </td>
+    <td>Accessoire </td>
+    <td>Contrat pret</td>
+    
 		</tr>
 		<tr>
     <td>{{instrument.id}}</td>
@@ -39,12 +42,21 @@
     <td>{{instrument.cheminimage}}</td>
     <td>{{instrument.marque.libelle}}</td>
     <td>{% for instrument in instrument.getCouleur() %} {{instrument.nom}}{% endfor %}</td>
+    {% for e in instrument.accessoire %}
+    <td>{{e.libelle}}</a></td>
+    {% endfor %}
+    {% for e in instrument.contratPret %}
+    <td><a href="{{ path('contratPretConsulter', { 'id': e.id }) }}">{{e.id}}</a></td>
+    {% endfor %}
+    
                 <tr>      
             </tr>
         </table>
          {% if is_granted('ROLE_ADMIN') %}
        <a class="btn btn-primary" href="http://localhost/goat/public/instrument/modifier/{{instrument.id}}">Modifier</a>
         <a class="btn btn-primary" href="http://localhost/goat/public/instrument/supprimer/{{instrument.id}}">Supprimer</a>
+        <a class="btn btn-primary" href="http://localhost/goat/public/contrat_pret/ajouter/{{instrument.id}}">Ajouter un contrat de pret</a>
+	</div>
 	 {% endif %}
     </div>
     </body>

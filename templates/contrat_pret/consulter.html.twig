@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>  
+    {% include 'header.html' %}
+    {% include 'footer.html' %}
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+		<div class="container">   
+    <div class="d-flex align-items-center">
+		<h5>PAGE DE CONSULTATION D'UN PRET <strong>{{contratPret.id}}</strong></h5>
+		<table>
+            </br>
+              <table class="table">
+    	          <tr>
+
+		            <td>Id</td>
+                    <td>Date de debut</td>
+                    <td>Date de fin</td>
+                    <td>Attestation d'assurance</td>
+                    <td>Etat détail de debut</td>
+                    <td>Etat détail de fin</td>
+                    <td>Instrument</td>
+                    <td>Nom</td>
+                    <td>Prenom</td>
+
+		            </tr>
+		            <tr>
+                  <td>{{contratPret.id}}</td>
+                  <td>{{contratPret.dateDebut|date("d/n/Y")}}</td>
+                  <td>{{contratPret.dateFin|date("d/n/Y")}}</td>
+                  <td>{{contratPret.attestationAssurance}}</td>
+                  <td>{{contratPret.etatDetailleDebut}}</td>
+                  <td>{{contratPret.etatDetailleFin}}</td>
+                  {% for e in contratPret.instrument %}
+                  <td><a href="{{ path('instrumentConsulter', { 'id': e.id }) }}">{{e.nom}}</a></td>
+                  {% endfor %}
+                  {% for e in contratPret.eleve %}
+                  <td><a href="{{ path('contratPretConsulter', { 'id': e.id }) }}">{{e.nom}}</a></td>
+                  <td><a href="{{ path('contratPretConsulter', { 'id': e.id }) }}">{{e.prenom}}</a></td>
+                  {% endfor %}
+                <tr>      
+              </tr>
+          </table>
+	      </div>
+ 
+      </table>
+
+    </body>
+</html>
