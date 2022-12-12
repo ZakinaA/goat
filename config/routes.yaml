@@ -10,12 +10,12 @@ ResponsableLister:
 consulterResponsable:
     path: /responsable/consulter/{id}
     controller: App\Controller\ResponsableController::consulterResponsable
-# ELEVE  
+# ELEVE
 eleveLister:
-    path: /admin/eleve/lister/
+    path: /professeur/eleve/lister/
     controller: App\Controller\EleveController::listerEleve
 eleveConsulter:
-    path: /admin/eleve/consulter/{id}
+    path: /professeur/eleve/consulter/{id}
     controller: App\Controller\EleveController::consulterEleve
 eleveAjouter:
     path: /admin/eleve/ajouter/
