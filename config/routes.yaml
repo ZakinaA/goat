@@ -1,40 +1,40 @@
 
 # ACCUEIL
 route_accueil:
-    path: /utilisateur/accueil
+    path: /accueil
     controller: App\Controller\GoatController::index
 #RESPONSABLE
 ResponsableLister:
-    path: /admin/responsable/lister/
+    path: /responsable/lister/
     controller: App\Controller\ResponsableController::listerResponsable
 consulterResponsable:
-    path: /admin/responsable/consulter/{id}
+    path: /responsable/consulter/{id}
     controller: App\Controller\ResponsableController::consulterResponsable
-# ELEVE  
+# ELEVE
 eleveLister:
-    path: /admin/eleve/lister/
+    path: /professeur/eleve/lister/
     controller: App\Controller\EleveController::listerEleve
 eleveConsulter:
-    path: /admin/eleve/consulter/{id}
+    path: /professeur/eleve/consulter/{id}
     controller: App\Controller\EleveController::consulterEleve
 eleveAjouter:
     path: /admin/eleve/ajouter/
     controller: App\Controller\EleveController::ajouter
 etudiantModifier:
-    path: /admin/eleve/modifier/{id}
+    path: /eleve/modifier/{id}
     controller: App\Controller\EleveController::modifierEleve
 etudiantSupprimer:
-    path: /admin/eleve/supprimer/{id}
+    path: /eleve/supprimer/{id}
     controller: App\Controller\EleveController::supprimerEleve
 # COUR
 coursLister:
-    path: /utilisateur/cours/lister/
+    path: /cours/lister/
     controller: App\Controller\CoursController::listerCours
 coursConsulter:
-    path: /utilisateur/cours/consulter/{id}
+    path: /cours/consulter/{id}
     controller: App\Controller\CoursController::consulterCours
 coursAjouter:
-    path: /admin/cours/ajouter/
+    path: /cours/ajouter/
     controller: App\Controller\CoursController::ajouter
 cousrModifier:
     path: /admin/cours/modifier/{id}
@@ -44,19 +44,19 @@ coursSupprimer:
     controller: App\Controller\CoursController::supprimerCours
 #INSTRUMENT
 instrumentConsulter:
-    path: /utilisateur/instrument/consulter/{id}
+    path: /instrument/consulter/{id}
     controller: App\Controller\InstrumentController::consulterInstrument
 instrumentConsulterType:
-    path: /utilisateur/instrument/consulterType/{id}
+    path: /instrument/consulterType/{id}
     controller: App\Controller\InstrumentController::consulterTypeInstrument
 instrumentAjouter:
     path: /admin/instrument/ajouter
     controller: App\Controller\InstrumentController::ajouter
 instrumentLister:
-    path: /utilisateur/instrument/lister
+    path: /instrument/lister
     controller: App\Controller\InstrumentController::lister
 instrumentListerType:
-    path: /utilisateur/instrument/listerType
+    path: /instrument/listerType
     controller: App\Controller\InstrumentController::listerType
 instrumentModifier:
     path: /admin/instrument/modifier/{id}
@@ -66,13 +66,13 @@ instrumentSupprimer:
     controller: App\Controller\InstrumentController::supprimerInstrument
 #PROFFESSEUR
 professeurConsulter:
-    path: /utilisateur/professeur/consulter/{id}
+    path: /professeur/consulter/{id}
     controller: App\Controller\ProfesseurController::consulterProfesseur
 professeurLister:
-    path: /utilisateur/professeur/lister
+    path: /professeur/lister
     controller: App\Controller\ProfesseurController::listerProfesseur
 professeurAjouter:
-    path: /admin/professeur/ajouter
+    path: /professeur/ajouter
     controller: App\Controller\ProfesseurController::ajouterProfesseur
 professeurModifier:
     path: /admin/professeur/modifier/{id}
@@ -82,51 +82,51 @@ professeurSupprimer:
     controller: App\Controller\ProfesseurController::supprimerProfesseur
 #ACCESSOIRE
 accessoireAjouter:
-    path: /admin/accessoire/ajouter
+    path: /accessoire/ajouter
     controller: App\Controller\AccessoireController::ajouter
 accessoireConsulter:
-    path: /admin/accessoire/consulter/{id}
+    path: /accessoire/consulter/{id}
     controller: App\Controller\AccessoireController::consulterAccessoire
 #MARQUE
 marqueAjouter:
     path: /admin/marque/ajouter
     controller: App\Controller\MarqueController::ajouter
 marqueConsulter:
-    path: /admin/accessoire/consulter/{id}
+    path: /accessoire/consulter/{id}
     controller: App\Controller\MarqueController::consulterMarque
 #COULEUR
 couleurAjouter:
     path: /admin/couleur/ajouter
     controller: App\Controller\CouleurController::ajouter
 couleurConsulter:
-    path: /admin/couleur/consulter/{id}
+    path: /couleur/consulter/{id}
     controller: App\Controller\CouleurController::consulterCouleur
 #TYPEINSTRUMENT
 typeInstrumentAjouter:
-    path: /type_instrument/ajouter
+    path: /admin/type_instrument/ajouter
     controller: App\Controller\TypeInstrumentController::ajouter
 typeInstrumentConsulter:
-    path: /utilisateur/type_instrument/consulter/{id}
+    path: /type_instrument/consulter/{id}
     controller: App\Controller\TypeInstrumentController::consulterTypeInstrument
 typeInstrumentLister:
-    path: /utilisateur/type_instrument/lister
+    path: /type_instrument/lister
     controller: App\Controller\TypeInstrumentController::lister
 typeInstrumentConsulterType:
-    path: /utilisateur/type_instrument/consulterType/{id}
+    path: /type_instrument/consulterType/{id}
     controller: App\Controller\TypeInstrumentController::consulterTypeInstrument
 #USER
 UserConsulter:
-    path: /utilisateur/user/information/
+    path: /user/information/
     controller: App\Controller\UserController::index
-#LOGIN
+
 app_login:
-    path: /utilisateur/login
+    path: /login
     controller: App\Controller\LoginController::index
 app_register:
-    path: /utilisateur/register
+    path: /register
     controller: App\Controller\RegistrationController::register
 app_logout:
-    path: /utilisateur/logout
+    path: /logout
     methods: GET
 
 

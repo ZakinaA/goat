@@ -23,6 +23,7 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         $user->setRoles(array('ROLE_USER')); // Role USER par défaut
+        $user->setCheminImg('/goat/public/img/Default.png'); // Role USER par défaut
         $user->setIsVerified('1'); // On le passe en vérifier directement pour les tests
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
