@@ -43,17 +43,21 @@ class Instrument
     #[ORM\ManyToMany(targetEntity: couleur::class, inversedBy: 'instruments')]
     private Collection $couleur;
 
-    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: contratPret::class)]
-    private Collection $contrat_pret;
+   // #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: contratPret::class)]
+   // private Collection $contrat_pret;
 
     #[ORM\ManyToOne(inversedBy: 'instrumentsType')]
     private ?typeInstrument $typeInstrument = null;
+
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: ContratPret::class)]
+    private Collection $contratPrets;
 
     public function __construct()
     {
         $this->accessoire = new ArrayCollection();
         $this->couleur = new ArrayCollection();
-        $this->contrat_pret = new ArrayCollection();
+       // $this->contrat_pret = new ArrayCollection();
+       $this->contratPrets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -199,9 +203,9 @@ class Instrument
         return $this;
     }
 
-    /**
-     * @return Collection<int, contratPret>
-     */
+    /*
+      @return Collection<int, contratPret>
+    
     public function getContratPret(): Collection
     {
         return $this->contrat_pret;
@@ -227,7 +231,7 @@ class Instrument
         }
 
         return $this;
-    }
+    } */
 
     public function getTypeInstrument(): ?typeInstrument
     {
@@ -237,6 +241,36 @@ class Instrument
     public function setTypeInstrument(?typeInstrument $typeInstrument): self
     {
         $this->typeInstrument = $typeInstrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContratPret>
+     */
+    public function getContratPrets(): Collection
+    {
+        return $this->contratPrets;
+    }
+
+    public function addContratPret(ContratPret $contratPret): self
+    {
+        if (!$this->contratPrets->contains($contratPret)) {
+            $this->contratPrets->add($contratPret);
+            $contratPret->setInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratPret(ContratPret $contratPret): self
+    {
+        if ($this->contratPrets->removeElement($contratPret)) {
+            // set the owning side to null (unless already changed)
+            if ($contratPret->getInstrument() === $this) {
+                $contratPret->setInstrument(null);
+            }
+        }
 
         return $this;
     }
