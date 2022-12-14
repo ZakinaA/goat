@@ -19,21 +19,17 @@ class Eleve
     #[ORM\ManyToOne(inversedBy: 'eleves')]
     private ?Responsable $responsable = null;
 
-    #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: User::class)]
-    private Collection $users;
-
-    #[ORM\ManyToOne(inversedBy: 'elevesUser')]
-    private ?user $user = null;
-
     #[ORM\ManyToMany(targetEntity: Cours::class, inversedBy: 'eleves')]
     private Collection $Cours;
 
     #[ORM\OneToMany(mappedBy: 'eleve', targetEntity: ContratPret::class)]
     private Collection $Contrats;
 
+    #[ORM\OneToOne(inversedBy: 'eleve', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
+
     public function __construct()
     {
-        $this->users = new ArrayCollection();
         $this->Cours = new ArrayCollection();
         $this->Contrats = new ArrayCollection();
     }
@@ -54,49 +50,6 @@ class Eleve
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->setEleve($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getEleve() === $this) {
-                $user->setEleve(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
-
-    public function setUser(?user $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Cours>
      */
@@ -147,6 +100,18 @@ class Eleve
                 $contrat->setEleve(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

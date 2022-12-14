@@ -26,6 +26,9 @@ etudiantModifier:
 etudiantSupprimer:
     path: /eleve/supprimer/{id}
     controller: App\Controller\EleveController::supprimerEleve
+etudiantInscrire:
+    path: /cours/inscrire/{id}
+    controller: App\Controller\EleveController::inscrireEleve
 # COURS
 coursLister:
     path: /cours/lister/

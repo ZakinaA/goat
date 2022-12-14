@@ -8,10 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Eleve;
+use App\Entity\Cours;
 use App\Entity\User;
 use App\Form\EleveType;
 use App\Form\EleveModifierType;
 use App\Form\EleveSupprimerType;
+use Symfony\Component\Security\Core\Security;
 
 class EleveController extends AbstractController
 {
@@ -121,4 +123,34 @@ class EleveController extends AbstractController
                 }
             }
         }
+
+
+
+
+
+        public function inscrireEleve(ManagerRegistry $doctrine, $id, Request $request, Security $security){
+ 
+        $this->security = $security;
+        $repository = $doctrine->getRepository(Cours::class);
+        $route = $request->headers->get('referer');
+        if ($user = $this->security->getUser()){
+        $userId = $user->getId();
+        $eleve = $user->getEleve();
+        $cours = $doctrine->getRepository(Cours::class)->find($id);
+        $coursId = $cours->getId();
+        if ($cours->getEleves()->contains($eleve)) {
+        $cours->removeElefe($eleve);
+        }
+        else{
+        $cours->addElefe($eleve);
+        }
+        $entityManager = $doctrine->getManager();
+        $entityManager->persist($cours);
+        $entityManager->flush();
+ 
+        return $this->redirect($route);
+            
+        }
+    return $this->redirectToRoute('accueil');
+    }
 }
