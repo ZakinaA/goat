@@ -64,8 +64,8 @@
                     <td>Etat détail de debut</td>
                     <td>Etat détail de fin</td>
 		            </tr>
-		            <tr>
-                   {% for c in app.user.contratPretsUser %}
+		            
+                   {% for c in app.user.contratPretsUser %}<tr>
         <td><a href="{{ path('instrumentConsulter', { 'id': c.instrument.id }) }}">{{c.instrument.nom}}</a></td>
                     <td>{{ c.dateDebut|date("d/n/Y") }}</td> 
                     <td>{{ c.dateFin|date("d/n/Y") }}</td> 
@@ -73,6 +73,23 @@
                   <td>{{c.etatDetailleDebut}}</td>
                   <td>{{c.etatDetailleFin}}</td>        
 	                {% endfor %}               
+                <tr>
+              </tr>
+          </table>
+    {% endif %} 
+
+
+    {% if app.user.eleve.cours.count != 0 %}
+                  <h6> Liste cours :</h6>
+                  <table class="table">
+                  <tr>
+
+                    <td>Libelle</td>
+                    </tr>
+                    {% for cours in app.user.eleve.cours %}
+                    <tr>
+        <td><a href="{{ path('coursConsulter', { 'id': cours.id }) }}">{{cours.libelle}}</a></td>     
+                    {% endfor %}               
                 <tr>
               </tr>
           </table>
