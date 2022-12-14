@@ -12,14 +12,14 @@
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 		<div class="container">   
-    	<div class="d-flex align-items-center">
+        <div class="align-self-center">
 		<h5>PAGE DE CONSULTATION DE L'INSTRUMENT <strong>{{instrument.nom}}</strong></h5>
 		<table>
         </br>
         <table class="table">
 		<tr>
 
-		<td>Id</td>
+	<td>Id</td>
     <td>Nom</td>
     <td>Numéro de série</td>
     <td>Date d'achat</td>
@@ -29,7 +29,8 @@
     <td>Marque </td>
     <td>Couleur </td>
     <td>Accessoire </td>
-    <td>Contrat pret</td>
+     <td>Contrat pret</td>
+
     
 		</tr>
 		<tr>
@@ -50,13 +51,16 @@
     {% endfor %}
     
                 <tr>      
-            </tr>
+            </tr>         
         </table>
          {% if is_granted('ROLE_ADMIN') %}
        <a class="btn btn-primary" href="http://localhost/goat/public/instrument/modifier/{{instrument.id}}">Modifier</a>
         <a class="btn btn-primary" href="http://localhost/goat/public/instrument/supprimer/{{instrument.id}}">Supprimer</a>
-        <a class="btn btn-primary" href="http://localhost/goat/public/contrat_pret/ajouter/{{instrument.id}}">Ajouter un contrat de pret</a>
+        <a class="btn btn-primary" href="http://localhost/goat/public/professeur/contratPret/ajouter/">Ajouter un contrat de pret</a>
+        <a class="btn btn-primary" href="http://localhost/goat/public/accessoire/ajouter">Ajouter un accessoire</a>
+
 	</div>
+    </div>
 	 {% endif %}
     </div>
     </body>

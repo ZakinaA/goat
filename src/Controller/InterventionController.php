@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Intervention;
-use App\Entity\Instrument;
 use App\Form\InterventionType;
 use App\Form\InterventionModifierType;
 use App\Form\InterventionSupprimerType;
@@ -36,7 +35,6 @@ class InterventionController extends AbstractController
         }
         else{
     
-        //return new Response('Instrument : '.$Instrument->getNom());
         return $this->render('intervention/consulter.html.twig', [
             'pInterventions' => $interventions,]);
         } 

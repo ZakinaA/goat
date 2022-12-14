@@ -74,12 +74,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $cheminImg = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ContratPret::class)]
+    private Collection $contratPretsUser;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
         $this->professeurs = new ArrayCollection();
         $this->responsables = new ArrayCollection();
         $this->elevesUser = new ArrayCollection();
+        $this->contratPretsUser = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -390,6 +394,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCheminImg(string $cheminImg): self
     {
         $this->cheminImg = $cheminImg;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContratPret>
+     */
+    public function getContratPretsUser(): Collection
+    {
+        return $this->contratPretsUser;
+    }
+
+    public function addContratPretsUser(ContratPret $contratPretsUser): self
+    {
+        if (!$this->contratPretsUser->contains($contratPretsUser)) {
+            $this->contratPretsUser->add($contratPretsUser);
+            $contratPretsUser->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratPretsUser(ContratPret $contratPretsUser): self
+    {
+        if ($this->contratPretsUser->removeElement($contratPretsUser)) {
+            // set the owning side to null (unless already changed)
+            if ($contratPretsUser->getUser() === $this) {
+                $contratPretsUser->setUser(null);
+            }
+        }
 
         return $this;
     }

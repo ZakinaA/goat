@@ -44,32 +44,27 @@ class ContratPretController extends AbstractController
     'pcontratPrets' => $contratPrets,]);	
     }
 
-    public function ajouter(ManagerRegistry $doctrine, Request $request, int $id){
 
-        $contratPret= $doctrine->getRepository(ContratPret::class)->find($id);
-        if (!$contratPret) {
-            throw $this->createNotFoundException('Aucun contrat de pret trouvé avec le numéro '.$id);
-        }
-        else
-        {
-            $form = $this->createForm(ContratPretType::class, $contratPret);
-            $form->handleRequest($request);
+ public function ajouter(ManagerRegistry $doctrine, Request $request){
+        $contratPrets = new ContratPret();
+        $form = $this->createForm(ContratPretType::class, $contratPrets);
+        $form->handleRequest($request);
      
-                if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
      
-                    $contratPret = $form->getData();
+                $contratPrets = $form->getData();
     
     
-                    $entityManager = $doctrine->getManager();
-                    $entityManager->persist($ContratPret);
-                    $entityManager->flush();
+                $entityManager = $doctrine->getManager();
+                $entityManager->persist($contratPrets);
+                $entityManager->flush();
      
-                return $this->render('contrat_pret/consulter.html.twig', ['ContratPret' => $ContratPret,]);
+            return $this->redirectToRoute('route_accueil');
         }
         else
             {
                 return $this->render('contrat_pret/ajouter.html.twig', array('form' => $form->createView(),));
         }
     }
-}
+
 }

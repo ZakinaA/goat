@@ -38,6 +38,9 @@
     <td>{{ app.user.datenaiss|date("d/n/Y") }}</td>
     <td>{{ app.user.numrue }} {{ app.user.rue }}  {{ app.user.ville }} {{ app.user.codepostal }}</td> 
     <td>{{ app.user.email }}</td> 
+    
+
+   
     </tr>
     </table>
     </div>
@@ -45,9 +48,36 @@
     </br>
     
     {% endif %}
-   
-                
-       	<input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
+
 	</div>
+                  <table class="table">
+    	          <tr>
+
+		            <td>Instrument </td>
+                    <td>Date de début du contrat</td>
+                    <td>Date de fin</td>
+                    <td>Attestation d'Assurance</td>
+                    <td>Etat détail de debut</td>
+                    <td>Etat détail de fin</td>
+		            </tr>
+		            <tr>
+                   {% for c in app.user.contratPretsUser %}
+		
+        <td><a href="{{ path('instrumentConsulter', { 'id': c.instrument.id }) }}">{{c.instrument.nom}}</a></td>
+                    <td>{{ c.dateDebut|date("d/n/Y") }}</td> 
+                    <td>{{ c.dateFin|date("d/n/Y") }}</td> 
+                    <td>{{c.attestationAssurance}}</td>
+                  <td>{{c.etatDetailleDebut}}</td>
+                  <td>{{c.etatDetailleFin}}</td>
+	                {% endfor %}
+
+                <tr>      
+                
+              </tr>
+          </table>
+ 	<input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
     </body>
 </html>
+
+
+

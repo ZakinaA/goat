@@ -1,5 +1,25 @@
-{#templates/instrument/ajouter.html.twig #}
-{{ form_start(form) }}
-{{ form_widget(form) }}
+{# templates/professeur/ajouter.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% include 'header.html' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+		<div class="container">   
+    	<div class="d-flex align-items-center">
+		<h5>PAGE D'AJOUT D'UN PROFESSEUR</h5>
+		<table>
+        </br>
+       
+{{ form_start(form) }}{{ form_widget(form) }}
 {{ form_end(form) }}
+
+	</div>
+    </body>
+</html>
 <input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
