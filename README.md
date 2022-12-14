@@ -35,9 +35,15 @@ https://getbootstrap.com/docs/5.2
 ``` 
 #ID ISSUE - NOM
 ```
-Connexion compte : 
-valentinlemarie50@gmail.com:vlemarie
+
+(Compte Administrateur)
 ```
-admin@gmail.com
-MPadmin
+Adresse mail : admin@gmail.com
+Mot de passe : MPadmin
 ```
+Compte professeur
+```
+Adresse mail : valentinlemarie50@gmail.com
+Mot de passe : vlemarie
+```
+
