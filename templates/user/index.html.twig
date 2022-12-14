@@ -14,6 +14,7 @@
 	<div class="container">   
     <div class="self-align">
 	<h5>PAGE DE CONSULTATION DE VOS INFORMATIONS <strong></strong></h5>
+    <h6>Informations personnelles :</h6>
     <br>
     <div class="row">
     <div class="col-1">
@@ -49,7 +50,10 @@
     
     {% endif %}
 
+
 	</div>
+    {% if app.user.contratPretsUser.count != 0 %}
+                  <h6> Liste instruments :</h6>
                   <table class="table">
     	          <tr>
 
@@ -62,19 +66,17 @@
 		            </tr>
 		            <tr>
                    {% for c in app.user.contratPretsUser %}
-		
         <td><a href="{{ path('instrumentConsulter', { 'id': c.instrument.id }) }}">{{c.instrument.nom}}</a></td>
                     <td>{{ c.dateDebut|date("d/n/Y") }}</td> 
                     <td>{{ c.dateFin|date("d/n/Y") }}</td> 
                     <td>{{c.attestationAssurance}}</td>
                   <td>{{c.etatDetailleDebut}}</td>
-                  <td>{{c.etatDetailleFin}}</td>
-	                {% endfor %}
-
-                <tr>      
-                
+                  <td>{{c.etatDetailleFin}}</td>        
+	                {% endfor %}               
+                <tr>
               </tr>
           </table>
+    {% endif %} 
  	<input type="button" class="btn btn-dark" value="Retour" onclick="history.back()">
     </body>
 </html>
