@@ -41,7 +41,7 @@ https://getbootstrap.com/docs/5.2
 Adresse mail : admin@gmail.com
 Mot de passe : MPadmin
 ```
-Compte professeur
+(Compte Professeur)
 ```
 Adresse mail : valentinlemarie50@gmail.com
 Mot de passe : vlemarie
