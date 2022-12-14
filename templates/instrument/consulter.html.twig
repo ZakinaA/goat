@@ -46,7 +46,7 @@
     {% for e in instrument.accessoire %}
     <td>{{e.libelle}}</a></td>
     {% endfor %}
-    {% for e in instrument.contratPret %}
+    {% for e in instrument.contratPrets %}
     <td><a href="{{ path('contratPretConsulter', { 'id': e.id }) }}">{{e.id}}</a></td>
     {% endfor %}
     

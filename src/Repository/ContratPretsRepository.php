@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\ContratPrets;
+use App\Entity\ContratPret;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
