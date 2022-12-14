@@ -36,7 +36,7 @@ class InterventionController extends AbstractController
         else{
     
         return $this->render('intervention/consulter.html.twig', [
-            'intervention' => $intervention,]);
+            'pInterventions' => $interventions,]);
         } 
 
         
@@ -70,16 +70,16 @@ class InterventionController extends AbstractController
 
         $interventions= $repository->findAll();
         return $this->render('intervention/lister.html.twig', [
-        'pinterventions' => $interventions,]);	
+        'pInterventions' => $interventions,]);	
         }
 
-        public function modifier(ManagerRegistry $doctrine, $id, Request $request){
+        public function modifierIntervention(ManagerRegistry $doctrine, Request $request, int $idIntervention){
  
             //récupération de l'élève dont l'id est passé en paramètre
-            $intervention = $doctrine->getRepository(Intervention::class)->find($id);
+            $intervention = $doctrine->getRepository(Intervention::class)->find($idIntervention);
         
             if (!$intervention) {
-                throw $this->createNotFoundException('Aucun eleve trouvé avec le numéro '.$id);
+                throw $this->createNotFoundException('Aucun intervention trouvé avec le numéro '.$idIntervention);
             }
             else
             {
@@ -102,26 +102,27 @@ class InterventionController extends AbstractController
         
         }
 
-        public function supprimer(ManagerRegistry $doctrine, $id, Request $request){
+        public function supprimerIntervention(ManagerRegistry $doctrine, $idIntervention, Request $request){
  
             //récupération de l'élève dont l'id est passé en paramètre
-            $intervention = $doctrine->getRepository(Eleve::class)->find($id);
+            $intervention = $doctrine->getRepository(Intervention::class)->find($idIntervention);
         
             if (!$intervention) {
-                throw $this->createNotFoundException('Aucun eleve trouvé avec le numéro '.$id);
+                throw $this->createNotFoundException('Aucun intervention trouvé avec le numéro '.$idIntervention);
             }
             else
             {
-                    $form = $this->createForm(InterventionSupprimerType::class, $eleve);
+                    $form = $this->createForm(InterventionSupprimerType::class, $intervention);
                     $form->handleRequest($request);
         
                     if ($form->isSubmitted() && $form->isValid()) {
         
                         $entityManager = $doctrine->getManager();
-                        $entityManager ->remove($eleve);
-                        $entityManager->flush();
+                        $entityManager ->remove($intervention);
+                        //$entityManager->flush();
                         $repository = $doctrine->getRepository(Intervention::class);
                         $interventions = $repository->findAll();
+                        //echo ($interventions[0]->getId());
                         return $this->render('intervention/lister.html.twig', [
                             'pInterventions' => $interventions,]);	
                 }

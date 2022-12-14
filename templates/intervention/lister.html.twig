@@ -6,34 +6,33 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-	{% include 'header.html' %}
-	{% include 'footer.html' %}
+        {% include 'header.html' %}
+        {% include 'footer.html' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 		<div class="container">   
     	<div class="d-flex align-items-center">
-		<h5>Liste les intervention :</h5>
-
-        </div>
-		{% if is_granted('ROLE_ADMIN') %}
-		<a class="btn btn-success" href="http://localhost/goat/public/intervention/ajouter/">Ajouter un intervention</a>
-
-		 {% endif %}
-</br><table>
-        </br>
-		<table class="table">
+		<h5>LISTER LES INTERVENTION </h5>
+        <table class="table">
 		<tr>
-		<td>Nom de l'intervention</td>
+		<td>Nom de l'instrument</td>
 		</tr>
-		{% for e in pinterventions %}
+		{% for e in pInterventions %}
 		<tr>
-			<td><a href="{{ path('interventionConsulter', { 'id': e.id }) }}">{{ e.instrument.nom  }}</a></td>
-	{% else %}
-		<tr>
-		<td style="color : red;">Aucun intervention n'a été trouvé.</td>
-		</tr>
-	{% endfor %}
-</table>
+			<td><a href="{{ path('consulterIntervention', { 'id': e.id }) }}">{{ e.intervention.instrument.nom }}</a></td>
+            {% endfor %}
+            </table>
+        </tr>
+        </table>
+         {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-success" href="http://localhost/goat/public/intervention/ajouter/">Ajouter</a>
+        {% else %}
+                <tr>
+                <td style="color : red;">Aucun cours n'a été trouvé.</td>
+            </tr>
+
 	</div>
+	 {% endif %}
+    </div>
     </body>
 </html>
