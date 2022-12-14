@@ -136,19 +136,17 @@ contratPretConsulter:
     controller: App\Controller\ContratPretController::consulterContratPret
 #INTERVENTION
 interventionLister:
-    path: /intervention/lister/
+    path: /admin/intervention/lister/
     controller: App\Controller\InterventionController::lister
 interventionConsulter:
-    path: /intervention/consulter/{id}
+    path: /admin/intervention/consulter/{id}
     controller: App\Controller\InterventionController::consulterIntervention
 interventionAjouter:
-    path: /intervention/ajouter/
+    path: /admin/intervention/ajouter/
     controller: App\Controller\InterventionController::ajouterIntervention
-
 interventionSupprimer:
-    path: /intervention/supprimer/{id}
+    path: /admin/intervention/supprimer/{id}
     controller: App\Controller\InterventionController::supprimerIntervention
-
 interventionModifier:
-    path: /intervention/modifier/{id}
+    path: /admin/intervention/modifier/{id}
     controller: App\Controller\InterventionController::modofierIntervention
