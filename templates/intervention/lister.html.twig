@@ -16,7 +16,7 @@
 
         </div>
 		{% if is_granted('ROLE_ADMIN') %}
-		<a class="btn btn-success" href="http://localhost/goat/public/intervention/ajouter/">Ajouter un intervention</a>
+		<a class="btn btn-success" href="http://localhost/goat/public/admin/intervention/ajouter/">Ajouter un intervention</a>
 
 		 {% endif %}
 </br><table>
@@ -25,7 +25,7 @@
 		<tr>
 		<td>Nom de l'intervention</td>
 		</tr>
-		{% for e in pinterventions %}
+		{% for e in pInterventions %}
 		<tr>
 			<td><a href="{{ path('interventionConsulter', { 'id': e.id }) }}">{{ e.instrument.nom  }}</a></td>
 	{% else %}

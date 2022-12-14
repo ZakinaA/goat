@@ -31,11 +31,14 @@ class ContratPret
     #[ORM\Column(length: 50)]
     private ?string $etatDetailleFin = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contratPrets')]
-    private ?instrument $instrument = null;
+  //  #[ORM\ManyToOne(inversedBy: 'contratPrets')]
+  //  private ?instrument $instrument = null;
 
     #[ORM\ManyToOne(inversedBy: 'contratPretsUser')]
     private ?user $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'contratPrets')]
+    private ?instrument $instrument = null;
 
     public function getId(): ?int
     {
@@ -101,7 +104,7 @@ class ContratPret
 
         return $this;
     }
-
+/*
     public function getInstrument(): ?instrument
     {
         return $this->instrument;
@@ -112,7 +115,7 @@ class ContratPret
         $this->instrument = $instrument;
 
         return $this;
-    }
+    }*/
 
     public function getUser(): ?user
     {
@@ -122,6 +125,18 @@ class ContratPret
     public function setUser(?user $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getInstrument(): ?instrument
+    {
+        return $this->instrument;
+    }
+
+    public function setInstrument(?instrument $instrument): self
+    {
+        $this->instrument = $instrument;
 
         return $this;
     }
