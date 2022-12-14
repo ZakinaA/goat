@@ -62,8 +62,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $tel = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Eleve::class)]
-    private Collection $eleves;
+
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Responsable::class)]
     private Collection $responsables;
@@ -77,9 +76,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: ContratPret::class)]
     private Collection $contratPretsUser;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Eleve $eleve = null;
+
     public function __construct()
     {
-        $this->eleves = new ArrayCollection();
         $this->professeurs = new ArrayCollection();
         $this->responsables = new ArrayCollection();
         $this->elevesUser = new ArrayCollection();
@@ -266,14 +267,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Eleve>
-     */
-    public function getEleves(): Collection
-    {
-        return $this->eleves;
-    }
-
     public function addElefe(Eleve $elefe): self
     {
         if (!$this->eleves->contains($elefe)) {
@@ -424,6 +417,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $contratPretsUser->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEleve(): ?Eleve
+    {
+        return $this->eleve;
+    }
+
+    public function setEleve(?Eleve $eleve): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($eleve === null && $this->eleve !== null) {
+            $this->eleve->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($eleve !== null && $eleve->getUser() !== $this) {
+            $eleve->setUser($this);
+        }
+
+        $this->eleve = $eleve;
 
         return $this;
     }

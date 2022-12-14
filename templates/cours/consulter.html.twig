@@ -41,6 +41,12 @@
                 <tr>      
             </tr>
         </table>
+        {% if  app.user%}
+        {% if  app.user.eleve in cours.eleves %}
+        <a class="btn btn-danger" href="http://localhost/goat/public/cours/inscrire/{{cours.id}}">Se désinscrire</a>
+        {% else %}
+        <a class="btn btn-primary" href="http://localhost/goat/public/cours/inscrire/{{cours.id}}">S'inscrire au cours</a>
+        {% endif %}{% endif %}
          {% if is_granted('ROLE_ADMIN') %}
        <a class="btn btn-primary" href="http://localhost/goat/public/admin/cours/modifier/{{cours.id}}">Modifier</a>
        <a class="btn btn-primary" href="http://localhost/goat/public/admin/cours/supprimer/{{cours.id}}">Supprimer</a>
