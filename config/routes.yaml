@@ -148,9 +148,9 @@ interventionAjouter:
     controller: App\Controller\InterventionController::ajouterIntervention
 
 interventionSupprimer:
-    path: /intervention/supprimer/{id}
+    path: /intervention/supprimer/{idIntervention}
     controller: App\Controller\InterventionController::supprimerIntervention
 
 interventionModifier:
-    path: /intervention/modifier/{id}
-    controller: App\Controller\InterventionController::modofierIntervention
+    path: /intervention/modifier/{idIntervention}
+    controller: App\Controller\InterventionController::modifierIntervention
